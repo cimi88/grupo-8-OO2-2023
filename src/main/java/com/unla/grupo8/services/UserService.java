@@ -18,6 +18,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.unla.grupo8.repositories.IUserRepository;
+import com.unla.grupo8.entities.UserRole;
+
+import com.unla.grupo8.entities.Usuario;
 
 @Service("userService")
 public class UserService implements UserDetailsService{
@@ -35,7 +38,6 @@ public class UserService implements UserDetailsService{
 	private User buildUser (Usuario usuario, List<GrantedAuthority> grandAuthorities) {
 		return new User(usuario.getUsername(), usuario.getPassword(), usuario.isEnabled() ,
 				true, true, true, grandAuthorities);//accountNonExpired, credentialsNonExpired, accountNonLocked,
-		
 	}
 	
 	private List<GrantedAuthority> buildGrantedAuthorities(Set<UserRole> userRoles){
@@ -47,6 +49,3 @@ public class UserService implements UserDetailsService{
 	}
 
 }
-
-
-
