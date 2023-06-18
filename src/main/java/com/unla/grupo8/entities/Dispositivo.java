@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
@@ -25,6 +27,7 @@ import jakarta.persistence.JoinColumn;
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "dispositivo")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Dispositivo {
 	
 	@Id
@@ -82,6 +85,13 @@ public abstract class Dispositivo {
 		this.enAlta = enAlta;
 		this.espacios = espacios;
 		this.mediciones = mediciones;
+	}
+	
+	public Dispositivo(int id, String nombre, boolean enAlta) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.enAlta = enAlta;
 	}
 
 	public int getId() {
