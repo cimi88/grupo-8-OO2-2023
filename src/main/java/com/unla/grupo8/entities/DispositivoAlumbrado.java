@@ -4,14 +4,22 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 
+//Creamos la tabla
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+//Le decimos que su clave primaria sera tambien foranea de la clase padre
+//Por tanto heredara el id
+@PrimaryKeyJoinColumn(referencedColumnName="id")
+//asignamos un nombre a la tabla
 @Table(name = "dispositivo_alumbrado")
 public class DispositivoAlumbrado extends Dispositivo {
 	
+	//para los demas atributos no uso la anotacion, vamos a dejar que spring
+	//le asigne por defecto el mismo nombre que tienen aqui
 	private boolean encendido;
 	
 	private int potencia;
@@ -23,26 +31,36 @@ public class DispositivoAlumbrado extends Dispositivo {
 	public DispositivoAlumbrado () {}
 
 	public DispositivoAlumbrado(int id, String nombre, boolean enAlta, LocalDateTime createdAt, LocalDateTime updatedAt,
-			Set<Espacio> espacios, Set<Medicion> mediciones) {
-		super(id, nombre, enAlta, createdAt, updatedAt, espacios, mediciones);
-		// TODO Auto-generated constructor stub
-	}
-
-	public DispositivoAlumbrado(int id, String nombre, boolean enAlta, Set<Espacio> espacios,
-			Set<Medicion> mediciones) {
-		super(id, nombre, enAlta, espacios, mediciones);
-		// TODO Auto-generated constructor stub
-	}
-
-	public DispositivoAlumbrado(int id, String nombre, boolean enAlta, 
-			boolean encendido,  int potencia, String senda, int numeracion) {
-		super(id, nombre, enAlta);
+			boolean encendido,  int potencia, String senda, int numeracion, Espacio espacio, Set<Medicion> mediciones) {
+		super(id, nombre, enAlta, createdAt, updatedAt, espacio, mediciones);
+		
 		this.encendido = encendido;
 		this.potencia = potencia;
 		this.senda = senda;
 		this.numeracion = numeracion;
 	}
 
+	public DispositivoAlumbrado(int id, String nombre, boolean enAlta, Espacio espacio,
+			Set<Medicion> mediciones, boolean encendido,  int potencia, String senda, int numeracion) {
+		super(id, nombre, enAlta, espacio, mediciones);
+		
+		this.encendido = encendido;
+		this.potencia = potencia;
+		this.senda = senda;
+		this.numeracion = numeracion;
+	}
+
+	public DispositivoAlumbrado(int id, String nombre, boolean enAlta, 
+			boolean encendido,  int potencia, String senda, int numeracion) {
+		super(id, nombre, enAlta);
+		
+		this.encendido = encendido;
+		this.potencia = potencia;
+		this.senda = senda;
+		this.numeracion = numeracion;
+	}
+
+	//Getters y Setters
 	public boolean isEncendido() {
 		return encendido;
 	}

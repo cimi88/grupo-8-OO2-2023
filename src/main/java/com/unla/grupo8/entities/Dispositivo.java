@@ -8,8 +8,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
@@ -18,11 +18,11 @@ import java.util.Set;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Objects;
-
-import jakarta.persistence.JoinColumn;
 
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -35,7 +35,7 @@ public abstract class Dispositivo {
 	private int id;
 	
 	private String nombre;
-	
+
 	private boolean enAlta;
 	
 	@Column(name="creado")
@@ -47,43 +47,41 @@ public abstract class Dispositivo {
 	private LocalDateTime updatedAt;
 	
 	//la relacion en esta tabla es bidireccional
-	@ManyToMany(cascade = {
-			CascadeType.PERSIST,
-			CascadeType.MERGE
-	})
-		@JoinTable(name = "dispositivo_espacio",
-		joinColumns = @JoinColumn(name = "dispositivo_id"),
-		inverseJoinColumns = @JoinColumn(name = "espacio_id")
-		)
-	private Set<Espacio> espacios = new HashSet<>();
+	//y diremos que muchos dispositivos van a perteneces a un espacio
+	//la entidad propietaria la tendra espacio
+	@ManyToOne()
+	@JoinColumn( name = "espacio_id" )
+	private Espacio espacio;
 	
 	//Relacion Bidireccional con medicion
 	@OneToMany(mappedBy = "dispositivo", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<Medicion> mediciones;
+	@JsonManagedReference
+	private Set<Medicion> mediciones = new HashSet<>();
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy = "dispositivo", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<Evento> eventos;
+	private Set<Evento> eventos = new HashSet<>();
 	
 	public Dispositivo () {}
 
 	public Dispositivo(int id, String nombre, boolean enAlta, LocalDateTime createdAt, LocalDateTime updatedAt,
-			Set<Espacio> espacios, Set<Medicion> mediciones) {
+			Espacio espacio, Set<Medicion> mediciones) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.enAlta = enAlta;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
-		this.espacios = espacios;
+		this.espacio = espacio;
 		this.mediciones = mediciones;
 	}
 
-	public Dispositivo(int id, String nombre, boolean enAlta, Set<Espacio> espacios, Set<Medicion> mediciones) {
+	public Dispositivo(int id, String nombre, boolean enAlta, Espacio espacio, Set<Medicion> mediciones) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.enAlta = enAlta;
-		this.espacios = espacios;
+		this.espacio = espacio;
 		this.mediciones = mediciones;
 	}
 	
@@ -134,12 +132,12 @@ public abstract class Dispositivo {
 		this.updatedAt = updatedAt;
 	}
 
-	public Set<Espacio> getEspacios() {
-		return espacios;
+	public Espacio getEspacios() {
+		return espacio;
 	}
 
-	public void setEspacios(Set<Espacio> espacios) {
-		this.espacios = espacios;
+	public void setEspacio(Espacio espacio) {
+		this.espacio = espacio;
 	}
 
 	public Set<Medicion> getMediciones() {
@@ -170,7 +168,7 @@ public abstract class Dispositivo {
 	@Override
 	public String toString() {
 		return "Dispositivo [id=" + id + ", nombre=" + nombre + ", enAlta=" + enAlta + ", createdAt=" + createdAt
-				+ ", updatedAt=" + updatedAt + ", espacios=" + espacios + ", mediciones=" + mediciones + "]";
+				+ ", updatedAt=" + updatedAt + ", espacio=" + espacio + ", mediciones=" + mediciones + "]";
 	}
 	
 	

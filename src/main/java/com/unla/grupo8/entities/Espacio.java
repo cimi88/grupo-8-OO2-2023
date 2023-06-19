@@ -5,16 +5,20 @@ import java.util.Set;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 
@@ -41,8 +45,10 @@ public class Espacio {
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 	
-	@ManyToMany(mappedBy = "espacios")
-		public Set<Dispositivo> dispositivos = new HashSet<>();
+	//para este caso vamos a decir que en un espacio como puede ser el espacio Noroeste tendra muchos dispositivos
+	@OneToMany(cascade = CascadeType.ALL , orphanRemoval = true)
+	@JoinColumn( name = "espacio_id")
+	private Set<Dispositivo> dispositivos = new HashSet<>();
 
 	public Espacio () {}
 
