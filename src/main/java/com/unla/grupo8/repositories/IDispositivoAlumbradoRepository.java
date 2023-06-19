@@ -21,7 +21,7 @@ public interface IDispositivoAlumbradoRepository extends JpaRepository<Dispositi
 	public abstract DispositivoAlumbrado findById(int id);
 	
 	//iremos a buscar por medio de la siguiente query todos los dispositivos que se encuentran en determinado espacio
-//    @Query("SELECT da FROM DispositivoAlumbrado da JOIN da.espacios e WHERE e.nombre = :nombreEspacio")
-//    List<DispositivoAlumbrado> findByDispAlumbradoEnEspacios(@Param("nombreEspacio")String nombreEspacio);
+    @Query("SELECT da FROM DispositivoAlumbrado da JOIN FETCH da.espacio e WHERE e.nombre = (:nombreEspacio)")
+    List<DispositivoAlumbrado> findByDispAlumbradoEnEspacios(@Param("nombreEspacio")String nombreEspacio);
 
 }
