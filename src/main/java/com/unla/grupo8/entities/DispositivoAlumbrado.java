@@ -30,9 +30,9 @@ public class DispositivoAlumbrado extends Dispositivo {
 	
 	public DispositivoAlumbrado () {}
 
-	public DispositivoAlumbrado(int id, String nombre, boolean enAlta, LocalDateTime createdAt, LocalDateTime updatedAt,
+	public DispositivoAlumbrado(int id, String nombre, LocalDateTime createdAt, LocalDateTime updatedAt,
 			boolean encendido,  int potencia, String senda, int numeracion, Espacio espacio, Set<Medicion> mediciones) {
-		super(id, nombre, enAlta, createdAt, updatedAt, espacio, mediciones);
+		super(id, nombre, createdAt, updatedAt, espacio, mediciones);
 		
 		this.encendido = encendido;
 		this.potencia = potencia;
@@ -40,9 +40,9 @@ public class DispositivoAlumbrado extends Dispositivo {
 		this.numeracion = numeracion;
 	}
 
-	public DispositivoAlumbrado(int id, String nombre, boolean enAlta, Espacio espacio,
+	public DispositivoAlumbrado(int id, String nombre, Espacio espacio,
 			Set<Medicion> mediciones, boolean encendido,  int potencia, String senda, int numeracion) {
-		super(id, nombre, enAlta, espacio, mediciones);
+		super(id, nombre, espacio, mediciones);
 		
 		this.encendido = encendido;
 		this.potencia = potencia;
@@ -50,9 +50,9 @@ public class DispositivoAlumbrado extends Dispositivo {
 		this.numeracion = numeracion;
 	}
 
-	public DispositivoAlumbrado(int id, String nombre, boolean enAlta, 
+	public DispositivoAlumbrado(int id, String nombre, 
 			boolean encendido,  int potencia, String senda, int numeracion) {
-		super(id, nombre, enAlta);
+		super(id, nombre);
 		
 		this.encendido = encendido;
 		this.potencia = potencia;
@@ -62,7 +62,7 @@ public class DispositivoAlumbrado extends Dispositivo {
 
 	//Getters y Setters
 	public boolean isEncendido() {
-		return encendido;
+		return encendido; 
 	}
 
 	public void setEncendido(boolean encendido) {
@@ -74,7 +74,7 @@ public class DispositivoAlumbrado extends Dispositivo {
 	}
 
 	public void setPotencia(int potencia) {
-		this.potencia = potencia;
+		this.potencia = potencia; 
 	}
 
 	public String getSenda() {

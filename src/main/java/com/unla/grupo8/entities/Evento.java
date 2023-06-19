@@ -47,6 +47,15 @@ public class Evento {
 		this.descripcionEvento = descripcionEvento;
 		this.fechaHoraRegistro = fechaHoraRegistro;
 	}
+	
+	
+
+	public Evento(int id, String descripcionEvento, LocalDateTime fechaHoraRegistro) {
+		super();
+		this.id = id;
+		this.descripcionEvento = descripcionEvento;
+		this.fechaHoraRegistro = fechaHoraRegistro;
+	}
 
 	public int getId() {
 		return id;
