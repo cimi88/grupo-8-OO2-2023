@@ -57,10 +57,10 @@ public class DispositivoAlumbradoModelo extends Dispositivo {
 		this.numeracion = numeracion;
 	}
 
-	public DispositivoAlumbradoModelo(int id, String nombre, boolean enAlta, LocalDateTime createdAt,
+	public DispositivoAlumbradoModelo(int id, String nombre, LocalDateTime createdAt,
 			LocalDateTime updatedAt, Espacio espacio, Set<Medicion> mediciones,boolean encendido, @Min(50) @Max(200) int potencia, @Size(min = 3, max = 15) String senda,
 			@Digits(integer = 2147483647, fraction = 0, message = "La numeración solo debe contener números enteros") int numeracion) {
-		super(id, nombre, enAlta, createdAt, updatedAt, espacio, mediciones);
+		super(id, nombre, createdAt, updatedAt, espacio, mediciones);
 		
 		
 		this.encendido = encendido;
@@ -70,10 +70,10 @@ public class DispositivoAlumbradoModelo extends Dispositivo {
 		
 	}
 
-	public DispositivoAlumbradoModelo(int id, String nombre, boolean enAlta, Espacio espacio,
+	public DispositivoAlumbradoModelo(int id, String nombre, Espacio espacio,
 			Set<Medicion> mediciones, boolean encendido, @Min(50) @Max(200) int potencia, @Size(min = 3, max = 15) String senda,
 			@Digits(integer = 2147483647, fraction = 0, message = "La numeración solo debe contener números enteros") int numeracion) {
-		super(id, nombre, enAlta, espacio, mediciones);
+		super(id, nombre, espacio, mediciones);
 
 		this.encendido = encendido;
 		this.potencia = potencia;
@@ -81,9 +81,9 @@ public class DispositivoAlumbradoModelo extends Dispositivo {
 		this.numeracion = numeracion;
 	}
 
-	public DispositivoAlumbradoModelo(int id, String nombre, boolean enAlta, boolean encendido, @Min(50) @Max(200) int potencia, @Size(min = 3, max = 15) String senda,
+	public DispositivoAlumbradoModelo(int id, String nombre, boolean encendido, @Min(50) @Max(200) int potencia, @Size(min = 3, max = 15) String senda,
 			@Digits(integer = 2147483647, fraction = 0, message = "La numeración solo debe contener números enteros") int numeracion) {
-		super(id, nombre, enAlta);
+		super(id, nombre);
 
 		this.encendido = encendido;
 		this.potencia = potencia;

@@ -6,6 +6,7 @@ public class ViewRouteHelpers {
 	
 	//HELPERS PARA DISPOSITIVOS
 	public final static String LISTA_ALUMBRADO = "dispositivo/listaAlumbrado";
+	public final static String FORMULARIO_DISPOSITIVO_ALUMBRADO = "dispositivo/formDispAlumbrado";
 	
 	//HELPERS USUARIO
 	

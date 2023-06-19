@@ -1,0 +1,18 @@
+</head>
+<body>
+    <p>Bienvenido --->!!!!</p>
+    <form action="#" th:action="@{alumbrado/nuevoDispositivoAlumbrado}" th:object="${dispositivo}" method="post">
+        
+        <p>NOMBRE: <input type="text" th:field="*{nombre}" /></p>
+        <p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error-message">NOMBRE ERROR</p>
+        
+        <p>SENDA: <input type="text" th:field="*{senda}" /></p>
+        <p th:if="${#fields.hasErrors('senda')}" th:errors="*{senda}" class="error-message">SENDA ERROR</p>
+
+        <p>NUMERACION: <input type="text" th:field="*{numeracion}" /></p>
+        <p th:if="${#fields.hasErrors('numeracion')}" th:errors="*{numeracion}" class="error-message">NUMERACION ERROR</p>
+
+        <input type="submit">
+    </form>
+</body>
+</html>

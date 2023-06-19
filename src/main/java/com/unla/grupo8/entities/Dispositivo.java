@@ -64,23 +64,23 @@ public abstract class Dispositivo {
 	
 	public Dispositivo () {}
 
-	public Dispositivo(int id, String nombre, boolean enAlta, LocalDateTime createdAt, LocalDateTime updatedAt,
+	public Dispositivo(int id, String nombre, LocalDateTime createdAt, LocalDateTime updatedAt,
 			Espacio espacio, Set<Medicion> mediciones) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.enAlta = enAlta;
+		this.enAlta = true;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 		this.espacio = espacio;
 		this.mediciones = mediciones;
 	}
 
-	public Dispositivo(int id, String nombre, boolean enAlta, Espacio espacio, Set<Medicion> mediciones) {
+	public Dispositivo(int id, String nombre, Espacio espacio, Set<Medicion> mediciones) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.enAlta = enAlta;
+		this.enAlta = true;
 		this.espacio = espacio;
 		this.mediciones = mediciones;
 	}
@@ -90,6 +90,13 @@ public abstract class Dispositivo {
 		this.id = id;
 		this.nombre = nombre;
 		this.enAlta = enAlta;
+	}
+	
+	public Dispositivo(int id, String nombre) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.enAlta = true;
 	}
 
 	public int getId() {
