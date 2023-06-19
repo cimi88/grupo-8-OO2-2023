@@ -85,4 +85,8 @@ public abstract class Medicion {
 		return "Medicion [id=" + id + ", dispositivo=" + dispositivo + ", fechaHoraRegistro=" + fechaHoraRegistro + "]";
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> rama_juanpico

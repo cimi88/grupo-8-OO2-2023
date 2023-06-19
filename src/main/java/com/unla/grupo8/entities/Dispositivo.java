@@ -1,4 +1,8 @@
 package com.unla.grupo8.entities;
+<<<<<<< HEAD
+=======
+
+>>>>>>> rama_juanpico
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,7 +42,11 @@ public abstract class Dispositivo {
 	private boolean enAlta;
 	
 	@Column(name="creado")
+<<<<<<< HEAD
 	@CreationTimestamp
+=======
+	@CreationTimestamp 
+>>>>>>> rama_juanpico
 	private LocalDateTime createdAt;
 	
 	@Column(name="actualizado")
@@ -63,32 +71,56 @@ public abstract class Dispositivo {
 	
 	public Dispositivo () {}
 
+<<<<<<< HEAD
 	public Dispositivo(int id, String nombre, boolean enAlta, LocalDateTime createdAt, LocalDateTime updatedAt,
+=======
+	public Dispositivo(int id, String nombre, LocalDateTime createdAt, LocalDateTime updatedAt,
+>>>>>>> rama_juanpico
 			Espacio espacio, Set<Medicion> mediciones) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
+<<<<<<< HEAD
 		this.enAlta = enAlta;
+=======
+		this.enAlta = true;
+>>>>>>> rama_juanpico
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 		this.espacio = espacio;
 		this.mediciones = mediciones;
 	}
 
+<<<<<<< HEAD
 	public Dispositivo(int id, String nombre, boolean enAlta, Espacio espacio, Set<Medicion> mediciones) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.enAlta = enAlta;
+=======
+	public Dispositivo(int id, String nombre, Espacio espacio, Set<Medicion> mediciones) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.enAlta = true;
+>>>>>>> rama_juanpico
 		this.espacio = espacio;
 		this.mediciones = mediciones;
 	}
 	
+<<<<<<< HEAD
 	public Dispositivo(int id, String nombre, boolean enAlta) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.enAlta = enAlta;
+=======
+	public Dispositivo(int id, String nombre) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.enAlta = true;
+>>>>>>> rama_juanpico
 	}
 
 	public int getId() {
@@ -116,7 +148,11 @@ public abstract class Dispositivo {
 	}
 
 	public LocalDateTime getCreatedAt() {
+<<<<<<< HEAD
 		return createdAt;
+=======
+		return createdAt; 
+>>>>>>> rama_juanpico
 	}
 
 	public void setCreatedAt(LocalDateTime createdAt) {
@@ -170,4 +206,9 @@ public abstract class Dispositivo {
 				+ ", updatedAt=" + updatedAt + ", espacio=" + espacio + ", mediciones=" + mediciones + "]";
 	}
 	
+<<<<<<< HEAD
+=======
+	
+
+>>>>>>> rama_juanpico
 }

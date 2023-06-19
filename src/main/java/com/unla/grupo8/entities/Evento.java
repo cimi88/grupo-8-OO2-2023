@@ -47,6 +47,18 @@ public class Evento {
 		this.descripcionEvento = descripcionEvento;
 		this.fechaHoraRegistro = fechaHoraRegistro;
 	}
+<<<<<<< HEAD
+=======
+	
+	
+
+	public Evento(int id, String descripcionEvento, LocalDateTime fechaHoraRegistro) {
+		super();
+		this.id = id;
+		this.descripcionEvento = descripcionEvento;
+		this.fechaHoraRegistro = fechaHoraRegistro;
+	}
+>>>>>>> rama_juanpico
 
 	public int getId() {
 		return id;
