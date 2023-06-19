@@ -5,6 +5,7 @@ public class ViewRouteHelpers {
 	public final static String INDEX = "home/index";
 	
 	//HELPERS PARA DISPOSITIVOS
+	public final static String LISTA_ALUMBRADO = "dispositivo/lista";
 	
 	//HELPERS USUARIO
 	

@@ -5,8 +5,6 @@ import java.util.Set;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Objects;
