@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import com.unla.grupo8.services.UserService;
+import com.unla.grupo8.services.implementations.UserService;
 
 @SuppressWarnings("deprecation")
 @Configuration
