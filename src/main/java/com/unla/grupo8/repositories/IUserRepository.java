@@ -12,7 +12,7 @@ import com.unla.grupo8.entities.Usuario;
 @Repository("userRepository")
 public interface IUserRepository extends JpaRepository<Usuario, Serializable> {
 	
-	@Query("SELECT u FROM User u JOIN FETCH u.userRoles WHERE u.username = (:username)")
+	@Query("SELECT u FROM Usuario u JOIN FETCH u.userRoles WHERE u.username = (:username)")
 	public abstract Usuario findByUsernameAndFetchUserRolesEagerly(@Param("username") String username);
 
-}
+} 
