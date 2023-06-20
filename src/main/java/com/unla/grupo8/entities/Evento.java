@@ -47,9 +47,7 @@ public class Evento {
 		this.descripcionEvento = descripcionEvento;
 		this.fechaHoraRegistro = fechaHoraRegistro;
 	}
-<<<<<<< HEAD
-=======
-	
+
 	
 
 	public Evento(int id, String descripcionEvento, LocalDateTime fechaHoraRegistro) {
@@ -58,7 +56,7 @@ public class Evento {
 		this.descripcionEvento = descripcionEvento;
 		this.fechaHoraRegistro = fechaHoraRegistro;
 	}
->>>>>>> rama_juanpico
+
 
 	public int getId() {
 		return id;

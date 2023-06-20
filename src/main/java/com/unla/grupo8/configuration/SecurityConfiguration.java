@@ -10,12 +10,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
-<<<<<<< HEAD
-import com.unla.grupo8.services.UserService;
-=======
 import com.unla.grupo8.services.implementations.UserService;
->>>>>>> rama_juanpico
+
 
 @SuppressWarnings("deprecation")
 @Configuration

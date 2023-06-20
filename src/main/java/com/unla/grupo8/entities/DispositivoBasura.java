@@ -24,8 +24,8 @@ public class DispositivoBasura extends Dispositivo{
 		
 		public DispositivoBasura () {}
 
-		public DispositivoBasura(int id, String nombre, boolean enAlta, Espacio espacio, Set<Medicion> mediciones, boolean lleno, float capacidadLitros) {
-			super(id, nombre, enAlta, espacio, mediciones);
+		public DispositivoBasura(int id, String nombre, Espacio espacio, Set<Medicion> mediciones, boolean lleno, float capacidadLitros) {
+			super(id, nombre, espacio, mediciones);
 			// TODO Auto-generated constructor stub
 			this.lleno = lleno;
 			this.capacidadLitros = capacidadLitros;
@@ -33,14 +33,14 @@ public class DispositivoBasura extends Dispositivo{
 
 		public DispositivoBasura(int id, String nombre, boolean enAlta, LocalDateTime createdAt,
 				LocalDateTime updatedAt, Espacio espacio, Set<Medicion> mediciones, boolean lleno, float capacidadLitros) {
-			super(id, nombre, enAlta, createdAt, updatedAt, espacio, mediciones);
+			super(id, nombre, createdAt, updatedAt, espacio, mediciones);
 			// TODO Auto-generated constructor stub
 			this.lleno = lleno;
 			this.capacidadLitros = capacidadLitros;
 		}
 
-		public DispositivoBasura(int id, String nombre, boolean enAlta, boolean lleno, float capacidadLitros) {
-			super(id, nombre, enAlta);
+		public DispositivoBasura(int id, String nombre,  boolean lleno, float capacidadLitros) {
+			super(id, nombre);
 			// TODO Auto-generated constructor stub
 			this.lleno = lleno;
 			this.capacidadLitros = capacidadLitros;

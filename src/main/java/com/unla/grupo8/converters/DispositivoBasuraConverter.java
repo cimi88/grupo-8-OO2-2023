@@ -8,12 +8,11 @@ import com.unla.grupo8.models.DispositivoBasuraModelo;
 public class DispositivoBasuraConverter {
 	//por ahora se cargara sin las listas
 		public DispositivoBasuraModelo entityToModel(DispositivoBasura dispoBasura) {
-			return new DispositivoBasuraModelo (dispoBasura.getId(), dispoBasura.getNombre(), dispoBasura.isEnAlta(), dispoBasura.isLleno(), 
-					dispoBasura.getCapacidadLitros()) ;
+			return new DispositivoBasuraModelo (dispoBasura.getId(),dispoBasura.getNombre(),dispoBasura.isLleno(),dispoBasura.getCapacidadLitros()) ;
 		}
 		
 		public DispositivoBasura modelToEntity(DispositivoBasuraModelo DispositivoBasuraModelo) {
-			return new DispositivoBasura (DispositivoBasuraModelo.getId(), DispositivoBasuraModelo.getNombre(), DispositivoBasuraModelo.isEnAlta(), DispositivoBasuraModelo.isLleno(), 
+			return new DispositivoBasura (DispositivoBasuraModelo.getId(), DispositivoBasuraModelo.getNombre(), DispositivoBasuraModelo.isLleno(), 
 					DispositivoBasuraModelo.getCapacidadLitros());
 		}
 }

@@ -1,10 +1,10 @@
 package com.unla.grupo8.models;
 
-import java.time.LocalDateTime;
+
 import java.util.HashSet;
 import java.util.Set;
 
-import com.unla.grupo8.entities.Espacio;
+
 import com.unla.grupo8.entities.Evento;
 import com.unla.grupo8.entities.Medicion;
 
@@ -28,11 +28,45 @@ public abstract class DispositivoModelo {
 		
 		public DispositivoModelo() {}
 
-		public DispositivoModelo(String nombre, boolean enAlta, EspacioModelo espacioModelo) {
+		public DispositivoModelo(String nombre, EspacioModelo espacioModelo) {
+			super();
+			this.nombre = nombre;
+			this.espacioModelo = espacioModelo;
+		}
+		
+		
+
+
+		public DispositivoModelo(int id, String nombre, boolean enAlta, EspacioModelo espacioModelo,
+				Set<Medicion> mediciones, Set<Evento> eventos) {
+			super();
+			this.id = id;
+			this.nombre = nombre;
+			this.enAlta = enAlta;
+			this.espacioModelo = espacioModelo;
+			this.mediciones = mediciones;
+			this.eventos = eventos;
+		}
+		
+		public DispositivoModelo( String nombre, boolean enAlta, EspacioModelo espacioModelo) {
 			super();
 			this.nombre = nombre;
 			this.enAlta = enAlta;
 			this.espacioModelo = espacioModelo;
+		}
+		
+		public DispositivoModelo(int id, String nombre, boolean enAlta, EspacioModelo espacioModelo) {
+			super();
+			this.id = id;
+			this.nombre = nombre;
+			this.enAlta = enAlta;
+			this.espacioModelo = espacioModelo;
+		}
+		public DispositivoModelo(int id, String nombre) {
+			super();
+			this.id = id;
+			this.nombre = nombre;
+			
 		}
 
 		public int getId() {
