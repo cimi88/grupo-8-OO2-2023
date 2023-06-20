@@ -28,7 +28,7 @@ public Set<EventoModelo> entityToModelSet(Set<Evento> eventos){
 		for(Evento e: eventos) {
 			
 			lista.add(entityToModel(e));
-			
+			 
 		}
 		return lista;
 	}

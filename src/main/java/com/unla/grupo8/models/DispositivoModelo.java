@@ -35,9 +35,17 @@ public abstract class DispositivoModelo {
 			this.espacioModelo = espacioModelo;
 		}
 		
-		
+		 
 
-		public int getId() {
+		public DispositivoModelo(int id, String nombre, EspacioModelo espacioModelo) {
+			super();
+			this.id = id;
+			this.nombre = nombre;
+			this.espacioModelo = espacioModelo;
+			this.enAlta= true;
+		}
+
+		public int getId() { 
 			return id;
 		}
 

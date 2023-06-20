@@ -1,6 +1,9 @@
 package com.unla.grupo8.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
@@ -11,7 +14,27 @@ import lombok.EqualsAndHashCode;
 @Table(name = "dispositivo_alumbrado")
 public class DispositivoEstacionamiento extends Dispositivo {
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "lugar_id", referencedColumnName = "id")
 	private Lugar lugar;
+
+	public DispositivoEstacionamiento(int id, String nombre, Espacio espacio, Lugar lugar) {
+		super(id, nombre, espacio);
+		this.lugar = lugar;
+	}
+
+	 
+
+	public Lugar getLugar() {
+		return lugar;
+	}
+
+	public void setLugar(Lugar lugar) {
+		this.lugar = lugar;
+	} 
+	
+	
+	
 	
 
 }

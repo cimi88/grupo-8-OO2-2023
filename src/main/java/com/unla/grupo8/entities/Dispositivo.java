@@ -94,6 +94,16 @@ public abstract class Dispositivo {
 		this.espacio = espacio;
 		this.eventos = eventos;
 	}
+	
+	
+
+	public Dispositivo(int id, String nombre, Espacio espacio) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.espacio = espacio;
+		this.enAlta = true;
+	}
 
 	public int getId() {
 		return id;
@@ -135,7 +145,7 @@ public abstract class Dispositivo {
 		this.updatedAt = updatedAt;
 	}
 
-	public Espacio getEspacios() {
+	public Espacio getEspacio() {
 		return espacio;
 	}
 
