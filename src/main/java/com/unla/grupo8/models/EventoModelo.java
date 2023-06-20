@@ -1,6 +1,7 @@
 package com.unla.grupo8.models;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 
 
@@ -64,6 +65,29 @@ public class EventoModelo {
 
 	public void setFechaHoraRegistro(LocalDateTime fechaHoraRegistro) {
 		this.fechaHoraRegistro = fechaHoraRegistro;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		EventoModelo other = (EventoModelo) obj;
+		return id == other.id;
+	}
+
+	@Override
+	public String toString() {
+		return "EventoModelo [id=" + id + ", dispositivo=" + dispositivo + ", descripcionEvento=" + descripcionEvento
+				+ ", fechaHoraRegistro=" + fechaHoraRegistro + "]";
 	}
 	
 	

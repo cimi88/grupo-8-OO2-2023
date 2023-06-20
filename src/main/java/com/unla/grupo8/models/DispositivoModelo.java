@@ -28,12 +28,14 @@ public abstract class DispositivoModelo {
 		
 		public DispositivoModelo() {}
 
-		public DispositivoModelo(String nombre, boolean enAlta, EspacioModelo espacioModelo) {
+		public DispositivoModelo(String nombre, EspacioModelo espacioModelo) {
 			super();
 			this.nombre = nombre;
-			this.enAlta = enAlta;
+			this.enAlta = true;
 			this.espacioModelo = espacioModelo;
 		}
+		
+		
 
 		public int getId() {
 			return id;

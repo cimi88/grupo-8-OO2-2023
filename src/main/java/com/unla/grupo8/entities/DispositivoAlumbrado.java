@@ -36,19 +36,11 @@ public class DispositivoAlumbrado extends Dispositivo {
 		
 		this.encendido = encendido;
 		this.potencia = potencia;
-		this.senda = senda;
+		this.senda = senda; 
 		this.numeracion = numeracion;
 	}
 
-	public DispositivoAlumbrado(int id, String nombre, Espacio espacio,
-			Set<Medicion> mediciones, boolean encendido,  int potencia, String senda, int numeracion) {
-		super(id, nombre, espacio, mediciones);
-		
-		this.encendido = encendido;
-		this.potencia = potencia;
-		this.senda = senda;
-		this.numeracion = numeracion;
-	}
+	 
 
 	public DispositivoAlumbrado(int id, String nombre, 
 			boolean encendido,  int potencia, String senda, int numeracion) {

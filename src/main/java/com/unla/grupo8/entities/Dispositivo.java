@@ -62,6 +62,7 @@ public abstract class Dispositivo {
 	@OneToMany(mappedBy = "dispositivo", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Evento> eventos = new HashSet<>();
 	
+
 	public Dispositivo () {}
 
 	public Dispositivo(int id, String nombre, LocalDateTime createdAt, LocalDateTime updatedAt,
@@ -75,21 +76,23 @@ public abstract class Dispositivo {
 		this.espacio = espacio;
 		this.mediciones = mediciones;
 	}
-
-	public Dispositivo(int id, String nombre, Espacio espacio, Set<Medicion> mediciones) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.enAlta = true;
-		this.espacio = espacio;
-		this.mediciones = mediciones;
-	}
+ 
 	
 	public Dispositivo(int id, String nombre) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.enAlta = true;
+	}
+	
+	
+	
+	public Dispositivo(int id, String nombre, Espacio espacio, Set<Evento> eventos) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.espacio = espacio;
+		this.eventos = eventos;
 	}
 
 	public int getId() {

@@ -56,6 +56,15 @@ public class Espacio {
 		this.nombre = nombre;
 		this.dispositivos = dispositivos;
 	}
+	
+	public Espacio(int id, String nombre) {
+		super();
+		this.id = id;
+		this.nombre = nombre; 
+	}
+	
+	
+	
 
 	public int getId() {
 		return id;
