@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario de dispositivo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #292929;
+            color: #fff;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        form {
+            padding: 20px;
+            background-color: #1f1f1f;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            width: 200px;
+            border: none;
+            background-color: #313131;
+            color: #fff;
+        }
+
+        input[type="file"] {
+            width: 200px;
+            border: none;
+            background-color: #313131;
+            color: #fff;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .error-message {
+            color: #ff4d4d;
+        }
+    </style>
+</head>
+<body>
+    <p>Bienvenido --->!!!! <span th:text="${usuario}"></span></p>
+    <form action="#" th:action="@{nuevodispositivo}" th:object="${dispositivo}" method="post" enctype="multipart/form-data">
+        <p>ID: <input type="text" th:field="*{id}" /></p>
+        <p th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="error-message">Id ERROR</p>
+        
+         <!--<p>EN ALTA: <input type="text" th:field="*{enAlta}" /></p>
+        <p th:if="${#fields.hasErrors('enAlta')}" th:errors="*{enAlta}" class="error-message">En alta ERROR</p>-->
+        
+        <p>NOMBRE: <input type="text" th:field="*{nombre}" /></p>
+        <p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error-message">Nombre ERROR</p>
+        
+        <p>LLENO: <input type="text" th:field="*{lleno}" /></p>
+        <p th:if="${#fields.hasErrors('lleno')}" th:errors="*{lleno}" class="error-message">Lleno ERROR</p>
+
+ 		<p>CAPACIDAD DE LITROS: <input type="text" th:field="*{capacidadLitros}" /></p>
+        <p th:if="${#fields.hasErrors('capacidadLitros')}" th:errors="*{capacidadLitros}" class="error-message">capacidad Litros ERROR</p>
+        
+         <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
