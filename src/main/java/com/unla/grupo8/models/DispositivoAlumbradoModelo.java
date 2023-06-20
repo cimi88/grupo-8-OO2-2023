@@ -28,8 +28,6 @@ public class DispositivoAlumbradoModelo extends DispositivoModelo {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-	
 	public DispositivoAlumbradoModelo(int id,String nombre,int idEspacio, boolean encendido, @Min(50) @Max(200) int potencia,
 			@Size(min = 3, max = 30, message = "La senda debe tener al menos mas de 3 letras en su nombre") String senda,
 			@Digits(integer = 2147483647, fraction = 0, message = "La numeración solo debe contener números enteros") int numeracion) {

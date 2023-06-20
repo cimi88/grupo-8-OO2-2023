@@ -6,6 +6,8 @@ INSERT INTO `sistema_iot`.`user_role` (`id`,`user_id`,`role`) VALUES (2, 2, "ROL
 
 INSERT INTO `sistema_iot`.`espacio` (`nombre`) VALUES ('Noroeste');
 INSERT INTO `sistema_iot`.`espacio` (`nombre`) VALUES ('Noreste');
+INSERT INTO `sistema_iot`.`espacio` (`nombre`) VALUES ('Suroeste');
+INSERT INTO `sistema_iot`.`espacio` (`nombre`) VALUES ('Sureste');
 
 INSERT INTO `sistema_iot`.`dispositivo` (`en_alta`, `espacio_id`, `id`, `nombre`) VALUES (1, 1, 1, 'poste1');
 INSERT INTO `sistema_iot`.`dispositivo_alumbrado` (`encendido`, `id`, `numeracion`, `potencia`, `senda`) VALUES (0, 1, 20, 100, 'calle1');

@@ -68,6 +68,7 @@ public class AlumbradoController {
 
 		if (bindingResult.hasErrors()) {
 			modelAndView.setViewName(ViewRouteHelpers.FORMULARIO_DISPOSITIVO_ALUMBRADO);
+			modelAndView.addObject("espacios", espacioRepository.findAll());
 			return modelAndView;
 		}
 
