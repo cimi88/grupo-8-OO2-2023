@@ -5,8 +5,8 @@ public class ViewRouteHelpers {
 	public final static String INDEX = "home/index";
 	
 	//HELPERS PARA DISPOSITIVOS
+	public final static String FORMULARIO_DISPOSITIVO_ALUMBRADO = "dispositivo/formularioDispositivoAlumbrado";
 	public final static String LISTA_ALUMBRADO = "dispositivo/listaAlumbrado";
-	public final static String FORMULARIO_DISPOSITIVO_ALUMBRADO = "dispositivo/formDispAlumbrado";
 	
 	//HELPERS USUARIO
 	

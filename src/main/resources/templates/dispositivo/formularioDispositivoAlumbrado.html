@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario de dispositivo alumbrado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #292929;
+            color: #fff;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        form {
+            padding: 20px;
+            background-color: #1f1f1f;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            width: 200px;
+            border: none;
+            background-color: #313131;
+            color: #fff;
+        }
+
+        input[type="file"] {
+            width: 200px;
+            border: none;
+            background-color: #313131;
+            color: #fff;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .error-message {
+            color: #ff4d4d;
+        }
+    </style>
+</head>
+<body>
+    <p>Bienvenido --->!!!! <span th:text="${usuario}"></span></p>
+    <form action="#" th:action="@{nuevodispositivo}" th:object="${dispositivo}" method="post" enctype="multipart/form-data">
+        
+        <p>NOMBRE: <input type="text" th:field="*{nombre}" /></p>
+        <p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error-message">Nombre ERROR</p>
+        
+        <p>ENCENDIDO: <input type="text" th:field="*{encendido}" /></p>
+        <p th:if="${#fields.hasErrors('encendido')}" th:errors="*{encendido}" class="error-message">Encendido ERROR</p>
+        
+        <p>SENDA: <input type="text" th:field="*{senda}" /></p>
+        <p th:if="${#fields.hasErrors('senda')}" th:errors="*{senda}" class="error-message">Senda ERROR</p>
+
+ 		<p>NUMERACION: <input type="text" th:field="*{numeracion}" /></p>
+        <p th:if="${#fields.hasErrors('numeracion')}" th:errors="*{numeracion}" class="error-message">Numeracion ERROR</p>
+        
+        <select
+              class="form-select"
+              id="info"
+              name="info"
+              required
+              th:field="${dispositivo.idEspacio}"
+              th:required="true"
+            >
+              <option
+                th:each="e : ${espacios}"
+                th:value="${e.id}"
+                th:text="${e.nombre}"
+                required
+              ></option>
+            </select> 
+        
+         <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>

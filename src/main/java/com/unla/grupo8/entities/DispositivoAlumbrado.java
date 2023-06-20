@@ -40,7 +40,7 @@ public class DispositivoAlumbrado extends Dispositivo {
 		this.numeracion = numeracion;
 	}
 
-	public DispositivoAlumbrado(int id, String nombre, boolean enAlta, Espacio espacio,
+	public DispositivoAlumbrado(int id, String nombre, Espacio espacio,
 			Set<Medicion> mediciones, boolean encendido,  int potencia, String senda, int numeracion) {
 		super(id, nombre, espacio, mediciones);
 		
@@ -53,6 +53,15 @@ public class DispositivoAlumbrado extends Dispositivo {
 	public DispositivoAlumbrado(int id, String nombre, boolean enAlta, 
 			boolean encendido,  int potencia, String senda, int numeracion) {
 		super(id, nombre, enAlta);
+		
+		this.encendido = false;
+		this.potencia = potencia;
+		this.senda = senda;
+		this.numeracion = numeracion;
+	}
+	
+	public DispositivoAlumbrado(int id, String nombre, Espacio espacio, boolean encendido,  int potencia, String senda, int numeracion) {
+		super(id, nombre, espacio);
 		
 		this.encendido = false;
 		this.potencia = potencia;

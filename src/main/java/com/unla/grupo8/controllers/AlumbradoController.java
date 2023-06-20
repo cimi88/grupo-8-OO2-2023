@@ -1,10 +1,5 @@
 package com.unla.grupo8.controllers;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,9 +12,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
+
 import com.unla.grupo8.helpers.ViewRouteHelpers;
 import com.unla.grupo8.models.DispositivoAlumbradoModelo;
+import com.unla.grupo8.repositories.IEspacioRepository;
 import com.unla.grupo8.services.IDispositivoAlumbradoService;
+import com.unla.grupo8.services.IEspacioService;
 
 import jakarta.validation.Valid;
 
@@ -32,25 +31,34 @@ public class AlumbradoController {
 	@Qualifier("dispositivoAlumbradoService")
 	private IDispositivoAlumbradoService dispositivoAlumbradoService;
 	
-	@PostMapping("/nuevoDispositivoAlumbrado")
-	public ModelAndView nuevoDispositivoAlumbrado(@Valid @ModelAttribute("dispositivo") DispositivoAlumbradoModelo dAlumbrado, 
+	@Autowired
+	@Qualifier("espacioRepository")
+	private IEspacioRepository espacioRepository;
+	
+	@GetMapping("/nuevodispositivo")
+	public ModelAndView crearDispositivoAlumbrado(Model model) {
+		
+		model.addAttribute("espacios", espacioRepository.findAll());
+		model.addAttribute("dispositivo", new DispositivoAlumbradoModelo());
+		//User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		ModelAndView modelAndView = new ModelAndView(ViewRouteHelpers.FORMULARIO_DISPOSITIVO_ALUMBRADO);
+		//modelAndView.addAllObjects("usuario", user);
+		return modelAndView;
+	}
+	
+	@PostMapping("/nuevodispositivo")
+	public RedirectView nuevodispositivo(@Valid @ModelAttribute("dispositivo") DispositivoAlumbradoModelo disAluModel, 
 			BindingResult b) {
 		
-		ModelAndView mV = new ModelAndView();
 		if(b.hasErrors()) {
-			mV.setViewName(ViewRouteHelpers.FORMULARIO_DISPOSITIVO_ALUMBRADO);
+			System.out.println(b.hasErrors());
+			return new RedirectView (ViewRouteHelpers.FORMULARIO_DISPOSITIVO_ALUMBRADO);
 		}else {
 				
 			//Modificamos el insertar de la persona para que se inserte el avatar tambien...
-			dispositivoAlumbradoService.insertOrUpdate(dAlumbrado);
-			
-			mV.setViewName(ViewRouteHelpers.LISTA_ALUMBRADO);
-			mV.addObject("dispositivo", dAlumbrado);
-			
-			//Podriamos tambien agregarle las personas que tenemos en la Base de Datos
-			mV.addObject("listaDispositivos" , dispositivoAlumbradoService.getAll());
+			dispositivoAlumbradoService.insertOrUpdate(disAluModel);
+			return new RedirectView("/alumbrado/lista");
 			}
-		return mV;
 		}
 	
 	
