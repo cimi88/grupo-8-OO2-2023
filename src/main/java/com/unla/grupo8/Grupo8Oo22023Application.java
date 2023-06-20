@@ -10,4 +10,4 @@ public class Grupo8Oo22023Application {
 		SpringApplication.run(Grupo8Oo22023Application.class, args);
 	}
 
-}
+} 

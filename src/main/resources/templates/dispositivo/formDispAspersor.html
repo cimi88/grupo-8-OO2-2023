@@ -1,0 +1,15 @@
+<html>
+	<body>
+		<p>Bienvenido --->!!!!</p>
+		<form action="#" th:action="@{riego/nuevoDispositivoAlumbrado}" th:object="${dispositivo}" method="post">
+	
+			<p>NOMBRE: <input type="text" th:field="*{nombre}" /></p>
+	
+			<p>FECHA Y HORA DESDE: <input type="text" th:field="*{fechaHoraDesde}" /></p>
+	
+			<p>FECHA Y HORA HASTA: <input type="text" th:field="*{fechaHoraHasta}" /></p>
+	
+			<input type="submit">
+		</form>
+	</body>
+</html>
