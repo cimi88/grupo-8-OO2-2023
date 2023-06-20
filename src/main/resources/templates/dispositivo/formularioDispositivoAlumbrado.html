@@ -64,6 +64,9 @@
  		<p>NUMERACION: <input type="text" th:field="*{numeracion}" /></p>
         <p th:if="${#fields.hasErrors('numeracion')}" th:errors="*{numeracion}" class="error-message">Numeracion ERROR</p>
         
+         <p>POTENCIA(W): <input type="text" th:field="*{potencia}" /></p>
+        <p th:if="${#fields.hasErrors('potencia')}" th:errors="*{potencia}" class="error-message">Potencia ERROR</p>
+        
         <select
               class="form-select"
               id="info"

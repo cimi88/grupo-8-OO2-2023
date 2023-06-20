@@ -6,6 +6,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,32 +36,44 @@ public class AlumbradoController {
 	@Qualifier("espacioRepository")
 	private IEspacioRepository espacioRepository;
 	
-	@GetMapping("/nuevodispositivo")
+	@GetMapping("/creardispositivo")
 	public ModelAndView crearDispositivoAlumbrado(Model model) {
 		
+		ModelAndView modelAndView = new ModelAndView(ViewRouteHelpers.FORMULARIO_DISPOSITIVO_ALUMBRADO);
 		model.addAttribute("espacios", espacioRepository.findAll());
 		model.addAttribute("dispositivo", new DispositivoAlumbradoModelo());
-		//User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		ModelAndView modelAndView = new ModelAndView(ViewRouteHelpers.FORMULARIO_DISPOSITIVO_ALUMBRADO);
-		//modelAndView.addAllObjects("usuario", user);
+		
 		return modelAndView;
 	}
 	
-	@PostMapping("/nuevodispositivo")
-	public RedirectView nuevodispositivo(@Valid @ModelAttribute("dispositivo") DispositivoAlumbradoModelo disAluModel, 
-			BindingResult b) {
-		
-		if(b.hasErrors()) {
-			System.out.println(b.hasErrors());
-			return new RedirectView (ViewRouteHelpers.FORMULARIO_DISPOSITIVO_ALUMBRADO);
-		}else {
-				
-			//Modificamos el insertar de la persona para que se inserte el avatar tambien...
-			dispositivoAlumbradoService.insertOrUpdate(disAluModel);
-			return new RedirectView("/alumbrado/lista");
-			}
-		}
+//	@PostMapping("/nuevodispositivo")
+//	public RedirectView nuevodispositivo(@Valid @ModelAttribute("dispositivo") DispositivoAlumbradoModelo disAluModel, 
+//			BindingResult b) {
+//		
+//		if(b.hasErrors()) {
+//			System.out.println(b.hasErrors());
+//			return new RedirectView (ViewRouteHelpers.FORMULARIO_DISPOSITIVO_ALUMBRADO);
+//		}else {
+//				
+//			//Modificamos el insertar de la persona para que se inserte el avatar tambien...
+//			dispositivoAlumbradoService.insertOrUpdate(disAluModel);
+//			return new RedirectView("/alumbrado/lista");
+//			}
+//		}
 	
+	@PostMapping("/nuevodispositivo")
+	public ModelAndView agregarDispositivo(@Validated @ModelAttribute("dispositivo") DispositivoAlumbradoModelo disAluModel,
+			BindingResult bindingResult) {
+		ModelAndView modelAndView = new ModelAndView();
+
+		if (bindingResult.hasErrors()) {
+			modelAndView.setViewName(ViewRouteHelpers.FORMULARIO_DISPOSITIVO_ALUMBRADO);
+			return modelAndView;
+		}
+
+		dispositivoAlumbradoService.insertOrUpdate(disAluModel);
+		return mostrarTablaDispositivos();
+	}
 	
 	@GetMapping("/lista")
 	public ModelAndView mostrarTablaDispositivos() {

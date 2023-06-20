@@ -12,12 +12,15 @@ public class DispositivoAlumbradoModelo extends DispositivoModelo {
 	private boolean encendido;
 	
 	//potencia = wwt entre 50 a 200
-
+	@Min(50)
+	@Max(200)
 	private int potencia;
 	
+	@Size (min = 3, max = 30, message = "La senda debe tener al menos mas de 3 letras en su nombre")
 	private String senda;
 
 	//la numeracion se cargara normalmente 
+    @Digits(integer = Integer.MAX_VALUE, fraction = 0, message = "La numeración solo debe contener números enteros")
     private int numeracion;
     
 	public DispositivoAlumbradoModelo() {
@@ -25,14 +28,16 @@ public class DispositivoAlumbradoModelo extends DispositivoModelo {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public DispositivoAlumbradoModelo(int id, String nombre, int idEspacio, boolean encendido,
-			int potencia,  String senda, int numeracion) {
+	
+	
+	public DispositivoAlumbradoModelo(int id,String nombre,int idEspacio, boolean encendido, @Min(50) @Max(200) int potencia,
+			@Size(min = 3, max = 30, message = "La senda debe tener al menos mas de 3 letras en su nombre") String senda,
+			@Digits(integer = 2147483647, fraction = 0, message = "La numeración solo debe contener números enteros") int numeracion) {
 		super(id, nombre, idEspacio);
 		this.encendido = encendido;
 		this.potencia = potencia;
 		this.senda = senda;
 		this.numeracion = numeracion;
-		this.idEspacio = idEspacio;
 	}
 	
 
