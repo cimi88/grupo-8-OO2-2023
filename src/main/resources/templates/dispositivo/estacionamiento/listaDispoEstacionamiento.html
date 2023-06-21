@@ -1,0 +1,29 @@
+<html>
+<body>
+
+  <table>
+    <tr>
+        <th>ID</th>
+        <th>NOMBRE</th> 
+         <th>EN ALTA</th> 
+        <th>LUGAR</th> 
+        <th>LUGAR LIBRE</th> 
+        <th>ESPACIO</th> 
+         <th>PLAYA ESTACIONAMIENTO</th> 
+          <th>PLAYA LLENA</th> 
+    </tr>
+    
+    <tr th:each="d : ${dispositivos}">
+        <td th:text="${d.id}"></td>
+        <td th:text="${d.nombre}"></td>
+         <td th:text="${d.enAlta}"></td>
+        <td th:text="${d.lugar.nombreLugar}"></td>
+         <td th:text="${d.lugar.lugarLibre}"></td>
+        <td th:text="${d.espacio.nombre}"></td>
+        <td th:text="${d.lugar.playaEstacionamiento.nombre}"></td>
+        <td th:text="${d.lugar.playaEstacionamiento.playaLlena}"></td>
+
+        </tr>
+    </table>
+</body>
+</html>

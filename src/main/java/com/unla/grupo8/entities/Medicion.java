@@ -38,6 +38,9 @@ public abstract class Medicion {
 		this.dispositivo = dispositivo;
 		this.fechaHoraRegistro = fechaHoraRegistro;
 	}
+	
+	
+	
 
 	public int getId() {
 		return id;

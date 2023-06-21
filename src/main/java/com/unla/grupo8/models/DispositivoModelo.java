@@ -15,11 +15,11 @@ public abstract class DispositivoModelo {
 		
 		private int id;
 		
-		private String nombre;
+		private String nombre; 
  
 		private boolean enAlta;
 		
-		private EspacioModelo espacioModelo;
+		private int idEspacio;
 		
 		
 		private Set<Medicion> mediciones = new HashSet<>();
@@ -28,20 +28,20 @@ public abstract class DispositivoModelo {
 		
 		public DispositivoModelo() {}
 
-		public DispositivoModelo(String nombre, EspacioModelo espacioModelo) {
+		public DispositivoModelo(String nombre, int idEspacio) {
 			super();
 			this.nombre = nombre;
 			this.enAlta = true;
-			this.espacioModelo = espacioModelo;
+			this.idEspacio = idEspacio;
 		}
 		
 		 
 
-		public DispositivoModelo(int id, String nombre, EspacioModelo espacioModelo) {
+		public DispositivoModelo(int id, String nombre, int idEspacio) {
 			super();
 			this.id = id;
 			this.nombre = nombre;
-			this.espacioModelo = espacioModelo;
+			this.idEspacio = idEspacio;
 			this.enAlta= true;
 		}
 
@@ -71,13 +71,14 @@ public abstract class DispositivoModelo {
 
 		
 		
+      
 
-		public EspacioModelo getEspacioModelo() {
-			return espacioModelo;
+		public int getIdEspacio() {
+			return idEspacio;
 		}
 
-		public void setEspacioModelo(EspacioModelo espacioModelo) {
-			this.espacioModelo = espacioModelo;
+		public void setIdEspacio(int idEspacio) {
+			this.idEspacio = idEspacio;
 		}
 
 		public Set<Medicion> getMediciones() {

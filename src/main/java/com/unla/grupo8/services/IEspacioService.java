@@ -13,4 +13,6 @@ import com.unla.grupo8.models.EspacioModelo;
 public interface IEspacioService {
 	public List<Espacio>getAll();
 	public EspacioModelo traerPorId(int id);
+	public EspacioModelo insertOrUpdate(EspacioModelo espacioModelo);
+	 
 }

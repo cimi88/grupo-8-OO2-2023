@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -45,24 +46,25 @@ public class Lugar {
 	@OneToOne(mappedBy = "lugar")
 	private DispositivoEstacionamiento dispositivoEstacionamiento;
 	
-	@ManyToOne
-	@JoinColumn(name = "persona_id")
-	@JsonBackReference
-	private PlayaEstacionamiento playa;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "playa_estacionamiento_id")
+	private PlayaEstacionamiento playaEstacionamiento;
 
-	public Lugar(int id, String nombreLugar, boolean lugarLibre, PlayaEstacionamiento playa) {
+	public Lugar() {}
+	
+	public Lugar(int id, String nombreLugar, boolean lugarLibre, PlayaEstacionamiento playaEstacionamiento) {
 		super();
 		this.id = id;
 		this.nombreLugar = nombreLugar;
 		this.lugarLibre = lugarLibre;
-		this.playa = playa;
+		this.playaEstacionamiento = playaEstacionamiento;
 	}
 
-	public Lugar(String nombreLugar, boolean lugarLibre, PlayaEstacionamiento playa) {
+	public Lugar(String nombreLugar, boolean lugarLibre, PlayaEstacionamiento playaEstacionamiento) {
 		super();
 		this.nombreLugar = nombreLugar;
 		this.lugarLibre = lugarLibre;
-		this.playa = playa;
+		this.playaEstacionamiento = playaEstacionamiento;
 	}
 
 	public Lugar(String nombreLugar, boolean lugarLibre) {
@@ -119,13 +121,22 @@ public class Lugar {
 		this.dispositivoEstacionamiento = dispositivoEstacionamiento;
 	}
 
-	public PlayaEstacionamiento getPlaya() {
-		return playa;
+	
+
+	public PlayaEstacionamiento getPlayaEstacionamiento() {
+		return playaEstacionamiento;
 	}
 
-	public void setPlaya(PlayaEstacionamiento playa) {
-		this.playa = playa;
+	public void setPlayaEstacionamiento(PlayaEstacionamiento playaEstacionamiento) {
+		this.playaEstacionamiento = playaEstacionamiento;
 	}
+
+	@Override
+	public String toString() {
+		return "Lugar [id=" + id + ", nombreLugar=" + nombreLugar + ", lugarLibre=" + lugarLibre + "]";
+	}
+	
+	
 	
 	
 	

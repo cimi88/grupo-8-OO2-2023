@@ -1,0 +1,22 @@
+<html>
+<body>
+
+    <table>
+       <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>libre</th>
+    </tr>
+    
+    <tr th:each="l : ${lista}">
+        <td th:text="${l.id}"></td>
+        <td th:text="${l.nombreLugar}"></td>
+        <td th:text="${l.lugarLibre}"></td>
+        
+         
+       
+
+        </tr>
+    </table>
+</body>
+</html>

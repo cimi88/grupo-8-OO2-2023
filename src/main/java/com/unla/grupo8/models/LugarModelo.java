@@ -15,22 +15,22 @@ public class LugarModelo {
 	private DispositivoEstacionamientoModelo dispositivoEstacionamiento;
 	
 
-	private PlayaEstacionamientoModelo playa;
+	private PlayaEstacionamientoModelo playaEstacionamientoModelo;
 
-	public LugarModelo(int id, String nombreLugar, boolean lugarLibre, PlayaEstacionamientoModelo playa) {
+	public LugarModelo(int id, String nombreLugar, boolean lugarLibre, PlayaEstacionamientoModelo playaEstacionamientoModelo) {
 		super();
 		this.id = id;
 		this.nombreLugar = nombreLugar;
 		this.lugarLibre = lugarLibre;
-		this.playa = playa;
+		this.playaEstacionamientoModelo = playaEstacionamientoModelo;
 	}
 
 	public LugarModelo(String nombreLugar, boolean lugarLibre, PlayaEstacionamientoModelo
-			playa) {
+			playaEstacionamientoModelo) {
 		super();
 		this.nombreLugar = nombreLugar;
 		this.lugarLibre = lugarLibre;
-		this.playa = playa;
+		this.playaEstacionamientoModelo = playaEstacionamientoModelo;
 	}
 
 	public LugarModelo(String nombreLugar, boolean lugarLibre) {
@@ -71,13 +71,15 @@ public class LugarModelo {
 		this.dispositivoEstacionamiento = dispositivoEstacionamiento;
 	}
 
-	public PlayaEstacionamientoModelo getPlaya() {
-		return playa;
+	public PlayaEstacionamientoModelo getPlayaEstacionamientoModelo() {
+		return playaEstacionamientoModelo;
 	}
 
-	public void setPlaya(PlayaEstacionamientoModelo playa) {
-		this.playa = playa;
+	public void setPlayaEstacionamientoModelo(PlayaEstacionamientoModelo playaEstacionamientoModelo) {
+		this.playaEstacionamientoModelo = playaEstacionamientoModelo;
 	}
+ 
+	
 	
 	
 	

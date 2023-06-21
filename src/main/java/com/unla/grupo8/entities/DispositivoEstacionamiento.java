@@ -11,18 +11,23 @@ import lombok.EqualsAndHashCode;
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @PrimaryKeyJoinColumn(referencedColumnName="id")
-@Table(name = "dispositivo_alumbrado")
+@Table(name = "dispositivo_estacionamiento")
 public class DispositivoEstacionamiento extends Dispositivo {
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "lugar_id", referencedColumnName = "id")
+	@JoinColumn(name = "lugar_id")
 	private Lugar lugar;
+	
+	public DispositivoEstacionamiento() {}
 
 	public DispositivoEstacionamiento(int id, String nombre, Espacio espacio, Lugar lugar) {
 		super(id, nombre, espacio);
 		this.lugar = lugar;
 	}
-
+	
+	public DispositivoEstacionamiento(int id, String nombre, Espacio espacio) {
+		super(id, nombre, espacio);
+	} 
 	 
 
 	public Lugar getLugar() {

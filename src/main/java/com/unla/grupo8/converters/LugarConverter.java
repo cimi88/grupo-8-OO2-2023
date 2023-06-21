@@ -14,11 +14,11 @@ public class LugarConverter {
 	private PlayaEstacionamientoConverter playaConverter;
 	
 	public Lugar modelToEntity(LugarModelo lugar) {
-		return new Lugar(lugar.getId(), lugar.getNombreLugar(), lugar.isLugarLibre(), playaConverter.modelToEntity(lugar.getPlaya()));
+		return new Lugar(lugar.getId(), lugar.getNombreLugar(), lugar.isLugarLibre(), playaConverter.modelToEntity(lugar.getPlayaEstacionamientoModelo()));
 	}
 	
 	public LugarModelo entityToModel(Lugar lugar) {
-		return new LugarModelo(lugar.getId(), lugar.getNombreLugar(), lugar.isLugarLibre(), playaConverter.entityToModel(lugar.getPlaya()));
+		return new LugarModelo(lugar.getId(), lugar.getNombreLugar(), lugar.isLugarLibre(), playaConverter.entityToModel(lugar.getPlayaEstacionamiento()));
 	}
 }
- 
+  
