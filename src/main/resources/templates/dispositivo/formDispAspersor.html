@@ -1,13 +1,81 @@
 <html>
+	<head>
+	    <title>Formulario de dispositivo aspersor</title>
+	    <style>
+	        body {
+	            font-family: Arial, sans-serif;
+	            margin: 0;
+	            padding: 0;
+	            background-color: #292929;
+	            color: #fff;
+	            text-align: center;
+	        }
+	
+	        p {
+	            margin-bottom: 10px;
+	        }
+	
+	        form {
+	            padding: 20px;
+	            background-color: #1f1f1f;
+	        }
+	
+	        input[type="text"] {
+	            padding: 5px;
+	            width: 200px;
+	            border: none;
+	            background-color: #313131;
+	            color: #fff;
+	        }
+	
+	        input[type="file"] {
+	            width: 200px;
+	            border: none;
+	            background-color: #313131;
+	            color: #fff;
+	        }
+	
+	        input[type="submit"] {
+	            padding: 10px 20px;
+	            background-color: #4CAF50;
+	            color: #fff;
+	            border: none;
+	            cursor: pointer;
+	        }
+	
+	        .error-message {
+	            color: #ff4d4d;
+	        }
+	    </style>
+	</head>
 	<body>
-		<p>Bienvenido --->!!!!</p>
-		<form action="#" th:action="@{riego/nuevoDispositivoAlumbrado}" th:object="${dispositivo}" method="post">
+		<p>Bienvenido --->!!!!</p> <span th:text="${usuario}"></span></p>
+		<form action="#" th:action="@{nuevodispositivo}" th:object="${dispositivo}" method="post" enctype="multipart/form-data">
 	
 			<p>NOMBRE: <input type="text" th:field="*{nombre}" /></p>
-	
+			<p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error-message">Nombre ERROR</p>
+			
 			<p>FECHA Y HORA DESDE: <input type="text" th:field="*{fechaHoraDesde}" /></p>
-	
+			<p th:if="${#fields.hasErrors('fechaHoraDesde')}" th:errors="*{fechaHoraDesde}" class="error-message">fechaHoraDesde ERROR</p>
+			
 			<p>FECHA Y HORA HASTA: <input type="text" th:field="*{fechaHoraHasta}" /></p>
+			<p th:if="${#fields.hasErrors('fechaHoraHasta')}" th:errors="*{fechaHoraHasta}" class="error-message">fechaHoraHasta ERROR</p>
+			
+			<select
+              class="form-select"
+              id="info"
+              name="info"
+              required
+              th:field="${dispositivo.idEspacio}"
+              th:required="true"
+            >
+              <option
+                th:each="e : ${espacios}"
+                th:value="${e.id}"
+                th:text="${e.nombre}"
+                required
+              ></option>
+            </select>
 	
 			<input type="submit">
 		</form>

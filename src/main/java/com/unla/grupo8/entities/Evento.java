@@ -17,22 +17,21 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "evento")
 public class Evento {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
+	
 	@ManyToOne()
-	@JoinColumn(name = "dispositivo_id")
+	@JoinColumn( name = "dispositivo_id")
 	@JsonBackReference
 	private Dispositivo dispositivo;
-
+	
 	private String descripcionEvento;
-
+	
 	private LocalDateTime fechaHoraRegistro;
-
-	public Evento() {
-	}
+	
+	public Evento() {}
 
 	public Evento(int id, Dispositivo dispositivo, String descripcionEvento) {
 		super();
@@ -86,4 +85,7 @@ public class Evento {
 		return "Evento [id=" + id + ", dispositivo=" + dispositivo + ", descripcionEvento=" + descripcionEvento
 				+ ", fechaHoraRegistro=" + fechaHoraRegistro + "]";
 	}
+	
+	
+
 }

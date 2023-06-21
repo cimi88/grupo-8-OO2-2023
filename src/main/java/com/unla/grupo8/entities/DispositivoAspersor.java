@@ -50,6 +50,13 @@ public class DispositivoAspersor extends Dispositivo {
 		this.fechaHoraDesde = fechaHoraDesde;
 		this.fechaHoraHasta = fechaHoraHasta;
 	}
+	
+	public DispositivoAspersor(int id, String nombre, Espacio espacio, boolean encendido, LocalDateTime fechaHoraDesde, LocalDateTime fechaHoraHasta) {
+		super(id, nombre, espacio);
+		this.encendido = false;
+		this.fechaHoraDesde = fechaHoraDesde;
+		this.fechaHoraHasta = fechaHoraHasta;
+	}
 
 	public boolean isEncendido() {
 		return encendido;

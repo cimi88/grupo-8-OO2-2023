@@ -20,10 +20,14 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 
+//Espacio hace referencia a un sector de la Universidad, siendo este zona norte, sur , este y oeste.
+//para este caso contaremos con nombres como NO(noroeste), SO(suroeste) , etc.
+
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "espacio")
 public class Espacio {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -51,6 +55,13 @@ public class Espacio {
 		this.id = id;
 		this.nombre = nombre;
 		this.dispositivos = dispositivos;
+	}
+	
+	public Espacio(int id, String nombre) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.dispositivos = new HashSet<>();
 	}
 
 	public int getId() {
@@ -99,4 +110,3 @@ public class Espacio {
 		return "Espacio [id=" + id + ", nombre=" + nombre + ", dispositivos=" + dispositivos + "]";
 	}
 }
- 

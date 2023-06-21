@@ -90,13 +90,20 @@ public abstract class Dispositivo {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.enAlta = enAlta;
+		this.enAlta = true;
 	}
 
 	public Dispositivo(int id, String nombre) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
+		this.enAlta = true;
+	}
+	
+	public Dispositivo(int id, String nombre, Espacio espacio) {
+		this.id = id;
+		this.nombre = nombre;
+		this.espacio = espacio;
 		this.enAlta = true;
 	}
 

@@ -85,5 +85,5 @@ public abstract class Medicion {
 	public String toString() {
 		return "Medicion [id=" + id + ", dispositivo=" + dispositivo + ", fechaHoraRegistro=" + fechaHoraRegistro + "]";
 	}
+
 }
- 

@@ -1,8 +1,18 @@
 <html>
-		<body>
-	    <h1>- - - - Dispositivos de Riego - - - -</h1>
+	<head>
+		<style>
+			body {
+				text-align: center;
+			}
+			table {
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+    	<h1>- - - - Dispositivos de Riego - - - -</h1>
 	
-	    <a href="/riego/nuevoDispositivoAspersor">Agregar dispositivo:</a>
+	    <a href="/riego/cargaraspersor">Agregar dispositivo:</a>
 	
 	    <table>
 	        <tr>
@@ -53,7 +63,6 @@
 	            <td>
 	                <a th:href="@{/personas/bajaPersona/}+ ${a.id}" th:text="'Baja'" title="Baja"></a>
 	            </td>
-	
 	        </tr>
 	    </table>
 	</body>
