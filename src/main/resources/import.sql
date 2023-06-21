@@ -11,10 +11,15 @@ INSERT INTO `sistema_iot`.`espacio` (`nombre`) VALUES ('Sureste');
 
 INSERT INTO `sistema_iot`.`dispositivo` (`en_alta`, `espacio_id`, `id`, `nombre`) VALUES (1, 1, 1, 'poste1');
 INSERT INTO `sistema_iot`.`dispositivo_alumbrado` (`encendido`, `id`, `numeracion`, `potencia`, `senda`) VALUES (0, 1, 20, 100, 'calle1');
+INSERT INTO `sistema_iot`.`dispositivo` (`en_alta`, `espacio_id`, `id`, `nombre`) VALUES (1, 1, 2, 'poste2');
+INSERT INTO `sistema_iot`.`dispositivo_alumbrado` (`encendido`, `id`, `numeracion`, `potencia`, `senda`) VALUES (0, 2, 40, 100, 'calle1');
+INSERT INTO `sistema_iot`.`dispositivo` (`en_alta`, `espacio_id`, `id`, `nombre`) VALUES (1, 1, 3, 'poste3');
+INSERT INTO `sistema_iot`.`dispositivo_alumbrado` (`encendido`, `id`, `numeracion`, `potencia`, `senda`) VALUES (0, 3, 60, 100, 'calle1');
 
-INSERT INTO `sistema_iot`.`espacio` (`id`, `nombre`) VALUES (2, 'Noreste');
-INSERT INTO `sistema_iot`.`dispositivo` (`en_alta`, `espacio_id`, `id`, `nombre`) VALUES (1, 2, 2, 'poste2');
-INSERT INTO `sistema_iot`.`dispositivo_alumbrado` (`encendido`, `id`, `numeracion`, `potencia`, `senda`) VALUES (0, 2, 40, 100, 'calle2');
+INSERT INTO `sistema_iot`.`dispositivo` (`en_alta`, `espacio_id`, `id`, `nombre`) VALUES (1, 2, 4, 'poste4');
+INSERT INTO `sistema_iot`.`dispositivo_alumbrado` (`encendido`, `id`, `numeracion`, `potencia`, `senda`) VALUES (0, 4, 40, 200, 'calle2');
+INSERT INTO `sistema_iot`.`dispositivo` (`en_alta`, `espacio_id`, `id`, `nombre`) VALUES (1, 2, 5, 'poste5');
+INSERT INTO `sistema_iot`.`dispositivo_alumbrado` (`encendido`, `id`, `numeracion`, `potencia`, `senda`) VALUES (0, 5, 60, 200, 'calle2');
 
 INSERT INTO `sistema_iot`.`evento` (`id`, `fecha_hora_registro`, `descripcion_evento`) VALUES (1, '2023-06-21 07:30:00', 'APAGAR LUCES');
 INSERT INTO `sistema_iot`.`evento` (`id`, `fecha_hora_registro`, `descripcion_evento`) VALUES (2, '2023-06-21 18:30:00', 'ENCENDER LUCES');

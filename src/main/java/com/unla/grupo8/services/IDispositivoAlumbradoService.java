@@ -13,5 +13,7 @@ public interface IDispositivoAlumbradoService {
 	public DispositivoAlumbradoModelo traerPorId(int id);
 	
 	public boolean remove(int id);
+	
+	public boolean baja(int id);
 
 }

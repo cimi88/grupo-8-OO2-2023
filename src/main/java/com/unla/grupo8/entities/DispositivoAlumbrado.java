@@ -20,7 +20,7 @@ public class DispositivoAlumbrado extends Dispositivo {
 	
 	//para los demas atributos no uso la anotacion, vamos a dejar que spring
 	//le asigne por defecto el mismo nombre que tienen aqui
-	private boolean encendido;
+	private boolean encendido = false;
 	
 	private int potencia;
 	
@@ -34,7 +34,7 @@ public class DispositivoAlumbrado extends Dispositivo {
 			boolean encendido,  int potencia, String senda, int numeracion, Espacio espacio, Set<Medicion> mediciones) {
 		super(id, nombre, createdAt, updatedAt, espacio, mediciones);
 		
-		this.encendido = false;
+		this.setEncendido(encendido);
 		this.potencia = potencia;
 		this.senda = senda;
 		this.numeracion = numeracion;
@@ -44,7 +44,7 @@ public class DispositivoAlumbrado extends Dispositivo {
 			Set<Medicion> mediciones, boolean encendido,  int potencia, String senda, int numeracion) {
 		super(id, nombre, espacio, mediciones);
 		
-		this.encendido = false;
+		this.setEncendido(encendido);
 		this.potencia = potencia;
 		this.senda = senda;
 		this.numeracion = numeracion;
@@ -54,7 +54,7 @@ public class DispositivoAlumbrado extends Dispositivo {
 			boolean encendido,  int potencia, String senda, int numeracion) {
 		super(id, nombre, enAlta);
 		
-		this.encendido = false;
+		this.setEncendido(encendido);
 		this.potencia = potencia;
 		this.senda = senda;
 		this.numeracion = numeracion;
@@ -63,7 +63,7 @@ public class DispositivoAlumbrado extends Dispositivo {
 	public DispositivoAlumbrado(int id, String nombre, Espacio espacio, boolean encendido,  int potencia, String senda, int numeracion) {
 		super(id, nombre, espacio);
 		
-		this.encendido = false;
+		this.setEncendido(encendido);
 		this.potencia = potencia;
 		this.senda = senda;
 		this.numeracion = numeracion;
@@ -72,7 +72,7 @@ public class DispositivoAlumbrado extends Dispositivo {
 	public DispositivoAlumbrado(int id, String nombre, boolean encendido,  int potencia, String senda, int numeracion) {
 		super(id, nombre);
 		
-		this.encendido = false;
+		this.setEncendido(encendido);
 		this.potencia = potencia;
 		this.senda = senda;
 		this.numeracion = numeracion;

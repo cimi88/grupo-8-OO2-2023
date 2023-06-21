@@ -101,10 +101,16 @@ public class AlumbradoController {
 	}
 
 	@GetMapping("/eliminar/{id}")
-	public ModelAndView eliminarDispositivo(@PathVariable("id")int id, Model model) {	
+	public ModelAndView eliminarDispositivo(@PathVariable("id")int id) {	
 		
 		dispositivoAlumbradoService.remove(id);
 			
 		return mostrarTablaDispositivos();	
+	}
+	
+	@GetMapping("/bajaAlumbrado/{id}")
+	public ModelAndView bajaDispositivoLucesAutomaticas (@PathVariable("id")int id) {
+		dispositivoAlumbradoService.baja(id);
+		return mostrarTablaDispositivos();
 	}
 }

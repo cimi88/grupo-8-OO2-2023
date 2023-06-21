@@ -53,4 +53,22 @@ public class DispositivoAlumbradoService implements IDispositivoAlumbradoService
 		}
 	}
 
+	@Override
+	public boolean baja(int id) {
+		
+		boolean aux = true;
+		
+		DispositivoAlumbrado dispositivoAlumbrado = dispositivoAlumbradoRepository.findById(id);
+     
+		if(dispositivoAlumbrado.isEnAlta() == true) {
+			dispositivoAlumbrado.setEnAlta(false);
+			dispositivoAlumbradoRepository.save(dispositivoAlumbrado);
+        }else {
+        	dispositivoAlumbrado.setEnAlta(true);
+        	dispositivoAlumbradoRepository.save(dispositivoAlumbrado);
+        }
+
+		return aux;
+	}
+
 }
