@@ -33,6 +33,15 @@ public class EventoController {
 		ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_EVENTOS);
 		mV.addObject("listaEventos", eventoService.getAll());
 	    return mV;
+	}
+	
+	@GetMapping("/listaEventoDispositivo/{id}")
+	public ModelAndView mostrarEventosDispositivo(@PathVariable("id")int id) {
+		
+		ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_EVENTOS);
+		DispositivoAlumbradoModelo dispAluModel = dispositivoAlumbradoService.traerPorId(id);
+		mV.addObject("listaEventos", dispAluModel.getEventos());
+	    return mV;
 	}	
 
 }
