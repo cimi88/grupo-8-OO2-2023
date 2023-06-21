@@ -19,8 +19,7 @@ public abstract class DispositivoModelo {
  
 		private boolean enAlta;
 		
-		private EspacioModelo espacioModelo;
-		
+		protected int idEspacio;
 		
 		private Set<Medicion> mediciones = new HashSet<>();
 		
@@ -28,46 +27,30 @@ public abstract class DispositivoModelo {
 		
 		public DispositivoModelo() {}
 
-		public DispositivoModelo(String nombre, EspacioModelo espacioModelo) {
-			super();
-			this.nombre = nombre;
-			this.espacioModelo = espacioModelo;
-		}
 		
 		
-
-
-		public DispositivoModelo(int id, String nombre, boolean enAlta, EspacioModelo espacioModelo,
-				Set<Medicion> mediciones, Set<Evento> eventos) {
+		
+		public DispositivoModelo(int id, String nombre, boolean enAlta, int idEspacio, Set<Medicion> mediciones,
+				Set<Evento> eventos) {
 			super();
 			this.id = id;
 			this.nombre = nombre;
 			this.enAlta = enAlta;
-			this.espacioModelo = espacioModelo;
+			this.idEspacio = idEspacio;
 			this.mediciones = mediciones;
 			this.eventos = eventos;
 		}
-		
-		public DispositivoModelo( String nombre, boolean enAlta, EspacioModelo espacioModelo) {
-			super();
-			this.nombre = nombre;
-			this.enAlta = enAlta;
-			this.espacioModelo = espacioModelo;
-		}
-		
-		public DispositivoModelo(int id, String nombre, boolean enAlta, EspacioModelo espacioModelo) {
+
+
+		public DispositivoModelo(int id, String nombre, int idEspacio) {
 			super();
 			this.id = id;
 			this.nombre = nombre;
-			this.enAlta = enAlta;
-			this.espacioModelo = espacioModelo;
+			this.idEspacio = idEspacio;
 		}
-		public DispositivoModelo(int id, String nombre) {
-			super();
-			this.id = id;
-			this.nombre = nombre;
-			
-		}
+
+
+
 
 		public int getId() {
 			return id;
@@ -93,17 +76,6 @@ public abstract class DispositivoModelo {
 			this.enAlta = enAlta;
 		}
 
-		
-		
-
-		public EspacioModelo getEspacioModelo() {
-			return espacioModelo;
-		}
-
-		public void setEspacioModelo(EspacioModelo espacioModelo) {
-			this.espacioModelo = espacioModelo;
-		}
-
 		public Set<Medicion> getMediciones() {
 			return mediciones;
 		}
@@ -118,6 +90,14 @@ public abstract class DispositivoModelo {
 
 		public void setEventos(Set<Evento> eventos) {
 			this.eventos = eventos;
+		}
+
+		public int getIdEspacio() {
+			return idEspacio;
+		}
+
+		public void setIdEspacio(int idEspacio) {
+			this.idEspacio = idEspacio;
 		}
 
 		

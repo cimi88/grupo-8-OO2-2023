@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Formulario de dispositivo</title>
+    <title>Formulario de dispositivo basura</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -51,12 +51,7 @@
 <body>
     <p>Bienvenido --->!!!! <span th:text="${usuario}"></span></p>
     <form action="#" th:action="@{nuevodispositivo}" th:object="${dispositivo}" method="post" enctype="multipart/form-data">
-        <p>ID: <input type="text" th:field="*{id}" /></p>
-        <p th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="error-message">Id ERROR</p>
-        
-         <!--<p>EN ALTA: <input type="text" th:field="*{enAlta}" /></p>
-        <p th:if="${#fields.hasErrors('enAlta')}" th:errors="*{enAlta}" class="error-message">En alta ERROR</p>-->
-        
+       
         <p>NOMBRE: <input type="text" th:field="*{nombre}" /></p>
         <p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error-message">Nombre ERROR</p>
         
@@ -65,6 +60,22 @@
 
  		<p>CAPACIDAD DE LITROS: <input type="text" th:field="*{capacidadLitros}" /></p>
         <p th:if="${#fields.hasErrors('capacidadLitros')}" th:errors="*{capacidadLitros}" class="error-message">capacidad Litros ERROR</p>
+        
+         <select
+              class="form-select"
+              id="info"
+              name="info"
+              required
+              th:field="${dispositivo.idEspacio}"
+              th:required="true"
+            >
+              <option
+                th:each="e : ${espacios}"
+                th:value="${e.id}"
+                th:text="${e.nombre}"
+                required
+              ></option>
+            </select> 
         
          <input type="submit" value="Enviar">
     </form>

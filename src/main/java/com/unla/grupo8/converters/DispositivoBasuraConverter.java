@@ -1,18 +1,27 @@
 package com.unla.grupo8.converters;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.unla.grupo8.entities.DispositivoBasura;
 import com.unla.grupo8.models.DispositivoBasuraModelo;
+import com.unla.grupo8.repositories.IEspacioRepository;
 
 @Component("dispositivoBasuraConverter")
 public class DispositivoBasuraConverter {
-	//por ahora se cargara sin las listas
+	
+	private IEspacioRepository espacioRepository;
+	
+	@Autowired
+	@Qualifier("espacioConverter")
+	private EspacioConverter espacioConverter;
+	
 		public DispositivoBasuraModelo entityToModel(DispositivoBasura dispoBasura) {
-			return new DispositivoBasuraModelo (dispoBasura.getId(),dispoBasura.getNombre(),dispoBasura.isLleno(),dispoBasura.getCapacidadLitros()) ;
+			return new DispositivoBasuraModelo (dispoBasura.getId(),dispoBasura.getNombre(),dispoBasura.getEspacio().getId(),dispoBasura.isLleno(),dispoBasura.getCapacidadLitros()) ;
 		}
 		
-		public DispositivoBasura modelToEntity(DispositivoBasuraModelo DispositivoBasuraModelo) {
-			return new DispositivoBasura (DispositivoBasuraModelo.getId(), DispositivoBasuraModelo.getNombre(), DispositivoBasuraModelo.isLleno(), 
-					DispositivoBasuraModelo.getCapacidadLitros());
+		public DispositivoBasura modelToEntity(DispositivoBasuraModelo dispositivoBasuraModelo) {
+			return new DispositivoBasura (dispositivoBasuraModelo.getId(), dispositivoBasuraModelo.getNombre(), espacioRepository.findById(dispositivoBasuraModelo.getIdEspacio()),dispositivoBasuraModelo.isLleno(), 
+					dispositivoBasuraModelo.getCapacidadLitros());
 		}
 }

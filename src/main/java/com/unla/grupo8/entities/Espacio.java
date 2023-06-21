@@ -56,14 +56,14 @@ public class Espacio {
 		this.nombre = nombre;
 		this.dispositivos = dispositivos;
 	}
-	
 
+	
 	public Espacio(int id, String nombre) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
+		this.dispositivos = new HashSet<>();
 	}
-
 	public int getId() {
 		return id;
 	}

@@ -22,28 +22,16 @@ public class DispositivoBasuraModelo extends DispositivoModelo{
 	public DispositivoBasuraModelo() {}
 
 
-	public DispositivoBasuraModelo(String nombre, boolean enAlta, EspacioModelo espacioModelo, boolean lleno, float capacidadLitros) {
-		super(nombre, enAlta, espacioModelo);
-		// TODO Auto-generated constructor stub
-		this.lleno = lleno;
-		this.capacidadLitros = capacidadLitros;
-	}	
 	
-	public DispositivoBasuraModelo(String nombre, EspacioModelo espacioModelo, boolean lleno, float capacidadLitros) {
-		super(nombre, espacioModelo);
+	public DispositivoBasuraModelo(int id, String nombre, int idEspacio, boolean lleno, float capacidadLitros) {
+		super(id, nombre, idEspacio);
 		// TODO Auto-generated constructor stub
 		this.lleno = lleno;
 		this.capacidadLitros = capacidadLitros;
 	}
 
 
-	public DispositivoBasuraModelo(int id, String nombre,boolean lleno, float capacidadLitros ) {
-		super(id, nombre);
-		// TODO Auto-generated constructor stub
-		this.lleno = lleno;
-		this.capacidadLitros = capacidadLitros;
-	}
-	
+
 	public boolean isLleno() {
 		return lleno;
 	}

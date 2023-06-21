@@ -4,12 +4,16 @@ INSERT INTO `sistema_iot`.`user_role` (`id`,`user_id`,`role`) VALUES (1, 1, "ROL
 INSERT INTO `sistema_iot`.`usuario` (`enabled`, `id`, `username`, `password`) VALUES (1, 2, 'auditor', '$2a$10$SukpGU3.i8gSo/VW.IFJ8.p5L1qLiByT1AHVeyOMcaaWjDygB/Wta');
 INSERT INTO `sistema_iot`.`user_role` (`id`,`user_id`,`role`) VALUES (2, 2, "ROLE_AUDITOR");
 
-INSERT INTO `sistema_iot`.`espacio` (`id`, `nombre`) VALUES (1, 'Noroeste');
+
+INSERT INTO `sistema_iot`.`espacio` (`nombre`) VALUES ('Noroeste');
+INSERT INTO `sistema_iot`.`espacio` (`nombre`) VALUES ('Noreste');
+INSERT INTO `sistema_iot`.`espacio` (`nombre`) VALUES ('Suroeste');
+INSERT INTO `sistema_iot`.`espacio` (`nombre`) VALUES ('Sureste');
 
 INSERT INTO `sistema_iot`.`dispositivo` (`en_alta`, `espacio_id`, `id`, `nombre`) VALUES (1, 1, 1, 'tacho1');
 INSERT INTO `sistema_iot`.`dispositivo_basura` (`lleno`, `id`, `capacidad_litros`) VALUES (0, 1, 20);
 
-INSERT INTO `sistema_iot`.`espacio` (`id`, `nombre`) VALUES (2, 'Noroeste');
+
 INSERT INTO `sistema_iot`.`dispositivo` (`en_alta`, `espacio_id`, `id`, `nombre`) VALUES (1, 2, 2, 'tacho2');
 INSERT INTO `sistema_iot`.`dispositivo_basura` (`lleno`, `id`, `capacidad_litros`) VALUES (0, 2, 50);
 

@@ -8,12 +8,10 @@ public class ViewRouteHelpers {
 
 	//aca estoy apuntando al html
 	public final static String LISTA_BASURA = "dispositivo/listaDispositivoBasura"; 
-
-	public final static String LISTA_ALUMBRADO = "dispositivo/listaAlumbrado";
 	
 	public final static String DISPOSITIVOBASURA_FORM = "dispositivo/formularioDispositivoBasura";
 	
-	public final static String DISPOSITIVOBASURA_NEW = "dispositivo/nuevoDispositivo";
+//	public final static String DISPOSITIVOBASURA_NEW = "dispositivo/nuevoDispositivo";
 	//HELPERS USUARIO
 	
 	public final static String USER_LOGIN = "user/login";

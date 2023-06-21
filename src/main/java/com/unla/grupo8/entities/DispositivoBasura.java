@@ -45,7 +45,16 @@ public class DispositivoBasura extends Dispositivo{
 			this.lleno = lleno;
 			this.capacidadLitros = capacidadLitros;
 		}
+		
 
+		public DispositivoBasura(int id, String nombre, Espacio espacio,boolean lleno, float capacidadLitros) {
+			super(id, nombre, espacio);
+			// TODO Auto-generated constructor stub
+			this.lleno = lleno;
+			this.capacidadLitros = capacidadLitros;
+		}
+
+		
 		public boolean isLleno() {
 			return lleno;
 		}
