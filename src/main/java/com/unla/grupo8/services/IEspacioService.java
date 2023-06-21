@@ -2,8 +2,6 @@ package com.unla.grupo8.services;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.unla.grupo8.entities.Espacio;
 import com.unla.grupo8.models.EspacioModelo;
 

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import com.unla.grupo8.converters.EspacioConverter;
 
@@ -12,7 +13,7 @@ import com.unla.grupo8.models.EspacioModelo;
 import com.unla.grupo8.repositories.IEspacioRepository;
 import com.unla.grupo8.services.IEspacioService;
 
-
+@Service("espacioService")
 public class EspacioService implements IEspacioService{
 	@Autowired 
 	@Qualifier("espacioRepository")
