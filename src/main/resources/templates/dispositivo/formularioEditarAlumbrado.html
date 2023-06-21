@@ -60,7 +60,9 @@
 <body>
     <div class="container">
         <p>Editando dispositivo alumbrado!</p>
+        
         <form action="#" th:action="@{nuevodispositivo}" th:object="${dispositivo}" method="post">
+			
             <p>NOMBRE: <input type="text" th:field="*{nombre}" /></p>
             <p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error-message">Nombre ERROR</p>
             
@@ -89,7 +91,7 @@
                   ></option>
             </select> 
             
-            <input type="submit" value="Enviar">
+            <input type="submit" value="Guardar">
         </form>
     </div>
 </body>
