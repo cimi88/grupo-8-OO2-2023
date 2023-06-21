@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eventos de Alumbrado</title>
+</head>
+<body>
+    <h1>- - - - Eventos de Alumbrado - - - -</h1>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Fecha y Hora</th>
+            <th>Descripción del evento</th>
+        </tr>
+        
+        <tr th:if="${listaEventos == null or listaEventos.isEmpty()}">
+            <td colspan="3">No existen eventos para este dispositivo</td>
+        </tr>
+        
+        <tr th:each="e : ${listaEventos}">
+            <td th:text="${e.id}"></td>
+            <td th:text="${e.fechaHoraRegistro}"></td>
+            <td th:text="${e.descripcionEvento}"></td>
+        </tr>
+    </table>
+</body>
+</html>
