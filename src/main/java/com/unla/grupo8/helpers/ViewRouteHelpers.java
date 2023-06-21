@@ -11,7 +11,9 @@ public class ViewRouteHelpers {
 	
 	public final static String DISPOSITIVOBASURA_FORM = "dispositivo/formularioDispositivoBasura";
 	
-//	public final static String DISPOSITIVOBASURA_NEW = "dispositivo/nuevoDispositivo";
+	//HELRPERS PARA EVENTOS
+	public final static String LISTA_EVENTOS = "evento/listaEventos";
+	
 	//HELPERS USUARIO
 	
 	public final static String USER_LOGIN = "user/login";

@@ -9,7 +9,7 @@ import com.unla.grupo8.models.EspacioModelo;
 
 
 
-@Service("espacioService")
+
 public interface IEspacioService {
 	public List<Espacio>getAll();
 	public EspacioModelo traerPorId(int id);

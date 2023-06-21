@@ -54,7 +54,7 @@ public class Evento {
 		super();
 		this.id = id;
 		this.descripcionEvento = descripcionEvento;
-		this.fechaHoraRegistro = fechaHoraRegistro;
+		this.fechaHoraRegistro = LocalDateTime.now();
 	}
 
 

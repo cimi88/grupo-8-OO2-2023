@@ -12,4 +12,6 @@ public interface IDispositivoBasuraService {
 	public DispositivoBasuraModelo insertOrUpdate(DispositivoBasuraModelo dispBasura);
 	
 	public boolean remove(int id);
+	
+	public DispositivoBasuraModelo traerPorId(int id);
 }
