@@ -10,6 +10,8 @@ import com.unla.grupo8.repositories.IEspacioRepository;
 @Component("dispositivoBasuraConverter")
 public class DispositivoBasuraConverter {
 	
+	@Autowired
+	@Qualifier("espacioRepository") 
 	private IEspacioRepository espacioRepository;
 	
 	@Autowired

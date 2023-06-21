@@ -28,7 +28,6 @@ public class EspacioService implements IEspacioService{
 		return espacioRepository.findAll();
 	}
 
-	
 	@Override
 	public EspacioModelo traerPorId(int id) {
 		// TODO Auto-generated method stub
