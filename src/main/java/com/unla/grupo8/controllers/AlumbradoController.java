@@ -78,13 +78,29 @@ public class AlumbradoController {
 	public ModelAndView  editarDispositivo(@PathVariable("id")int id, Model model) {	
 		
 		DispositivoAlumbradoModelo dispoAluModel = dispositivoAlumbradoService.traerPorId(id);
-
 		model.addAttribute("dispositivo", dispoAluModel);
 		model.addAttribute("espacios", espacioService.getAll());	
 		ModelAndView modelAndView = new ModelAndView(ViewRouteHelpers.EDITAR_DISPOSITIVO_ALUMBRADO);
 		
 		
 		return modelAndView;	
+	}
+	
+	//modificar para setear traigo el dispositivo y editamos
+	@PostMapping("/editarDispositivo/{id}")
+	public ModelAndView nuevoDispositivo(@PathVariable("id")int id, @Valid @ModelAttribute("dispositivo") DispositivoAlumbradoModelo dispoAluModel, 
+			BindingResult b) {
+		
+		ModelAndView mV = new ModelAndView();
+		if(b.hasErrors()) {
+			mV.setViewName(ViewRouteHelpers.EDITAR_DISPOSITIVO_ALUMBRADO);
+		}else {
+			
+			dispositivoAlumbradoService.insertOrUpdate(dispoAluModel);
+			
+			mV = mostrarTablaDispositivos();
+		}
+		return mV;
 	}
 
 	@GetMapping("/bajaAlumbrado/{id}")
