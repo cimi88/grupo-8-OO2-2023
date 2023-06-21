@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
-
 import com.unla.grupo8.helpers.ViewRouteHelpers;
 import com.unla.grupo8.models.DispositivoAlumbradoModelo;
 import com.unla.grupo8.repositories.IEspacioRepository;
@@ -82,6 +81,23 @@ public class AlumbradoController {
 	    ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_ALUMBRADO);
 	    mV.addObject("listaAlumbrado", dispositivoAlumbradoService.getAll());
 	    return mV;
+	}
+	
+	@PostMapping("/guardar")
+	public RedirectView guardar(@ModelAttribute("dispositivo") DispositivoAlumbradoModelo disAlModel) {
+		dispositivoAlumbradoService.insertOrUpdate(disAlModel);
+		return new RedirectView("/alumbrado/lista");
+	}
+	
+	@GetMapping("/editar/{id}")
+	public ModelAndView editarDispositivo(@PathVariable("id")int id, Model model) {	
+		
+		DispositivoAlumbradoModelo dispositivoAlumbradoModelo = dispositivoAlumbradoService.traerPorId(id);
+		model.addAttribute("dispositivo", dispositivoAlumbradoModelo);
+		model.addAttribute("espacios", espacioRepository.findAll());
+		ModelAndView modelAndView = new ModelAndView(ViewRouteHelpers.EDITAR_DISPOSITIVO_ALUMBRADO);
+		
+		return modelAndView;	
 	}
 
 	@GetMapping("/eliminar/{id}")

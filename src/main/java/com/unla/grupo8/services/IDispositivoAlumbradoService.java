@@ -10,6 +10,8 @@ public interface IDispositivoAlumbradoService {
 	
 	public DispositivoAlumbradoModelo insertOrUpdate(DispositivoAlumbradoModelo dispAlumbrado);
 	
+	public DispositivoAlumbradoModelo traerPorId(int id);
+	
 	public boolean remove(int id);
 
 }

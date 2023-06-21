@@ -30,7 +30,6 @@ public class EspacioService implements IEspacioService{
 
 	@Override
 	public EspacioModelo traerPorId(int id) {
-		// TODO Auto-generated method stub
 		return espacioConverter.entityToModel(espacioRepository.findById(id));
 	}
 }

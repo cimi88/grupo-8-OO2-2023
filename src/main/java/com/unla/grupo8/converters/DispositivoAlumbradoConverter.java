@@ -15,10 +15,6 @@ public class DispositivoAlumbradoConverter {
 	@Qualifier("espacioRepository")
 	private IEspacioRepository espacioRepository;
 	
-	@Autowired
-	@Qualifier("espacioConverter")
-	private EspacioConverter espacioConverter;
-	
 	//por ahora se cargara sin las listas
 	public DispositivoAlumbradoModelo entityToModel(DispositivoAlumbrado dispoAlum) {
 		return new DispositivoAlumbradoModelo (dispoAlum.getId(), dispoAlum.getNombre(), dispoAlum.getEspacio().getId(), dispoAlum.isEncendido(), dispoAlum.getPotencia(), dispoAlum.getSenda(), dispoAlum.getNumeracion()) ;

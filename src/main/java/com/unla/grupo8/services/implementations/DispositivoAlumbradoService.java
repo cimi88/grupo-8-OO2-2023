@@ -37,7 +37,6 @@ public class DispositivoAlumbradoService implements IDispositivoAlumbradoService
 	@Override
 	public DispositivoAlumbradoModelo insertOrUpdate(DispositivoAlumbradoModelo dispAlumbradoModelo) {
 		
-		System.out.println(dispAlumbradoModelo);
 		DispositivoAlumbrado dispAlumbrado = dispositivoAlumbradoRepository.save(dispositivoAlumbradoConverter.modelToEntity(dispAlumbradoModelo));
 		
 		return dispositivoAlumbradoConverter.entityToModel(dispAlumbrado);

@@ -1,7 +1,85 @@
+<!DOCTYPE html>
 <html>
+<head>
+    <title>Dispositivos de Alumbrado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #292929;
+            color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #1f1f1f;
+            border-radius: 5px;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+
+        th {
+            background-color: #444;
+        }
+
+        tr:nth-child(even) {
+            background-color: #313131;
+        }
+
+        a.button {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            margin-right: 5px;
+        }
+
+        a.button.add {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        a.button.delete {
+            background-color: #FF4136;
+            color: #fff;
+        }
+
+        a.button.edit {
+            background-color: #FFDC00;
+            color: #000;
+        }
+
+        a.button.details {
+            background-color: #FF851B;
+            color: #fff;
+        }
+
+        a.button.down {
+            background-color: #888;
+            color: #fff;
+        }
+    </style>
+</head>
 <body>
     <h1>- - - - Dispositivos de Alumbrado - - - -</h1>
-	<a href="/alumbrado/creardispositivo">AGREGAR DISPOSITIVO</a>
+    <a href="/alumbrado/creardispositivo" class="button add">AGREGAR DISPOSITIVO</a>
 
     <table>
         <tr>
@@ -13,6 +91,10 @@
             <th>Numeracion</th>
             <th>Potencia en watts(W)</th>
             <th>Espacio</th>
+            <th>Editar</th>
+            <th>Detalles</th>
+            <th>Eliminar</th>
+            <th>Baja</th>
         </tr>
         
         <tr th:each="a : ${listaAlumbrado}">
@@ -24,37 +106,25 @@
             <td th:text="${a.numeracion}"></td>
             <td th:text="${a.potencia}"></td>
             
-            <!-- por ahora no puedo mostrar espacio y eventos ya que no realice los converter, service y demas -->
-            
             <td th:if="${a.espacio != null}" th:text="${a.espacio.nombre}"></td>
             
-            <!-- <td>
-                <ul th:if="${a.eventos != null}">
-                    <tr th:each="e : ${a.eventos}">
-                        <td th:text="${e.id}"></td>
-                        <td th:text="${e.descripcionEvento}"></td>
-                        <td th:text="${e.fechaHoraRegistro}"></td>
-                    </tr>
-                </ul>
-                <span th:if="${a.eventos == null}">Sin eventos</span>
-            </td>
-            -->
             <td>
-                <a th:href="@{/personas/editarPersona/} + ${a.id}" th:text="'Editar'" title="Editar"></a>
+                <a th:href="@{/alumbrado/editar/} + ${a.id}" class="button edit" title="Editar">Editar</a>
             </td>
             
             <td>
-                <a th:href="@{/evento/listaEventos/}+ ${a.id}" th:text="'Detalles'" title="Detalles"></a>
-            </td>
-            
-            <td>
-                <a th:href="@{/alumbrado/eliminar/}+ ${a.id}" th:text="'Eliminar'" title="Eliminar"></a>
-            </td>
-            
-            <td>
-                <a th:href="@{/alumbrado/bajaAlumbrado/}+ ${a.id}" th:text="'Baja'" title="Baja"></a>
-            </td>
+                <a th:href="@{/evento/list
 
+aEventos/}+ ${a.id}" class="button details" title="Detalles">Detalles</a>
+            </td>
+            
+            <td>
+                <a th:href="@{/alumbrado/eliminar/}+ ${a.id}" class="button delete" title="Eliminar">Eliminar</a>
+            </td>
+            
+            <td>
+                <a th:href="@{/alumbrado/bajaAlumbrado/}+ ${a.id}" class="button down" title="Baja">Baja</a>
+            </td>
         </tr>
     </table>
 </body>
