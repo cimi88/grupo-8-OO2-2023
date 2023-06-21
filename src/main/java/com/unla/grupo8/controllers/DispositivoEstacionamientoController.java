@@ -68,23 +68,48 @@ public class DispositivoEstacionamientoController {
 	@PostMapping("/nuevodispositivo")
 	public ModelAndView agregarDispositivo(@Validated @ModelAttribute("dispositivo") DispositivoEstacionamientoModelo dispositivo,
 			BindingResult bindingResult) {
-//		ModelAndView modelAndView = new ModelAndView();
+		ModelAndView modelAndView = new ModelAndView();
 
-//		if (bindingResult.hasErrors()) {
-//			modelAndView.setViewName(ViewRouteHelpers.FORM_DISPO_ESTACIONAMIENTO);
-//			modelAndView.addObject("espacios", espacioRepository.findAll());
-//			modelAndView.addObject("lugares", lugarService.traerLugaresSinDispositivo());
-//			return modelAndView;
-//		}
+		if (bindingResult.hasErrors()) {
+			modelAndView.setViewName(ViewRouteHelpers.FORM_DISPO_ESTACIONAMIENTO);
+			modelAndView.addObject("espacios", espacioRepository.findAll());
+			modelAndView.addObject("lugares", lugarService.traerLugaresSinDispositivo());
+			return modelAndView;
+		}
 
 		dispositivoEstacionamientoService.insertOrUpdate(dispositivo);
 		return mostrarTablaDispositivosEstacionamiento();
 	}
 	
+	@GetMapping("/eliminar/{id}")
+	public ModelAndView eliminarDispositivo(@PathVariable("id")int id) {	
+		
+		dispositivoEstacionamientoService.remove(id);
+			   
+		return mostrarTablaDispositivosEstacionamiento();	
+	}
 	
 	
+	@GetMapping("/baja/{id}")
+	public ModelAndView bajaDispositivoLucesAutomaticas (@PathVariable("id")int id) {
+		dispositivoEstacionamientoService.baja(id);
+		return mostrarTablaDispositivosEstacionamiento();
+	}
 	
-	
+	@GetMapping("/editar/{id}")
+	public ModelAndView  editarDispositivo(@PathVariable("id")int id, Model model) {	
+		
+		DispositivoEstacionamientoModelo dispositivoEstacionamientoModelo = dispositivoEstacionamientoService.traerPorId(id);
+		ModelAndView modelAndView = new ModelAndView(ViewRouteHelpers.FORM_DISPO_ESTACIONAMIENTO_EDITAR);
+		
+//		model.addAttribute("dispositivo", dispositivoEstacionamientoModelo);
+//		model.addAttribute("espacios", espacioRepository.findAll());	
+//		model.addAttribute("lugares", lugarService.traerLugaresSinDispositivo());
+//		ModelAndView modelAndView = new ModelAndView(ViewRouteHelpers.FORM_DISPO_ESTACIONAMIENTO_EDITAR);
+		
+		
+		return modelAndView;	
+	}
 	
 	
 	

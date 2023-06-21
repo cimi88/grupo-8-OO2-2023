@@ -42,7 +42,37 @@ public class DispositivoEstacionamientoService implements IDispositivoEstacionam
 	public DispositivoEstacionamientoModelo insertOrUpdate(DispositivoEstacionamientoModelo dispositivo) {
 		DispositivoEstacionamiento dispositivoEstacionamiento = dispositivoEstacionamientoRepository.save(dispositivoEstacionamientoConverter.modelToEntity(dispositivo));
 		return dispositivoEstacionamientoConverter.entityToModel(dispositivoEstacionamiento);
-	}  
+	}
+
+	@Override
+	public boolean remove(int id) {
+		
+		try { 
+			dispositivoEstacionamientoRepository.deleteById(id);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	} 
+
+	@Override
+	public boolean baja(int id) {
+		 
+		boolean aux = true;
+		
+		DispositivoEstacionamiento dispositivoEstacionamiento = dispositivoEstacionamientoRepository.findById(id);
+     
+		if(dispositivoEstacionamiento.isEnAlta() == true) {
+			dispositivoEstacionamiento.setEnAlta(false);
+			dispositivoEstacionamientoRepository.save(dispositivoEstacionamiento);
+        }else {
+        	dispositivoEstacionamiento.setEnAlta(true);
+        	dispositivoEstacionamientoRepository.save(dispositivoEstacionamiento);
+        }
+
+		return aux;
+	}
+
 
 	
 

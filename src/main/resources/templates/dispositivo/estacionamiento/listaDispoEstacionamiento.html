@@ -1,6 +1,9 @@
 <html>
 <body>
 
+  <td>
+                <a th:href="@{/estacionamiento/creardispositivo}" th:text="'AGREGAR DISPOSITIVO'" title="AGREGAR DISPOSITIVO"></a>
+  </td>
   <table>
     <tr>
         <th>ID</th>
@@ -12,7 +15,7 @@
          <th>PLAYA ESTACIONAMIENTO</th> 
           <th>PLAYA LLENA</th> 
     </tr>
-    
+     
     <tr th:each="d : ${dispositivos}">
         <td th:text="${d.id}"></td>
         <td th:text="${d.nombre}"></td>
@@ -23,7 +26,21 @@
         <td th:text="${d.lugar.playaEstacionamiento.nombre}"></td>
         <td th:text="${d.lugar.playaEstacionamiento.playaLlena}"></td>
 
+        <td>
+                <a th:href="@{/estacionamiento/eliminar/} + ${d.id}" th:text="'eliminar'" title="eliminar"></a>
+        </td>
+        
+        <td>
+                <a th:href="@{/estacionamiento/baja/} + ${d.id}" th:text="${d.enAlta ? 'baja' : 'alta'}" title="${d.enAlta ? 'baja' : 'alta'}"></a>
+        </td>
+
+        
+        <td> 
+                <a th:href="@{/estacionamiento/editar/} + ${d.id}" th:text="'editar'" title="editar"></a>
+        </td>
+     
         </tr>
     </table>
 </body>
 </html>
+ 

@@ -17,4 +17,8 @@ public interface IDispositivoEstacionamientoService {
    
    public DispositivoEstacionamientoModelo insertOrUpdate(DispositivoEstacionamientoModelo dispositivo);
    
+   public boolean remove(int id); 
+   
+   public boolean baja(int id);  
+   
 }

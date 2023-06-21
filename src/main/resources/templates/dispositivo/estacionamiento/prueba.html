@@ -14,7 +14,9 @@
         <td th:text="${l.lugarLibre}"></td>
         
          
-       
+        <td>
+                <a th:href="@{/estacionamiento/baja/} + ${d.id}" th:text="'baja'" title="baja"></a>
+        </td>
 
         </tr>
     </table>

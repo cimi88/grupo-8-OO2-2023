@@ -45,7 +45,7 @@ public class DispositivoEstacionamientoConverter {
 	
 	public DispositivoEstacionamiento modelToEntity(DispositivoEstacionamientoModelo dispo) {
 		DispositivoEstacionamiento dispositivoEstacionamiento =  new DispositivoEstacionamiento(dispo.getId(), dispo.getNombre(), espacioRepository.findById(dispo.getIdEspacio()));
-        Lugar lugar = lugarRepository.findById(dispo.getIdLugar());
+        Lugar lugar = lugarRepository.findById(dispo.getIdLugar()); 
         dispositivoEstacionamiento.setLugar(entityManager.merge(lugar));
 		return dispositivoEstacionamiento;
 	} 

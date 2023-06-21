@@ -42,7 +42,7 @@ public abstract class DispositivoModelo {
 			this.id = id;
 			this.nombre = nombre;
 			this.idEspacio = idEspacio;
-			this.enAlta= true;
+		     this.setEnAlta(enAlta);
 		}
 
 		public int getId() { 
