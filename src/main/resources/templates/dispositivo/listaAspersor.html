@@ -2,11 +2,41 @@
 	<head>
 		<style>
 			body {
+				background-color: #100d0a;
+				color: ghostwhite;
+				text-align: center;
+				font-family: monospace, sans-serif;
+			}
+			#tab {
+				margin: 0 auto;
 				text-align: center;
 			}
-			table {
-				margin: auto;
+			#tab tr {
+				background-color: #3e3328;
+				text-align: center;
+				padding: 0 1em;
 			}
+            #tab tr:nth-child(even) {background-color: #1c1712;
+            }
+            #tab tr:hover {background-color: #2f261e; transition: .25s ease;}
+            #tab tr:not(:hover) {transition: .25s ease;}
+            #tab td {
+				text-align: center;
+				padding: 0 8px;
+			}
+			#actions {
+			  display: flex;
+			  flex-direction: row;
+			  padding: 0;
+			  justify-content: center;
+			  color: ghostwhite;
+			  gap: 0 8px;
+			  cursor: pointer;
+			}
+			#action a:link{
+				
+			}
+			
 		</style>
 	</head>
 	<body>
@@ -14,7 +44,7 @@
 	
 	    <a href="/riego/cargaraspersor">Agregar dispositivo:</a>
 	
-	    <table>
+	    <table id="tab">
 	        <tr>
 	            <th>Id</th>
 	            <th>En alta</th>
@@ -32,7 +62,6 @@
 	            <td th:text="${a.encendido}"></td>
 	            <td th:text="${a.fechaHoraDesde}"></td>
 	            <td th:text="${a.fechaHoraHasta}"></td>
-	            	            
 	            <td th:if="${a.espacio != null}" th:text="${a.espacio.nombre}"></td>
 	            
 <!--	            <td>-->
@@ -46,21 +75,20 @@
 <!--	                <span th:if="${a.eventos == null}">Sin eventos</span>-->
 <!--	            </td>-->
 	            
-	            <td>
-	                <a th:href="@{/personas/editarPersona/} + ${a.id}" th:text="'Editar'" title="Editar"></a>
-	            </td>
-	            
-	            <td>
-	                <a th:href="@{/evento/listaEventos/}+ ${a.id}" th:text="'Detalles'" title="Detalles"></a>
-	            </td>
-	            
-	            <td>
-	                <a th:href="@{riego/eliminar}+ ${a.id}" th:text="'Borrar'" title="Borrar"></a>
-	            </td>
-	            
-	            <td>
-	                <a th:href="@{/personas/bajaPersona/}+ ${a.id}" th:text="'Baja'" title="Baja"></a>
-	            </td>
+	           <td id="actions">
+			      <span class="action">
+			        <a th:href="@{/personas/editarPersona/} + ${a.id}" th:text="'Editar'" title="Editar"></a>
+			      </span>
+			      <span class="action">
+			        <a th:href="@{/evento/listaEventos/}+ ${a.id}" th:text="'Detalles'" title="Detalles"></a>
+			      </span>
+			      <span class="action">
+			        <a th:href="@{riego/eliminar}+ ${a.id}" th:text="'Borrar'" title="Borrar"></a>
+			      </span>
+			      <span class="action">
+			        <a th:href="@{/personas/bajaPersona/}+ ${a.id}" th:text="'Baja'" title="Baja"></a>
+			      </span>
+			   </td>
 	        </tr>
 	    </table>
 	</body>
