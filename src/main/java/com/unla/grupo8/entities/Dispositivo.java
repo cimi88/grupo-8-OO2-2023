@@ -101,6 +101,7 @@ public abstract class Dispositivo {
 	}
 	
 	public Dispositivo(int id, String nombre, Espacio espacio) {
+		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.espacio = espacio;
@@ -147,7 +148,7 @@ public abstract class Dispositivo {
 		this.updatedAt = updatedAt;
 	}
 
-	public Espacio getEspacios() {
+	public Espacio getEspacio() {
 		return espacio;
 	}
 

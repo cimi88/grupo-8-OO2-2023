@@ -15,7 +15,7 @@ public class DispositivoAspersorConverter {
 	private IEspacioRepository espacioRepository; 
 	
 	public DispositivoAspersorModelo entityToModel(DispositivoAspersor aspersor) {
-		return new DispositivoAspersorModelo(aspersor.getId(), aspersor.getNombre(), aspersor.getEspacios().getId(), aspersor.isEncendido(), aspersor.getFechaHoraDesde(), aspersor.getFechaHoraHasta());
+		return new DispositivoAspersorModelo(aspersor.getId(), aspersor.getNombre(), aspersor.getEspacio().getId(), aspersor.isEncendido(), aspersor.getFechaHoraDesde(), aspersor.getFechaHoraHasta());
 	}
 	
 	public DispositivoAspersor modelToEntity(DispositivoAspersorModelo aspersorModelo) {
