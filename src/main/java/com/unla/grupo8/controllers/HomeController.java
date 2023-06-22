@@ -15,4 +15,8 @@ public class HomeController {
 		return ViewRouteHelper.INDEX;
 	}
 	
+	@GetMapping("inicioAudi")
+	public String iniciandoPruebaAuditor () {
+		return ViewRouteHelper.INDEX_AUDITOR;
+	}
 }

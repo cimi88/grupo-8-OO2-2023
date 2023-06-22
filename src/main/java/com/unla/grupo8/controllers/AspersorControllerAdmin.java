@@ -23,7 +23,7 @@ import com.unla.grupo8.services.IEspacioService;
 @Controller
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 @RequestMapping("riego")
-public class AspersorController {
+public class AspersorControllerAdmin {
 	
 	@Autowired @Qualifier("dispositivoAspersorService")
 	private IDispositivoAspersorService dispositivoAspersorService;
