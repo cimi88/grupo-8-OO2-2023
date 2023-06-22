@@ -12,8 +12,8 @@ public class DispositivoAlumbradoModelo extends DispositivoModelo {
 	private boolean encendido;
 	
 	//potencia = wwt entre 50 a 200
-	@Min(50)
-	@Max(200)
+//	@Min(50)
+//	@Max(200)
 	private int potencia;
 	
 	@Size (min = 3, max = 30, message = "La senda debe tener al menos mas de 3 letras en su nombre")

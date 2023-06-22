@@ -71,4 +71,9 @@ public class DispositivoAlumbradoService implements IDispositivoAlumbradoService
 		return aux;
 	}
 
+	@Override
+	public DispositivoAlumbrado traerEntidad(int id) {
+		return dispositivoAlumbradoRepository.findById(id);
+	}
+
 }

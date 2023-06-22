@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.unla.grupo8.entities.DispositivoAlumbrado;
 import com.unla.grupo8.helpers.ViewRouteHelpers;
 import com.unla.grupo8.models.DispositivoAlumbradoModelo;
 import com.unla.grupo8.services.IDispositivoAlumbradoService;
@@ -76,7 +78,7 @@ public class AlumbradoController {
 	
 	// Formulario para editar un dispositivo de LucesAutomaticas
 	@GetMapping("/editardispositivo/{id}")
-	public String editarDispositivoLucesAutomaticas(@PathVariable("id")int id, Model model) {
+	public String editarDispositivo(@PathVariable("id")int id, Model model) {
 		
 		DispositivoAlumbradoModelo dispositivoAlumbradoModel = dispositivoAlumbradoService.traerPorId(id);
 		model.addAttribute("dispositivo", dispositivoAlumbradoModel);		
@@ -88,20 +90,24 @@ public class AlumbradoController {
 	@PostMapping("/dispositivoNuevoEditado")
 	public ModelAndView dispositivoEditado(@Valid @ModelAttribute("dispositivo") DispositivoAlumbradoModelo dispoAluModel, 
 			BindingResult b) {
-		
+		DispositivoAlumbrado dispositivo = new DispositivoAlumbrado();
 		ModelAndView mV = new ModelAndView();
 		if(b.hasErrors()) {
 			mV.setViewName(ViewRouteHelpers.EDITAR_DISPOSITIVO_ALUMBRADO);
 		}else {
-			
-			
-			dispositivoAlumbradoService.insertOrUpdate(dispoAluModel);
+			DispositivoAlumbrado dispositivoViejo = dispositivoAlumbradoService.traerEntidad(dispoAluModel.getId());
+			dispositivo.setNombre(dispositivoViejo.getNombre());
+			dispositivo.setNumeracion(dispositivoViejo.getNumeracion());
+			dispositivo.setSenda(dispositivoViejo.getSenda());
+			dispositivo.setPotencia(dispositivoViejo.getPotencia());
+			dispositivo.setEspacio(dispositivoViejo.getEspacio());
 		}
+		dispositivoAlumbradoService.insertOrUpdate(dispoAluModel);
 		return mostrarTablaDispositivos();
 	}
 
 	@GetMapping("/bajaAlumbrado/{id}")
-	public ModelAndView bajaDispositivoLucesAutomaticas (@PathVariable("id")int id) {
+	public ModelAndView bajaDispositivo (@PathVariable("id")int id) {
 		dispositivoAlumbradoService.baja(id);
 		return mostrarTablaDispositivos();
 	}

@@ -8,6 +8,8 @@ public interface IDispositivoAlumbradoService {
 	
 	public List<DispositivoAlumbrado> getAll();
 	
+	public DispositivoAlumbrado traerEntidad(int id);
+	
 	public DispositivoAlumbradoModelo insertOrUpdate(DispositivoAlumbradoModelo dispAlumbrado);
 	
 	public DispositivoAlumbradoModelo traerPorId(int id);
