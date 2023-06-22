@@ -12,5 +12,9 @@ public class ViewRouteHelper {
 	//DISPOSITIVO ASPERSOR
 	public final static String FORM_DISPOSITIVO_ASPERSOR = "dispositivo/formDispAspersor";
 	public final static String LISTA_DISPOSITIVO_ASPERSOR = "dispositivo/listaAspersor";
+	public final static String EDITAR_DISPOSITIVO_ASPERSOR = "dispositivo/formEditarAspersor";
+	
+	//EVENTOS
+	public final static String LISTA_EVENTOS = "evento/listaEventos";
 }
  

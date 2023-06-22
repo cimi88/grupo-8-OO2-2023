@@ -10,6 +10,9 @@ public interface IDispositivoAspersorService {
 
 	public DispositivoAspersorModelo insertOrUpdate(DispositivoAspersorModelo dispAspersor);
 
+	public DispositivoAspersorModelo traerPorId(int id);
+
 	public boolean remove(int id);
+
+	public boolean baja(int id);
 }
- 

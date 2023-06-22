@@ -99,30 +99,19 @@
 	            <td th:text="${a.fechaHoraDesde}"></td>
 	            <td th:text="${a.fechaHoraHasta}"></td>
 	            <td th:if="${a.espacio != null}" th:text="${a.espacio.nombre}"></td>
-	            
-<!--	            <td>-->
-<!--	                <ul th:if="${a.eventos != null}">-->
-<!--	                    <tr th:each="e : ${a.eventos}">-->
-<!--	                        <td th:text="${e.id}"></td>-->
-<!--	                        <td th:text="${e.descripcionEvento}"></td>-->
-<!--	                        <td th:text="${e.fechaHoraRegistro}"></td>-->
-<!--	                    </tr>-->
-<!--	                </ul>-->
-<!--	                <span th:if="${a.eventos == null}">Sin eventos</span>-->
-<!--	            </td>-->
-	            
+	            	            
 	           <td id="actions">
 			      <span>
-			        <a th:href="@{/personas/editarPersona/} + ${a.id}" th:text="'Editar'" title="Editar"></a>
+			        <a th:href="@{/riego/editarDispositivo/} + ${a.id}" th:text="'Editar'" title="Editar"></a>
 			      </span>
 			      <span>
-			        <a th:href="@{/evento/listaEventos/}+ ${a.id}" th:text="'Detalles'" title="Detalles"></a>
+			        <a th:href="@{/evento/listaEventoDispositivo/}+ ${a.id}" th:text="'Detalles'" title="Detalles"></a>
 			      </span>
 			      <span>
-			        <a th:href="@{riego/eliminar}+ ${a.id}" th:text="'Borrar'" title="Borrar"></a>
+			        <a th:href="@{/riego/eliminar/}+ ${a.id}" th:text="'Borrar'" title="Borrar"></a>
 			      </span>
 			      <span>
-			        <a th:href="@{/personas/bajaPersona/}+ ${a.id}" th:text="'Baja'" title="Baja"></a>
+			        <a th:href="@{/riego/bajaAspersor/}+ ${a.id}" th:text="'Alta'" th:title="Alta"></a>
 			      </span>
 			   </td>
 	        </tr>

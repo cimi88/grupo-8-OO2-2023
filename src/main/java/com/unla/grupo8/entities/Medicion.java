@@ -18,20 +18,19 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "medicion")
 public abstract class Medicion {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
+	
 	@ManyToOne()
-	@JoinColumn(name = "dispositivo_id")
+	@JoinColumn( name = "dispositivo_id")
 	@JsonBackReference
 	private Dispositivo dispositivo;
-
+	
 	private LocalDateTime fechaHoraRegistro;
-
-	public Medicion() {
-	}
+	
+	public Medicion() {}
 
 	public Medicion(int id, Dispositivo dispositivo, LocalDateTime fechaHoraRegistro) {
 		super();

@@ -21,6 +21,7 @@ public class DispositivoAspersorService implements IDispositivoAspersorService {
 	@Autowired @Qualifier("dispositivoAspersorConverter")
 	private DispositivoAspersorConverter dispositivoAspersorConverter;
 
+	
 	public DispositivoAspersorModelo traerPorId(int id) {
 		return dispositivoAspersorConverter.entityToModel(dispositivoAspersorRepository.findById(id));
 	}
@@ -45,6 +46,22 @@ public class DispositivoAspersorService implements IDispositivoAspersorService {
 		} catch (Exception e){
 			res = false;
 		}
+		return res;
+	}
+
+	@Override
+	public boolean baja(int id) {
+		boolean res = true;
+		DispositivoAspersor dispositivoAspersor = dispositivoAspersorRepository.findById(id);
+		
+		if(dispositivoAspersor.isEnAlta()) {
+			dispositivoAspersor.setEnAlta(false);
+			dispositivoAspersorRepository.save(dispositivoAspersor);
+		} else {
+			dispositivoAspersor.setEnAlta(true);
+			dispositivoAspersorRepository.save(dispositivoAspersor);
+		}
+		
 		return res;
 	}
 }
