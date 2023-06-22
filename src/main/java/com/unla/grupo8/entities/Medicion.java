@@ -5,10 +5,13 @@ import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -16,7 +19,8 @@ import lombok.EqualsAndHashCode;
 
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table(name = "medicion")
+@Table(name = "medicion") 
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Medicion {
 	
 	@Id
@@ -27,7 +31,7 @@ public abstract class Medicion {
 	@JoinColumn( name = "dispositivo_id")
 	@JsonBackReference
 	private Dispositivo dispositivo;
-	
+	 
 	private LocalDateTime fechaHoraRegistro;
 	
 	public Medicion() {}
@@ -40,7 +44,14 @@ public abstract class Medicion {
 	}
 	
 	
+	 
 	
+
+	public Medicion(int id, LocalDateTime fechaHoraRegistro) {
+		super();
+		this.id = id;
+		this.fechaHoraRegistro = fechaHoraRegistro;
+	}
 
 	public int getId() {
 		return id;
