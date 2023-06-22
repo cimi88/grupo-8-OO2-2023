@@ -37,6 +37,20 @@
         td[colspan="3"] {
             text-align: center;
         }
+        
+        .button {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -59,5 +73,11 @@
             <td th:text="${e.descripcionEvento}"></td>
         </tr>
     </table>
+    
+    <a th:href="@{/medicion/crearmedicion/} + ${id}" class="button">Registrar Medición</a>
+    
+    <script>
+        // Aquí puedes agregar el código JavaScript si es necesario
+    </script>
 </body>
 </html>

@@ -1,0 +1,15 @@
+<body>
+    <div class="container">
+        <p>Agregando dispositivo alumbrado!</p>
+        <form action="#" th:action="@{nuevamedicion}" th:object="${medicion}" method="post">
+			<input type="hidden" name="idDispositivo" th:value="${idDispositivo}" />
+			
+            <p>FECHA Y HORA DE REGISTRO: <input type="text" th:field="*{fechaHoraRegistro}" placeholder="YYYY-MM-DD HH:mm:ss"/></p>
+            
+            <p>LUMINISCENCIA: <input type="text" th:field="*{luminiscencia}" /></p>
+            
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+</html>

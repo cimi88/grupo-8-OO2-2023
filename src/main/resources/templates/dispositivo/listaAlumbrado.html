@@ -7,6 +7,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #333;
         }
 
         .container {
@@ -75,7 +76,7 @@
             margin-bottom: 10px;
             text-align: center;
         }
-        
+
         /* Estilos del contenido de la página de dispositivos de alumbrado */
         .content h1 {
             text-align: left;
@@ -181,35 +182,38 @@
                     <th>Eliminar</th>
                     <th>Baja</th>
                 </tr>
-                
-             <tr th:each="a : ${listaAlumbrado}">
-            <td th:text="${a.id}"></td>
-            <td th:text="${a.enAlta}"></td>
-            <td th:text="${a.nombre}"></td>
-            <td th:text="${a.encendido}"></td>
-            <td th:text="${a.senda}"></td>
-            <td th:text="${a.numeracion}"></td>
-            <td th:text="${a.potencia}"></td>
-            
-            <td th:if="${a.espacio != null}" th:text="${a.espacio.nombre}"></td>
-            
-            <td>
-                <a th:href="@{/alumbrado/editarDispositivo/} + ${a.id}" class="button edit" title="Editar">Editar</a>
-            </td>
-            
-            <td>
-                <a th:href="@{/evento/listaEventoDispositivo/} + ${a.id}" class="button details" title="Detalles">Detalles</a>
-            </td>
-            
-            <td>
-                <a th:href="@{/alumbrado/eliminar/}+ ${a.id}" class="button delete" title="Eliminar">Eliminar</a>
-            </td>
-            
-            <td>
-                <a th:href="@{/alumbrado/bajaAlumbrado/}+ ${a.id}" class="button down" title="Dar de Baja">Baja</a>
-            </td>
-            
-        </tr>
+
+                <tr th:each="a : ${listaAlumbrado}">
+                    <td th:text="${a.id}"></td>
+                    <td th:text="${a.enAlta}"></td>
+                    <td th:text="${a.nombre}"></td>
+                    <td th:text="${a.encendido}"></td>
+                    <td th:text="${a.senda}"></td>
+                    <td th:text="${a.numeracion}"></td>
+                    <td th:text="${a.potencia}"></td>
+
+                    <td th:if="${a.espacio != null}" th:text="${a.espacio.nombre}"></td>
+
+                    <td>
+                        <a th:href="@{/alumbrado/editardispositivo/} + ${a.id}" class="button edit"
+                            title="Editar">Editar</a>
+                    </td>
+
+                    <td>
+                        <a th:href="@{/evento/listaEventoDispositivo/} + ${a.id}" class="button details"
+                            title="Detalles">Detalles</a>
+                    </td>
+
+                    <td>
+                        <a th:href="@{/alumbrado/eliminar/}+ ${a.id}" class="button delete"
+                            title="Eliminar">Eliminar</a>
+                    </td>
+
+                    <td>
+                        <a th:href="@{/alumbrado/bajaAlumbrado/}+ ${a.id}" class="button down"
+                            title="Dar de Baja">Baja</a>
+                    </td>
+
                 </tr>
             </table>
         </div>

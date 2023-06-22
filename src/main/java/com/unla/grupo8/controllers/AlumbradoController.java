@@ -48,7 +48,7 @@ public class AlumbradoController {
 		
 		ModelAndView mV = new ModelAndView();
 		if(b.hasErrors()) {
-			mV.setViewName(ViewRouteHelpers.EDITAR_DISPOSITIVO_ALUMBRADO);
+			mV.setViewName(ViewRouteHelpers.FORMULARIO_DISPOSITIVO_ALUMBRADO);
 		}else {
 			
 			dispositivoAlumbradoService.insertOrUpdate(dispoAluModel);
@@ -74,21 +74,19 @@ public class AlumbradoController {
 		return mostrarTablaDispositivos();	
 	}
 	
-	@GetMapping("/editarDispositivo/{id}")
-	public ModelAndView  editarDispositivo(@PathVariable("id")int id, Model model) {	
+	// Formulario para editar un dispositivo de LucesAutomaticas
+	@GetMapping("/editardispositivo/{id}")
+	public String editarDispositivoLucesAutomaticas(@PathVariable("id")int id, Model model) {
 		
-		DispositivoAlumbradoModelo dispoAluModel = dispositivoAlumbradoService.traerPorId(id);
-		model.addAttribute("dispositivo", dispoAluModel);
-		model.addAttribute("espacios", espacioService.getAll());	
-		ModelAndView modelAndView = new ModelAndView(ViewRouteHelpers.EDITAR_DISPOSITIVO_ALUMBRADO);
-		
-		
-		return modelAndView;	
+		DispositivoAlumbradoModelo dispositivoAlumbradoModel = dispositivoAlumbradoService.traerPorId(id);
+		model.addAttribute("dispositivo", dispositivoAlumbradoModel);		
+		model.addAttribute("espacios", espacioService.getAll());
+		return ViewRouteHelpers.EDITAR_DISPOSITIVO_ALUMBRADO;
 	}
 	
 	//modificar para setear traigo el dispositivo y editamos
-	@PostMapping("/editarDispositivo/{id}")
-	public ModelAndView nuevoDispositivo(@PathVariable("id")int id, @Valid @ModelAttribute("dispositivo") DispositivoAlumbradoModelo dispoAluModel, 
+	@PostMapping("/dispositivoNuevoEditado")
+	public ModelAndView dispositivoEditado(@Valid @ModelAttribute("dispositivo") DispositivoAlumbradoModelo dispoAluModel, 
 			BindingResult b) {
 		
 		ModelAndView mV = new ModelAndView();
@@ -96,11 +94,10 @@ public class AlumbradoController {
 			mV.setViewName(ViewRouteHelpers.EDITAR_DISPOSITIVO_ALUMBRADO);
 		}else {
 			
-			dispositivoAlumbradoService.insertOrUpdate(dispoAluModel);
 			
-			mV = mostrarTablaDispositivos();
+			dispositivoAlumbradoService.insertOrUpdate(dispoAluModel);
 		}
-		return mV;
+		return mostrarTablaDispositivos();
 	}
 
 	@GetMapping("/bajaAlumbrado/{id}")

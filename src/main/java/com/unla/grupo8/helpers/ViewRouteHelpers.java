@@ -9,8 +9,11 @@ public class ViewRouteHelpers {
 	public final static String LISTA_ALUMBRADO = "dispositivo/listaAlumbrado";
 	public final static String EDITAR_DISPOSITIVO_ALUMBRADO = "dispositivo/formularioEditarAlumbrado";
 	
-	//HELRPERS PARA EVENTOS
+	//HELPERS PARA EVENTOS
 	public final static String LISTA_EVENTOS = "evento/listaEventos";
+	
+	//HELPERS MEDICION
+	public final static String FORMULARIO_MEDICION_ALUMBRADO = "medicion/formularioMedicionAlumbrado";
 	
 	//HELPERS USUARIO
 	
