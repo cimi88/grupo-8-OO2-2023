@@ -16,5 +16,11 @@ public class HomeController {
 
 	}
 
+	@GetMapping("inicioAuditor")
+	public String iniciandoAuditor () {
+		return ViewRouteHelpers.INDEX_AUDITOR;
+
+	}
+
 }
 

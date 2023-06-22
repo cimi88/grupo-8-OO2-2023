@@ -1,4 +1,3 @@
-
 <html>
 <head>
     <title>Dispositivos de Alumbrado</title>
@@ -80,7 +79,6 @@
 <body>
 	<div class="container">
     	<h1>- - - - Dispositivos de Basura - - - -</h1>
-		<a href="/basura/creardispositivo" class="button add">Agregar Dispositivo</a>
 	</div>
     <table>
         <tr>
@@ -90,10 +88,6 @@
             <th>Lleno</th>
             <th>Cantidad de litros</th>
             <th>Espacio</th>
-            <th>Editar</th>
-            <th>Detalles</th>
-            <th>Eliminar</th>
-            <th>Baja</th>
         </tr>
         
         <tr th:each="b : ${listaBasura}">
@@ -105,24 +99,6 @@
             
             
              <td th:if="${b.espacio != null}" th:text="${b.espacio.nombre}"></td>
-           
-            <td>
-                <a th:href="@{/basura/editarDispositivo/} + ${b.id}" th:text="'Editar'" title="Editar"></a>
-            </td>
-            
-            <td>
-                <a th:href="@{/evento/listaEventoDispositivo/}+ ${b.id}" th:text="'Detalles'" title="Detalles"></a>
-            </td>
-            
-            <td>
-                <a th:href="@{/basura/eliminar/}+ ${b.id}" th:text="'Borrar'" title="Borrar"></a>
-            </td>
-            
-            <td>
-             <a th:href="@{/basura/bajaBasura/}+ ${b.id}" class="button down"th:text="${b.enAlta ? 'baja' : 'alta'}" title="${b.enAlta ? 'baja' : 'alta'}"></a>
-			 </td>
-
-        </tr>
     </table>
   
 </body>

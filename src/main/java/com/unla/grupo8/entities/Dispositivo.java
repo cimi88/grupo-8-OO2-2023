@@ -36,7 +36,7 @@ public abstract class Dispositivo {
 	
 	protected String nombre;
 
-	protected boolean enAlta;
+	protected boolean enAlta = true;
 	
 	@Column(name="creado")
 	@CreationTimestamp
@@ -69,7 +69,7 @@ public abstract class Dispositivo {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.enAlta = true;
+		this.setEnAlta(enAlta);
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 		this.espacio = espacio;
@@ -80,7 +80,7 @@ public abstract class Dispositivo {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.enAlta = true;
+		this.setEnAlta(enAlta);
 		this.espacio = espacio;
 		this.mediciones = mediciones;
 	}
@@ -89,7 +89,7 @@ public abstract class Dispositivo {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.enAlta = true;
+		this.setEnAlta(enAlta);
 		this.espacio = espacio;
 	}
 	
@@ -104,7 +104,7 @@ public abstract class Dispositivo {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.enAlta = true;
+		this.setEnAlta(enAlta);
 	}
 
 	public int getId() {

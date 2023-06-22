@@ -14,9 +14,7 @@ public class DispositivoBasuraConverter {
 	@Qualifier("espacioRepository") 
 	private IEspacioRepository espacioRepository;
 	
-	@Autowired
-	@Qualifier("espacioConverter")
-	private EspacioConverter espacioConverter;
+
 	
 		public DispositivoBasuraModelo entityToModel(DispositivoBasura dispoBasura) {
 			return new DispositivoBasuraModelo (dispoBasura.getId(),dispoBasura.getNombre(),dispoBasura.getEspacio().getId(),dispoBasura.isLleno(),dispoBasura.getCapacidadLitros()) ;

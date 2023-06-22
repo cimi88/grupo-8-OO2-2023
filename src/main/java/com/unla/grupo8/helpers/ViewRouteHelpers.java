@@ -3,6 +3,7 @@ package com.unla.grupo8.helpers;
 public class ViewRouteHelpers {
 	
 	public final static String INDEX = "home/index";
+	public final static String INDEX_AUDITOR = "home/indexAuditor";
 	
 	//HELPERS PARA DISPOSITIVOS
 
@@ -11,11 +12,12 @@ public class ViewRouteHelpers {
 	
 	public final static String DISPOSITIVOBASURA_FORM = "dispositivo/formularioDispositivoBasura";
 	
+	public final static String EDITAR_DISPOSITIVO_BASURA = "dispositivo/formularioEditarBasura";
 	//HELRPERS PARA EVENTOS
 	public final static String LISTA_EVENTOS = "evento/listaEventos";
 	
 	//HELPERS USUARIO
-	
+	public final static String LISTA_BASURA_AUDITOR = "dispositivo/listaDispositivoBasuraAuditor"; 
 	public final static String USER_LOGIN = "user/login";
 	public final static String USER_LOGOUT = "user/logout";
 

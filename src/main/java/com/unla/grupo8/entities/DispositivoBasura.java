@@ -18,7 +18,7 @@ import lombok.EqualsAndHashCode;
 public class DispositivoBasura extends Dispositivo{
 
 
-		private boolean lleno;
+		private boolean lleno = false;
 		
 		private float capacidadLitros;
 		
@@ -35,14 +35,14 @@ public class DispositivoBasura extends Dispositivo{
 				LocalDateTime updatedAt, Espacio espacio, Set<Medicion> mediciones, boolean lleno, float capacidadLitros) {
 			super(id, nombre, createdAt, updatedAt, espacio, mediciones);
 			// TODO Auto-generated constructor stub
-			this.lleno = lleno;
+			this.setLleno(lleno);
 			this.capacidadLitros = capacidadLitros;
 		}
 
 		public DispositivoBasura(int id, String nombre,  boolean lleno, float capacidadLitros) {
 			super(id, nombre);
 			// TODO Auto-generated constructor stub
-			this.lleno = lleno;
+			this.setLleno(lleno);
 			this.capacidadLitros = capacidadLitros;
 		}
 		
@@ -50,7 +50,7 @@ public class DispositivoBasura extends Dispositivo{
 		public DispositivoBasura(int id, String nombre, Espacio espacio,boolean lleno, float capacidadLitros) {
 			super(id, nombre, espacio);
 			// TODO Auto-generated constructor stub
-			this.lleno = lleno;
+			this.setLleno(lleno);
 			this.capacidadLitros = capacidadLitros;
 		}
 

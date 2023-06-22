@@ -14,4 +14,6 @@ public interface IDispositivoBasuraService {
 	public boolean remove(int id);
 	
 	public DispositivoBasuraModelo traerPorId(int id);
+	
+	public boolean baja(int id);
 }

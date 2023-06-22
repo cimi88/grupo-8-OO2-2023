@@ -52,4 +52,22 @@ public class DispositivoBasuraService implements IDispositivoBasuraService {
 			return false;
 		}
 	}
+	
+	@Override
+	public boolean baja(int id) {
+		
+		boolean aux = true;
+		
+		DispositivoBasura dispositivoBasura = dispositivoBasuraRepository.findById(id);
+     
+		if(dispositivoBasura.isEnAlta() == true) {
+			dispositivoBasura.setEnAlta(false);
+			dispositivoBasuraRepository.save(dispositivoBasura);
+        }else {
+        	dispositivoBasura.setEnAlta(true);
+        	dispositivoBasuraRepository.save(dispositivoBasura);
+        }
+
+		return aux;
+	}
 }

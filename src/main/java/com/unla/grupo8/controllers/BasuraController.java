@@ -21,6 +21,7 @@ import com.unla.grupo8.helpers.ViewRouteHelpers;
 import com.unla.grupo8.models.DispositivoBasuraModelo;
 import com.unla.grupo8.repositories.IEspacioRepository;
 import com.unla.grupo8.services.IDispositivoBasuraService;
+import com.unla.grupo8.services.implementations.EspacioService;
 
 import jakarta.validation.Valid;
 import org.springframework.web.servlet.view.RedirectView;
@@ -36,6 +37,10 @@ public class BasuraController {
 	@Qualifier("espacioRepository")
 	private IEspacioRepository espacioRepository;
 	
+	@Autowired
+	@Qualifier("espacioService")
+	private EspacioService espacioService;
+	
 	@GetMapping("/creardispositivo")
 	public ModelAndView crearDispositivoBasura(Model model) {
 		
@@ -44,6 +49,31 @@ public class BasuraController {
 		model.addAttribute("dispositivo", new DispositivoBasuraModelo());
 		
 		return modelAndView;
+	}
+	
+	@PostMapping("/nuevodispositivo")
+	public ModelAndView nuevoDispositivo(@Valid @ModelAttribute("dispositivo") DispositivoBasuraModelo dispoBasModel, 
+			BindingResult b) {
+		
+		ModelAndView mV = new ModelAndView();
+		if(b.hasErrors()) {
+			mV.setViewName(ViewRouteHelpers.EDITAR_DISPOSITIVO_BASURA);
+		}else {
+			
+			dispositivoBasuraService.insertOrUpdate(dispoBasModel);
+			
+			mV = mostrarTablaDispositivos();
+		}
+		return mV;
+	}
+	
+	@PreAuthorize("hasRole('ROLE_AUDITOR')")
+	@GetMapping("/listaAuditor")
+	public ModelAndView mostrarTablaDispositivosAuditor() {
+		
+	    ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_BASURA_AUDITOR);
+	    mV.addObject("listaBasura", dispositivoBasuraService.getAll());
+	    return mV;
 	}
 	
 	@GetMapping("/lista")
@@ -63,18 +93,39 @@ public class BasuraController {
 		return mostrarTablaDispositivos();	
 	} 
 
+	@GetMapping("/editarDispositivo/{id}")
+	public ModelAndView  editarDispositivo(@PathVariable("id")int id, Model model) {	
+		
+		DispositivoBasuraModelo dispoBasModel = dispositivoBasuraService.traerPorId(id);
+		model.addAttribute("dispositivo", dispoBasModel);
+		model.addAttribute("espacios", espacioService.getAll());	
+		ModelAndView modelAndView = new ModelAndView(ViewRouteHelpers.EDITAR_DISPOSITIVO_BASURA);
+		
+		
+		return modelAndView;	
+	}
 	
-	
-	@PostMapping("/nuevodispositivo")
-	public ModelAndView agregarDispositivo(@Valid @ModelAttribute("dispositivo") DispositivoBasuraModelo dispBasMod, BindingResult b) {
-		ModelAndView modelAndView = new ModelAndView();
-		if (b.hasErrors()) {
-			modelAndView.setViewName(ViewRouteHelpers.DISPOSITIVOBASURA_FORM);
-			modelAndView.addObject("espacios", espacioRepository.findAll());
-			return modelAndView;
+	//modificar para setear traigo el dispositivo y editamos
+		@PostMapping("/editarDispositivo/{id}")
+		public ModelAndView nuevoDispositivo(@PathVariable("id")int id, @Valid @ModelAttribute("dispositivo") DispositivoBasuraModelo dispoBasModel, 
+				BindingResult b) {
+			
+			ModelAndView mV = new ModelAndView();
+			if(b.hasErrors()) {
+				mV.setViewName(ViewRouteHelpers.EDITAR_DISPOSITIVO_BASURA);
+			}else {
+				
+				dispositivoBasuraService.insertOrUpdate(dispoBasModel);
+				
+				mV = mostrarTablaDispositivos();
+			}
+			return mV;
 		}
-
-		dispositivoBasuraService.insertOrUpdate(dispBasMod);
+	
+	
+	@GetMapping("/bajaBasura/{id}")
+	public ModelAndView bajaDispositivoBasura (@PathVariable("id")int id) {
+		dispositivoBasuraService.baja(id);
 		return mostrarTablaDispositivos();
 	}
 }

@@ -32,7 +32,7 @@ public class SecurityConfiguration{
 
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests()
-				.requestMatchers("/css/*", "/imgs/*", "/js/*", "/vendor/bootstrap/css/*",
+				.requestMatchers("/css/*", "/image/*", "/js/*", "/vendor/bootstrap/css/*",
 						"/vendor/jquery/*", "/vendor/bootstrap/js/*").permitAll()
 				.anyRequest().authenticated()
 			.and()
@@ -43,10 +43,4 @@ public class SecurityConfiguration{
 				.logout().logoutUrl("/logout").logoutSuccessUrl("/logout").permitAll();
 		return http.build();
 	}
-
-	/* No usado en este ejemplo
-	@Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/images/**", "/js/**", "/webjars/**");
-    }*/
 }
