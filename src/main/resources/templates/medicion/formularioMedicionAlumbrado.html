@@ -1,10 +1,25 @@
 <body>
     <div class="container">
-        <p>Agregando dispositivo alumbrado!</p>
+        <p>Agregando medicion alumbrado!</p>
         <form action="#" th:action="@{nuevamedicion}" th:object="${medicion}" method="post">
-			<input type="hidden" name="idDispositivo" th:value="${idDispositivo}" />
 			
-            <p>FECHA Y HORA DE REGISTRO: <input type="text" th:field="*{fechaHoraRegistro}" placeholder="YYYY-MM-DD HH:mm:ss"/></p>
+			<select
+                  class="form-select"
+                  id="info"
+                  name="info"
+                  required
+                  th:field="${medicion.idDispositivo}"
+                  th:required="true"
+                >
+                  <option
+                    th:each="d : ${dispositivos}"
+                    th:value="${d.id}"
+                    th:text="${d.nombre}"
+                    required
+                  ></option>
+            </select> 
+			
+            <p>FECHA Y HORA DE REGISTRO: <input type="text" th:field="*{fechaHoraRegistro}" placeholder="YYYY-MM-DDTHH:mm:ss"/></p>
             
             <p>LUMINISCENCIA: <input type="text" th:field="*{luminiscencia}" /></p>
             

@@ -46,4 +46,4 @@ public Set<EventoModelo> entityToModelSet(Set<Evento> eventos){
 		return lista;
 	}
 
-}
+}	

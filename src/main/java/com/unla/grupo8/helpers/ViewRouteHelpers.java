@@ -14,6 +14,7 @@ public class ViewRouteHelpers {
 	
 	//HELPERS MEDICION
 	public final static String FORMULARIO_MEDICION_ALUMBRADO = "medicion/formularioMedicionAlumbrado";
+	public final static String NUEVA_MEDICION = "medicion/nuevaMedicion";
 	
 	//HELPERS USUARIO
 	

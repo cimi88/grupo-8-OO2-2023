@@ -1,5 +1,10 @@
 package com.unla.grupo8.models;
 
+import java.util.Set;
+
+import com.unla.grupo8.entities.Evento;
+import com.unla.grupo8.entities.Medicion;
+
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -38,6 +43,18 @@ public class DispositivoAlumbradoModelo extends DispositivoModelo {
 		this.numeracion = numeracion;
 	}
 	
+	
+
+	public DispositivoAlumbradoModelo(int id, String nombre, boolean enAlta, int idEspacio, Set<Medicion> mediciones,
+			Set<Evento> eventos) {
+		super(id, nombre, enAlta, idEspacio, mediciones, eventos);
+		// TODO Auto-generated constructor stub
+	}
+
+	public DispositivoAlumbradoModelo(int id, String nombre, int idEspacio) {
+		super(id, nombre, idEspacio);
+		// TODO Auto-generated constructor stub
+	}
 
 	public boolean isEncendido() {
 		return encendido;

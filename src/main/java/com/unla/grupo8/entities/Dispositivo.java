@@ -75,6 +75,21 @@ public abstract class Dispositivo {
 		this.espacio = espacio;
 		this.mediciones = mediciones;
 	}
+	
+	
+
+	public Dispositivo(int id, String nombre, boolean enAlta, LocalDateTime createdAt, LocalDateTime updatedAt,
+			Espacio espacio, Set<Medicion> mediciones, Set<Evento> eventos) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.enAlta = enAlta;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.espacio = espacio;
+		this.mediciones = mediciones;
+		this.eventos = eventos;
+	}
 
 	public Dispositivo(int id, String nombre, Espacio espacio, Set<Medicion> mediciones) {
 		super();
@@ -161,6 +176,15 @@ public abstract class Dispositivo {
 
 	public void setMediciones(Set<Medicion> mediciones) {
 		this.mediciones = mediciones;
+	}
+	
+
+	public Set<Evento> getEventos() {
+		return eventos;
+	}
+
+	public void setEventos(Set<Evento> eventos) {
+		this.eventos = eventos;
 	}
 
 	@Override

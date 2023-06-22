@@ -1,5 +1,6 @@
 package com.unla.grupo8.controllers;
 
+import com.unla.grupo8.models.EventoModelo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -15,14 +16,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.unla.grupo8.converters.DispositivoAlumbradoConverter;
+import com.unla.grupo8.converters.EventoConverter;
 import com.unla.grupo8.converters.MedicionAlumbradoConverter;
 import com.unla.grupo8.entities.DispositivoAlumbrado;
 import com.unla.grupo8.entities.MedicionAlumbrado;
 import com.unla.grupo8.helpers.ViewRouteHelpers;
 import com.unla.grupo8.models.DispositivoAlumbradoModelo;
 import com.unla.grupo8.models.MedicionAlumbradoModelo;
+import com.unla.grupo8.repositories.IDispositivoAlumbradoRepository;
 import com.unla.grupo8.services.implementations.DispositivoAlumbradoService;
 import com.unla.grupo8.services.implementations.EspacioService;
+import com.unla.grupo8.services.implementations.EventoService;
 import com.unla.grupo8.services.implementations.MedicionAlumbradoService;
 
 import jakarta.validation.Valid;
@@ -39,30 +43,56 @@ public class MedicionController {
 	@Qualifier("dispositivoAlumbradoService")
 	private DispositivoAlumbradoService dispositivoAlumbradoService;
 	@Autowired
+	@Qualifier("eventoService")
+	private EventoService eventoService;
+	@Autowired
 	@Qualifier("medicionAlumbradoConverter")
 	private MedicionAlumbradoConverter medicionAlumbradoConverter;
-	
+	@Autowired
+	@Qualifier("dispositivoAlumbradoRepository")
+	private IDispositivoAlumbradoRepository dispositivoAlumbradoRepository;
+	@Autowired
+	@Qualifier("eventoConverter")
+	private EventoConverter eventoConverter;
 	@Autowired
 	@Qualifier("dispositivoAlumbradoConverter")
 	private DispositivoAlumbradoConverter dispositivoAlumbradoConverter;
 	
-	@GetMapping("/crearmedicion/{id}")
-	public ModelAndView crearMedicion(@PathVariable("id") int id, Model model) {
+	@GetMapping("/crearmedicion")
+	public ModelAndView crearMedicion(Model model) {
 		
 		ModelAndView modelAndView = new ModelAndView(ViewRouteHelpers.FORMULARIO_MEDICION_ALUMBRADO);
-		model.addAttribute("idDispositivo", id);
+		model.addAttribute("dispositivos", dispositivoAlumbradoService.getAll());
 		model.addAttribute("medicion", new MedicionAlumbradoModelo());
 		
 		return modelAndView;
 	}
 
 	@PostMapping("/nuevamedicion")
-	public String agregarNuevaMedicion(@RequestParam("idDispositivo") int idDispositivo, @ModelAttribute("nuevamedicion") MedicionAlumbradoModelo nuevaMedicion) {
-	    DispositivoAlumbradoModelo dispositivo = dispositivoAlumbradoService.traerPorId(idDispositivo);
-	    // Asociar la nueva medición al dispositivo
-	    dispositivo.getMediciones().add(medicionAlumbradoConverter.modelToEntity(nuevaMedicion));
-	    dispositivoAlumbradoService.insertOrUpdate(dispositivo);
-	    return "redirect:/evento/listaEventos/" + idDispositivo;
+	public ModelAndView nuevamedicion(@Valid @ModelAttribute("medicion") MedicionAlumbradoModelo medicion, 
+			BindingResult b) {
+		
+		ModelAndView mV = new ModelAndView();
+		if(b.hasErrors()) {
+			mV.setViewName(ViewRouteHelpers.FORMULARIO_MEDICION_ALUMBRADO);
+		}else {
+			
+			medicionAlumbradoService.insertOrUpdate(medicion);
+			EventoModelo evento = new EventoModelo();
+			evento.setFechaHoraRegistro(medicion.getFechaHoraRegistro());
+			DispositivoAlumbrado disAlu = dispositivoAlumbradoService.traerEntidad(medicion.getIdDispositivo());
+			//evento.setDispositivo(dispositivoAlumbradoConverter.entityToModel(dispositivoAlumbradoService.traerEntidad(medicion.getIdDispositivo())));
+			if(medicion.getLuminiscencia() <= 40) {
+				evento.setDescripcionEvento(eventoService.traerPorId(2).getDescripcionEvento());
+			}else {
+				evento.setDescripcionEvento(eventoService.traerPorId(1).getDescripcionEvento());
+			}
+			disAlu.getEventos().add(eventoConverter.modelToEntity(evento));
+			dispositivoAlumbradoRepository.save(disAlu);
+			//eventoService.insertOrUpdate(evento);
+			mV.setViewName(ViewRouteHelpers.NUEVA_MEDICION);
+		}
+		return mV;
 	}
 
 }
