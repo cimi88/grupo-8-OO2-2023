@@ -1,32 +1,27 @@
 <html>
+<head>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</head>
 <body>
-       <th>EVENTOS DE DISPOSITIVO</th>
-  
-  <table>
-    <tr> 
-        <th>DISPOSITIVO</th>
-        <th>DESCRIPCION DE EVENTO </th> 
-         <th>FECHA HORA REGISTRO</th>  
-       
-    </tr> 
-   
-     
-    <tr th:each="e : ${eventos}">
-        <td th:text="${e.dispositivo.nombre}"></td>
-        <td th:text="${e.descripcionEvento}"></td>
-         <td th:text="${e.fechaHoraRegistro}"></td>
-        
-   
+    <button onclick="goBack()">Regresar</button>
 
-         
-        
+    <h1>EVENTOS DE DISPOSITIVO</h1>
 
- 
-        
-        
-          
-     
+    <table>
+        <tr> 
+            <th>DISPOSITIVO</th>
+            <th>DESCRIPCION DE EVENTO</th> 
+            <th>FECHA HORA REGISTRO</th>  
+        </tr> 
+        <tr th:each="e : ${eventos}">
+            <td th:text="${e.dispositivo.nombre}"></td>
+            <td th:text="${e.descripcionEvento}"></td>
+            <td th:text="${e.fechaHoraRegistro}"></td>
         </tr>
     </table>
 </body>
-</html>
+</html> 
