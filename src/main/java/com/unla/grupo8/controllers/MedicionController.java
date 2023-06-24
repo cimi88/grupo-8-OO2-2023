@@ -76,19 +76,14 @@ public class MedicionController {
 		if(b.hasErrors()) {
 			mV.setViewName(ViewRouteHelpers.FORMULARIO_MEDICION_ALUMBRADO);
 		}else {
-			
 			medicionAlumbradoService.insertOrUpdate(medicion);
-			EventoModelo evento = new EventoModelo();
-			evento.setFechaHoraRegistro(medicion.getFechaHoraRegistro());
-			DispositivoAlumbrado disAlu = dispositivoAlumbradoService.traerEntidad(medicion.getIdDispositivo());
-			evento.setDispositivo(dispositivoAlumbradoConverter.entityToModel(dispositivoAlumbradoService.traerEntidad(medicion.getIdDispositivo())));
+			EventoModelo evento = new EventoModelo(medicion.getIdDispositivo(),medicion.getFechaHoraRegistro());
+			
 			if(medicion.getLuminiscencia() <= 40) {
-				evento.setDescripcionEvento(eventoService.traerPorId(2).getDescripcionEvento());
+				evento.setDescripcionEvento("APAGAR LUCES");
 			}else {
-				evento.setDescripcionEvento(eventoService.traerPorId(1).getDescripcionEvento());
+				evento.setDescripcionEvento("ENCENDER LUCES");
 			}
-			disAlu.getEventos().add(eventoConverter.modelToEntity(evento));
-			dispositivoAlumbradoService.insertOrUpdate(dispositivoAlumbradoConverter.entityToModel(disAlu));
 			eventoService.insertOrUpdate(evento);
 			mV.setViewName(ViewRouteHelpers.NUEVA_MEDICION);
 		}

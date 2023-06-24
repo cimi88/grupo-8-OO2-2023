@@ -6,7 +6,7 @@ public class EventoModelo {
 
     private int id;
 	
-	private DispositivoModelo dispositivo;
+	private int idDispositivo;
 	
 	private String descripcionEvento;
 	
@@ -14,20 +14,35 @@ public class EventoModelo {
 	
 	public EventoModelo() {}
 
-	public EventoModelo(int id, DispositivoModelo dispositivo, String descripcionEvento,
+	public EventoModelo(int id, int idDispositivo, String descripcionEvento,
 			LocalDateTime fechaHoraRegistro) {
 		super();
 		this.id = id;
-		this.dispositivo = dispositivo;
+		this.idDispositivo = idDispositivo;
 		this.descripcionEvento = descripcionEvento;
 		this.fechaHoraRegistro = fechaHoraRegistro;
 	}
-
 	
-
-	public EventoModelo(int id, String descripcionEvento, LocalDateTime fechaHoraRegistro) {
+	public EventoModelo(int idDispositivo, String descripcionEvento,
+			LocalDateTime fechaHoraRegistro) {
 		super();
-		this.id = id;
+
+		this.idDispositivo = idDispositivo;
+		this.descripcionEvento = descripcionEvento;
+		this.fechaHoraRegistro = fechaHoraRegistro;
+	}
+	
+	public EventoModelo(int idDispositivo,
+			LocalDateTime fechaHoraRegistro) {
+		super();
+		
+		this.idDispositivo = idDispositivo;
+		this.fechaHoraRegistro = fechaHoraRegistro;
+	}
+
+	public EventoModelo(String descripcionEvento, LocalDateTime fechaHoraRegistro) {
+		super();
+		
 		this.descripcionEvento = descripcionEvento;
 		this.fechaHoraRegistro = fechaHoraRegistro;
 	}
@@ -39,13 +54,14 @@ public class EventoModelo {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 
-	public DispositivoModelo getDispositivo() {
-		return dispositivo;
+	public int getIdDispositivo() {
+		return idDispositivo;
 	}
 
-	public void setDispositivo(DispositivoModelo dispositivo) {
-		this.dispositivo = dispositivo;
+	public void setIdDispositivo(int idDispositivo) {
+		this.idDispositivo = idDispositivo;
 	}
 
 	public String getDescripcionEvento() {
