@@ -14,7 +14,7 @@ public class ViewRouteHelper {
 
 	//MEDICION
 	public final static String FORMULARIO_MEDICION_ASPERSOR = "medicion/formularioMedicionAspersor";
-	public final static String NUEVA_MEDICION = "medicion/nuevaMedicion";
+	public final static String NUEVA_MEDICION_ASPERSOR = "medicion/nuevaMedicion";
 	
 	//EVENTOS
 	public final static String LISTA_EVENTOS = "evento/listaEventos";
