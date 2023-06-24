@@ -1,6 +1,7 @@
 package com.unla.grupo8.services.implementations;
 
 import java.util.List;
+import java.util.ArrayList; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -28,7 +29,16 @@ public class EventoService implements IEventoService{
 		// TODO Auto-generated method stub
 		return eventoRepository.findAll();
 	}
-
+	
+	public List<Evento> traerEventosIdDispositivo(int idDispositivo) {
+		 List<Evento> eventos = new ArrayList<Evento>();
+		 for(Evento e : getAll()) {
+			 if(e.getDispositivo().getId() == idDispositivo) {
+				 eventos.add(e);
+			 }
+		 }  
+		return eventos;  
+	} 
 	@Override
 	public EventoBasuraModelo traerPorId(int id) {
 		// TODO Auto-generated method stub
@@ -38,7 +48,7 @@ public class EventoService implements IEventoService{
 	@Override
 	public EventoBasuraModelo insertOrUpdate(EventoBasuraModelo eventoModelo) {
 		Evento evento = eventoRepository.save(eventoConverter.modelToEntity(eventoModelo));
-
+ 
 		return eventoConverter.entityToModel(evento);
 	}
 }

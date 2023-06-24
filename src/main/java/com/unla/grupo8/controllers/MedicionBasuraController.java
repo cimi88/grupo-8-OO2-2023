@@ -69,13 +69,15 @@ public class MedicionBasuraController {
 			mV.setViewName(ViewRouteHelpers.FORMULARIO_MEDICION_BASURA);
 		}else {
 			medicionBasuraService.insertOrUpdate(medicion);
-			EventoBasuraModelo evento = new EventoBasuraModelo(medicion.getId(), medicion.getFechaHoraRegistro());
+			EventoBasuraModelo evento = new EventoBasuraModelo(); 
+			evento.setIdDispositivo(medicion.getIdDispositivo());
+			evento.setFechaHoraRegistro(medicion.getFechaHoraRegistro());
 			
 			if(medicion.getLitrosOcupados() <= 85) {
 				evento.setDescripcionEvento("CAPACIDAD AUN INCOMPLETA");
 			}else {
 				evento.setDescripcionEvento("RECOGER BASURA");
-			}
+			} 
 			eventoService.insertOrUpdate(evento);
 			mV.setViewName(ViewRouteHelpers.NUEVA_MEDICION_BASURA);
 		}

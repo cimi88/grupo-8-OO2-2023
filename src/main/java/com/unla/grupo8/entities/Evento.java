@@ -38,11 +38,18 @@ public class Evento {
 		this.id = id;
 		this.dispositivo = dispositivo;
 		this.descripcionEvento = descripcionEvento;
-	}
+	} 
 
 	public Evento(int id, Dispositivo dispositivo, String descripcionEvento, LocalDateTime fechaHoraRegistro) {
 		super();
 		this.id = id;
+		this.dispositivo = dispositivo;
+		this.descripcionEvento = descripcionEvento;
+		this.fechaHoraRegistro = fechaHoraRegistro;
+	}
+	
+	public Evento(Dispositivo dispositivo, String descripcionEvento, LocalDateTime fechaHoraRegistro) {
+		super();
 		this.dispositivo = dispositivo;
 		this.descripcionEvento = descripcionEvento;
 		this.fechaHoraRegistro = fechaHoraRegistro;

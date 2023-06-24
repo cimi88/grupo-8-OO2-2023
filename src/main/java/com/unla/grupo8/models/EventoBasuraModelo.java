@@ -27,16 +27,17 @@ public class EventoBasuraModelo {
 
 	
 
-	public EventoBasuraModelo(int id, String descripcionEvento, LocalDateTime fechaHoraRegistro) {
-		super();
-		this.id = id;
-		this.descripcionEvento = descripcionEvento;
-		this.fechaHoraRegistro = fechaHoraRegistro;
-	}
+//	public EventoBasuraModelo(int id, String descripcionEvento, LocalDateTime fechaHoraRegistro) {
+//		super();
+//		this.id = id;
+//		this.descripcionEvento = descripcionEvento;
+//		this.fechaHoraRegistro = fechaHoraRegistro;
+//	} 
 
-	public EventoBasuraModelo(int idDispositivo, LocalDateTime fechaHoraRegistro) {
+	public EventoBasuraModelo(int idDispositivo, String descripcionEvento, LocalDateTime fechaHoraRegistro) {
 		super();
 		this.idDispositivo = idDispositivo;
+		this.descripcionEvento=descripcionEvento;
 		this.fechaHoraRegistro = fechaHoraRegistro;
 	}
 

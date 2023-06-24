@@ -32,7 +32,7 @@ public class BasuraController {
 	@Qualifier("dispositivoBasuraService")
 	private IDispositivoBasuraService dispositivoBasuraService;
 
-	@Autowired
+	@Autowired 
 	@Qualifier("espacioRepository")
 	private IEspacioRepository espacioRepository;
 	
