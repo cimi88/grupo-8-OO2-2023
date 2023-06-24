@@ -106,8 +106,6 @@ public class MedicionAlumbradoController {
 		
 	    ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_EVENTOS_ALUMBRADO);
 	    mV.addObject("eventos", eventoService.traerEventosIdDispositivo(id));  
-	    return mV; 
-	
-
-}
+	    return mV;	
+	}
 }
