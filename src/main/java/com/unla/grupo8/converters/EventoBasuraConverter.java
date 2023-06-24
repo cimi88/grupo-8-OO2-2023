@@ -10,7 +10,7 @@ import com.unla.grupo8.entities.Evento;
 import com.unla.grupo8.models.EventoBasuraModelo;
 
 @Component("eventoConverter")
-public class EventoConverter {
+public class EventoBasuraConverter {
 	
 	public Evento modelToEntity(EventoBasuraModelo eventoModelo) {
 		return new Evento(eventoModelo.getId() ,eventoModelo.getDescripcionEvento(), eventoModelo.getFechaHoraRegistro());

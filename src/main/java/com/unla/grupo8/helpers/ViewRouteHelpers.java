@@ -2,7 +2,9 @@ package com.unla.grupo8.helpers;
 
 public class ViewRouteHelpers {
 	
+	//HOME
 	public final static String INDEX = "home/index";
+	public final static String INDEX_AUDITOR = "home/indexAuditor";
 	
 	
 	//HELPERS PARA DISPOSITIVOS
@@ -16,9 +18,8 @@ public class ViewRouteHelpers {
 	//HELRPERS PARA EVENTOS
 	public final static String LISTA_EVENTOS = "evento/listaEventos";
 	//ROL AUDITOR
+
 	
-	//HOME
-	public final static String INDEX_AUDITOR = "home/indexAuditor";
 		
 	//DISPOSITIVO ASPERSOR AUDITOR
 	public final static String LISTA_DISPOSITIVO_BASURA_AUDITOR = "dispositivo/listaBasuraAuditor";
@@ -28,7 +29,7 @@ public class ViewRouteHelpers {
 	
 	//HELPERS MEDICION
 	public final static String FORMULARIO_MEDICION_BASURA= "medicion/formularioMedicionBasura";
-	public final static String NUEVA_MEDICION = "medicion/nuevaMedicion";
+	public final static String NUEVA_MEDICION = "medicion/nuevaMedicionBasura";
 
 }
 

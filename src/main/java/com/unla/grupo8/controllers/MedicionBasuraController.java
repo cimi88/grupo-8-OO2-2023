@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.unla.grupo8.converters.DispositivoBasuraConverter;
-import com.unla.grupo8.converters.EventoConverter;
+import com.unla.grupo8.converters.EventoBasuraConverter;
 import com.unla.grupo8.converters.MedicionBasuraConverter;
 import com.unla.grupo8.helpers.ViewRouteHelpers;
 import com.unla.grupo8.models.EventoBasuraModelo;
@@ -25,9 +25,9 @@ import com.unla.grupo8.services.implementations.MedicionBasuraService;
 
 import jakarta.validation.Valid;
 @Controller
-@PreAuthorize("hasRole('ROLE_AUDITOR')")
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 @RequestMapping("medicionBasura")
-public class MedicionBasuraAuditorController {
+public class MedicionBasuraController {
 	@Autowired
 	@Qualifier("medicionBasuraService")
 	private MedicionBasuraService medicionBasuraService;
@@ -45,7 +45,7 @@ public class MedicionBasuraAuditorController {
 	private IDispositivoBasuraRepository dispositivoBasuraRepository;
 	@Autowired
 	@Qualifier("eventoConverter")
-	private EventoConverter eventoConverter;
+	private EventoBasuraConverter eventoConverter;
 	@Autowired
 	@Qualifier("dispositivoBasuraConverter")
 	private DispositivoBasuraConverter dispositivoBasuraConverter;

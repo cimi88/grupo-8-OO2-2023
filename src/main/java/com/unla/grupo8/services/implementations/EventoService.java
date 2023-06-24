@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.unla.grupo8.converters.EventoConverter;
+import com.unla.grupo8.converters.EventoBasuraConverter;
 import com.unla.grupo8.entities.Evento;
 import com.unla.grupo8.models.EventoBasuraModelo;
 import com.unla.grupo8.repositories.IEventoRepository;
@@ -21,7 +21,7 @@ public class EventoService implements IEventoService{
 
 	@Autowired
 	@Qualifier("eventoConverter")
-	private EventoConverter eventoConverter;
+	private EventoBasuraConverter eventoConverter;
 
 	@Override
 	public List<Evento> getAll() {
