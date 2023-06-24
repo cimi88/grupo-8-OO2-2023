@@ -13,5 +13,10 @@ public class HomeController {
 	public String iniciandoPrueba () {
 		return ViewRouteHelpers.INDEX;
 	}
+	
+	@GetMapping("inicioAudi")
+	public String iniciandoPruebaAuditor () {
+		return ViewRouteHelpers.INDEX_AUDITOR; 
+	}
 
 }

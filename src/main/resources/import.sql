@@ -54,7 +54,7 @@ INSERT INTO `sistema_iot`.`dispositivo` (`id`, `en_alta`, `nombre`, `espacio_id`
 INSERT INTO `sistema_iot`.`dispositivo_estacionamiento` (`id`, `lugar_id`) VALUES (1, 1);
 INSERT INTO `sistema_iot`.`dispositivo_estacionamiento` (`id`, `lugar_id`) VALUES (2, 2);
 INSERT INTO `sistema_iot`.`dispositivo_estacionamiento` (`id`, `lugar_id`) VALUES (3, 3);
-INSERT INTO `sistema_iot`.`dispositivo_estacionamiento` (`id`, `lugar_id`) VALUES (4, 4);
+INSERT INTO `sistema_iot`.`dispositivo_estacionamiento` (`id`, `lugar_id`) VALUES (4, 4); 
 INSERT INTO `sistema_iot`.`dispositivo_estacionamiento` (`id`, `lugar_id`) VALUES (5, 5); 
 
 

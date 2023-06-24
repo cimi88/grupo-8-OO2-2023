@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -32,6 +32,7 @@ import com.unla.grupo8.services.implementations.EventoEstacionamientoService;
 import com.unla.grupo8.services.implementations.MedicionEstacionamientoService;
 
 @Controller
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 @RequestMapping("/medicion")
 public class MedicionEstacionamientoController { 
 	
