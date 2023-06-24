@@ -87,7 +87,7 @@ public class AlumbradoController {
 	}
 	
 	//modificar para setear traigo el dispositivo y editamos
-	@PostMapping("/dispositivoNuevoEditado")
+	@PostMapping("/nuevodispositivoeditado")
 	public ModelAndView dispositivoEditado(@Valid @ModelAttribute("dispositivo") DispositivoAlumbradoModelo dispoAluModel, 
 			BindingResult b) {
 		DispositivoAlumbrado dispositivo = new DispositivoAlumbrado();

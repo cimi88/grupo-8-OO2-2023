@@ -61,7 +61,7 @@
     <div class="container">
         <p>Editando dispositivo alumbrado!</p>
         
-        <form action="#" th:href="@{dispositivoNuevoEditado}" th:object="${dispositivo}" method="post">
+        <form action="#" th:action="@{/alumbrado/nuevodispositivoeditado}" th:object="${dispositivo}" method="post">
 			
 			<input type="hidden" th:field="*{id}" />
 			
