@@ -14,11 +14,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.unla.grupo8.entities.DispositivoAspersor;
 import com.unla.grupo8.helpers.ViewRouteHelper;
 import com.unla.grupo8.models.DispositivoAspersorModelo;
 import com.unla.grupo8.repositories.IEspacioRepository;
 import com.unla.grupo8.services.IDispositivoAspersorService;
 import com.unla.grupo8.services.IEspacioService;
+
+import jakarta.validation.Valid;
 
 @Controller
 @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -55,9 +58,26 @@ public class AspersorControllerAdmin {
 		return mostrarTablaDispositivos();
 	}
 	
+	//modificar para setear traigo el dispositivo y editamos
+	@PostMapping("/nuevodispositivoeditado")
+	public ModelAndView dispositivoEditado(@Valid @ModelAttribute("dispositivo") DispositivoAspersorModelo dispoAluModel, 
+			BindingResult b) {
+		DispositivoAspersor dispositivo = new DispositivoAspersor();
+		ModelAndView mV = new ModelAndView();
+		if(b.hasErrors()) {
+			mV.setViewName(ViewRouteHelper.EDITAR_DISPOSITIVO_ASPERSOR);
+		}else {
+			DispositivoAspersor dispositivoViejo = dispositivoAspersorService.traerEntidad(dispoAluModel.getId());
+			dispositivo.setNombre(dispositivoViejo.getNombre());
+			dispositivo.setEspacio(dispositivoViejo.getEspacio());
+		}
+		dispositivoAspersorService.insertOrUpdate(dispoAluModel);
+		return mostrarTablaDispositivos();
+	}
+	
 	@GetMapping("/lista")
 	public ModelAndView mostrarTablaDispositivos(){
-		ModelAndView mV = new ModelAndView(ViewRouteHelper.LISTA_DISPOSITIVO_ASPERSOR);
+		ModelAndView mV = new ModelAndView(ViewRouteHelper.LISTA_ASPERSOR);
 		mV.addObject("listaAspersor", dispositivoAspersorService.getAll());
 		return mV;
 	}

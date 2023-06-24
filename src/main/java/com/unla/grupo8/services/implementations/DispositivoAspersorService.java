@@ -53,7 +53,6 @@ public class DispositivoAspersorService implements IDispositivoAspersorService {
 	public boolean baja(int id) {
 		boolean res = true;
 		DispositivoAspersor dispositivoAspersor = dispositivoAspersorRepository.findById(id);
-		
 		if(dispositivoAspersor.isEnAlta()) {
 			dispositivoAspersor.setEnAlta(false);
 			dispositivoAspersorRepository.save(dispositivoAspersor);
@@ -61,7 +60,11 @@ public class DispositivoAspersorService implements IDispositivoAspersorService {
 			dispositivoAspersor.setEnAlta(true);
 			dispositivoAspersorRepository.save(dispositivoAspersor);
 		}
-		
 		return res;
+	}
+
+	@Override
+	public DispositivoAspersor traerEntidad(int id) {
+		return dispositivoAspersorRepository.findById(id);
 	}
 }

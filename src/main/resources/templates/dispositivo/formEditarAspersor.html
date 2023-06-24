@@ -86,7 +86,9 @@
 	</head>
 	<body>
 		<h1>Carga de aspersor</h1>
-		<form action="#" th:action="@{/editarDispositivo/} + ${dispositivo.id}" th:object="${dispositivo}" method="post">
+		<form action="#" th:action="@{/riego/nuevodispositivoeditado}" th:object="${dispositivo}" method="post">
+			
+			<input type="hidden" th:field="*{id}" />
 	
 			<p>Nombre:<input type="text" th:field="*{nombre}"/></p>
 			<p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error-message">Nombre ERROR</p>

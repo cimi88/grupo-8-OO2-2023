@@ -7,26 +7,29 @@ public class ViewRouteHelper {
 	//HOME
 	public final static String INDEX = "home/index";
 	
-	//DISPOSITIVO ASPERSOR ADMIN
+	//DISPOSITIVO
 	public final static String FORM_DISPOSITIVO_ASPERSOR = "dispositivo/formDispAspersor";
-	public final static String LISTA_DISPOSITIVO_ASPERSOR = "dispositivo/listaAspersor";
+	public final static String LISTA_ASPERSOR = "dispositivo/listaAspersor";
 	public final static String EDITAR_DISPOSITIVO_ASPERSOR = "dispositivo/formEditarAspersor";
 
+	//MEDICION
+	public final static String FORMULARIO_MEDICION_ASPERSOR = "medicion/formularioMedicionAspersor";
+	public final static String NUEVA_MEDICION = "medicion/nuevaMedicion";
+	
+	//EVENTOS
+	public final static String LISTA_EVENTOS = "evento/listaEventos";
+	
 	
 //ROL AUDITOR
 	
 	//HOME
 	public final static String INDEX_AUDITOR = "home/indexAuditor";
 	
-	//DISPOSITIVO ASPERSOR AUDITOR
+	//DISPOSITIVO
 	public final static String LISTA_DISPOSITIVO_ASPERSOR_AUDITOR = "dispositivo/listaAspersorAuditor";
 	
 	
-//OTROS	
-	//EVENTOS
-	public final static String LISTA_EVENTOS = "evento/listaEventos";
-
-	//USER
+//USER
 	public final static String USER_LOGIN = "usuario/login";
 	public final static String USER_OUT = "usuario/logout";
 }

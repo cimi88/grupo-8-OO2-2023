@@ -1,11 +1,10 @@
 package com.unla.grupo8.models;
 
 import java.time.LocalDateTime;
-//import java.util.Set;
-//
-//import com.unla.grupo8.entities.Dispositivo;
-//import com.unla.grupo8.entities.Espacio;
-//import com.unla.grupo8.entities.Medicion;
+import java.util.Set;
+
+import com.unla.grupo8.entities.Evento;
+import com.unla.grupo8.entities.Medicion;
 
 public class DispositivoAspersorModelo extends DispositivoModelo{
 	
@@ -15,11 +14,9 @@ public class DispositivoAspersorModelo extends DispositivoModelo{
 
 	
 	public DispositivoAspersorModelo() {
-		super();
 	}
 
 	public DispositivoAspersorModelo(LocalDateTime fechaHoraDesde, LocalDateTime fechaHoraHasta) {
-		super();
 		this.encendido = false;
 		this.fechaHoraDesde = fechaHoraDesde;
 		this.fechaHoraHasta = fechaHoraHasta;
@@ -36,6 +33,14 @@ public class DispositivoAspersorModelo extends DispositivoModelo{
 		this.encendido = false;
 		this.fechaHoraDesde = fechaHoraDesde;
 		this.fechaHoraHasta = fechaHoraHasta;
+	}
+	
+	public DispositivoAspersorModelo(int id, String nombre, boolean enAlta, int idEspacio, Set<Medicion> mediciones, Set<Evento> eventos) {
+		super(id, nombre, enAlta, idEspacio, mediciones, eventos);
+	}
+	
+	public DispositivoAspersorModelo(int id, String nombre, int idEspacio) {
+		super(id, nombre, idEspacio);
 	}
 
 	public boolean isEncendido() {

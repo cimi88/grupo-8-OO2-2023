@@ -25,7 +25,8 @@ INSERT INTO `sistema_iot`.`dispositivo_aspersor` (`encendido`, `id`, `fecha_hora
 INSERT INTO `sistema_iot`.`dispositivo` (`en_alta`, `espacio_id`, `id`, `nombre`) VALUES (1, 1, 3, 'aspersor3');
 INSERT INTO `sistema_iot`.`dispositivo_aspersor` (`encendido`, `id`, `fecha_hora_desde`, `fecha_hora_hasta`) VALUES (0, 3, '2023-06-20 07:00:00', '2023-06-20 07:10:00');
 
+INSERT INTO `sistema_iot`.`dispositivo` (`en_alta`, `espacio_id`, `id`, `nombre`) VALUES (1, 1, 4, 'aspersor4');
+INSERT INTO `sistema_iot`.`dispositivo_aspersor` (`encendido`, `id`, `fecha_hora_desde`, `fecha_hora_hasta`) VALUES (0, 4, '2023-06-20 07:00:00', '2023-06-20 07:10:00');
 
--- insercion de EVENTOS:
-INSERT INTO `sistema_iot`.`evento` (`id`, `fecha_hora_registro`, `descripcion_evento`) VALUES (1, '2023-06-20 07:00:00', 'ENCENCDER ASPERORES');
-INSERT INTO `sistema_iot`.`evento` (`id`, `fecha_hora_registro`, `descripcion_evento`) VALUES (2, '2023-06-20 07:10:00', 'APAGAR ASPERSORES');
+INSERT INTO `sistema_iot`.`dispositivo` (`en_alta`, `espacio_id`, `id`, `nombre`) VALUES (1, 1, 5, 'aspersor5');
+INSERT INTO `sistema_iot`.`dispositivo_aspersor` (`encendido`, `id`, `fecha_hora_desde`, `fecha_hora_hasta`) VALUES (0, 5, '2023-06-20 07:00:00', '2023-06-20 07:10:00');

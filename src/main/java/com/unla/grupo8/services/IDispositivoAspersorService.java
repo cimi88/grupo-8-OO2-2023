@@ -7,6 +7,8 @@ import com.unla.grupo8.models.DispositivoAspersorModelo;
 
 public interface IDispositivoAspersorService {
 	public List<DispositivoAspersor> getAll();
+	
+	public DispositivoAspersor traerEntidad(int id);
 
 	public DispositivoAspersorModelo insertOrUpdate(DispositivoAspersorModelo dispAspersor);
 

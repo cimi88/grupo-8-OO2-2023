@@ -24,7 +24,7 @@ public abstract class Medicion {
 	private int id;
 	
 	@ManyToOne()
-	@JoinColumn( name = "dispositivo_id")
+	@JoinColumn(name = "dispositivo_id")
 	@JsonBackReference
 	private Dispositivo dispositivo;
 	

@@ -38,7 +38,7 @@ public class UserControlador {
 	}
 	
 	@GetMapping("/loginsuccess")
-	public ModelAndView loginCheck() {
-		return new ModelAndView(ViewRouteHelper.INDEX); // redirect:/index
+	public String loginCheck() {
+		return ViewRouteHelper.INDEX; // redirect:/index
 	}
 } 
