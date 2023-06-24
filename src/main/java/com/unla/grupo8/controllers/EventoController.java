@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.unla.grupo8.helpers.ViewRouteHelper;
+import com.unla.grupo8.helpers.ViewRouteHelpers;
 import com.unla.grupo8.models.DispositivoAspersorModelo;
 import com.unla.grupo8.services.IDispositivoAspersorService;
-import com.unla.grupo8.services.IEventoService;
+import com.unla.grupo8.services.IEventoEstacionamientoService.IEventoService;
 
 @Controller
 @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -30,14 +30,14 @@ public class EventoController {
 	
 	@GetMapping("/lista")
 	public ModelAndView mostrarEventos() {
-		ModelAndView mV = new ModelAndView(ViewRouteHelper.LISTA_EVENTOS);
+		ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_EVENTOS);
 		mV.addObject("listaEventos", eventoService.getAll());
 	    return mV;
 	}
 	
 	@GetMapping("/listaEventoDispositivo/{id}")
 	public ModelAndView mostrarEventosDispositivo(@PathVariable("id")int id) {
-		ModelAndView mV = new ModelAndView(ViewRouteHelper.LISTA_EVENTOS);
+		ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_EVENTOS);
 		DispositivoAspersorModelo dispAluModel = dispositivoAspersorService.traerPorId(id);
 		mV.addObject("listaEventos", dispAluModel.getEventos());
 	    return mV;

@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.unla.grupo8.helpers.ViewRouteHelpers;
 import com.unla.grupo8.models.DispositivoBasuraModelo;
 import com.unla.grupo8.services.IDispositivoBasuraService;
-import com.unla.grupo8.services.IEventoService;
+
 
 @Controller
 @PreAuthorize("hasRole('ROLE_ADMIN')")
