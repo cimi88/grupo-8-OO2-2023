@@ -29,7 +29,7 @@ public class ViewRouteHelpers {
 	
 	//HELPERS MEDICION
 	public final static String FORMULARIO_MEDICION_BASURA= "medicion/formularioMedicionBasura";
-	public final static String NUEVA_MEDICION = "medicion/nuevaMedicionBasura";
+	public final static String NUEVA_MEDICION_BASURA = "medicion/nuevaMedicionBasura";
 
 }
 

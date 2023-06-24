@@ -77,7 +77,7 @@ public class MedicionBasuraController {
 				evento.setDescripcionEvento("RECOGER BASURA");
 			}
 			eventoService.insertOrUpdate(evento);
-			mV.setViewName(ViewRouteHelpers.NUEVA_MEDICION);
+			mV.setViewName(ViewRouteHelpers.NUEVA_MEDICION_BASURA);
 		}
 		return mV;
 	}
