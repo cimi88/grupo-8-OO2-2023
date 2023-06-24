@@ -11,7 +11,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+<<<<<<< HEAD
 import com.unla.grupo8.services.UserService;
+=======
+import com.unla.grupo8.services.implementations.UserService;
+>>>>>>> rama_salgueiro
 
 @SuppressWarnings("deprecation")
 @Configuration
@@ -30,6 +34,10 @@ public class SecurityConfiguration{
 	}
 
 
+<<<<<<< HEAD
+=======
+	@SuppressWarnings("removal")
+>>>>>>> rama_salgueiro
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests()
 				.requestMatchers("/css/*", "/imgs/*", "/js/*", "/vendor/bootstrap/css/*",
@@ -43,6 +51,7 @@ public class SecurityConfiguration{
 				.logout().logoutUrl("/logout").logoutSuccessUrl("/logout").permitAll();
 		return http.build();
 	}
+<<<<<<< HEAD
 
 	/* No usado en este ejemplo
 	@Bean
@@ -50,3 +59,7 @@ public class SecurityConfiguration{
         return (web) -> web.ignoring().requestMatchers("/images/**", "/js/**", "/webjars/**");
     }*/
 }
+=======
+}
+ 
+>>>>>>> rama_salgueiro

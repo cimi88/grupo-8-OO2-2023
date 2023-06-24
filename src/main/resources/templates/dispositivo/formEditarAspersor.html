@@ -1,0 +1,126 @@
+<html>
+	<head>
+	    <title>Formulario de dispositivo aspersor</title>
+	    <style>
+	        @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@100;400&family=Josefin+Sans&family=Montserrat:wght@500&display=swap');
+			
+			body {
+				background-color: #100d0a;
+				color: ghostwhite;
+				text-align: center;
+				font-family: 'Montserrat', sans-serif;
+				}
+			h1 {
+            	margin: 0;
+				padding: 16px;
+		        }
+		        
+		    /*css form*/
+            form {
+            	background-color: rgb(40,30,20);
+                border-radius: 8px;
+                padding: 1em;
+                display: inline-block;
+  				width: max-content;
+  				margin: 0 auto;
+            }
+            p {
+                text-align: right;
+                margin-bottom: 10px;
+            }
+            label {
+            	display: inline-block;
+                text-align: right;
+                padding: 0 1em 0 0;
+                border-radius: 4px;
+            }
+            
+            /*css botones*/
+            #funciones {
+            	display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            #funciones button {
+                border: none;
+                transition: 0.15s;
+                padding: 8px 24px;
+  				border-radius: 4px;
+                color: antiquewhite;
+                font-size: 16px;
+                font-family: 'Montserrat', sans-serif;
+            }
+                        
+            #funciones #guardar{
+                background-color: rgba(50, 114, 53, 0);
+            }
+            #funciones #guardar:hover {
+				color: antiquewhite;
+			  	background-color: rgb(50, 114, 53);
+			}
+            
+            #funciones #cancelar{
+                background-color: rgba(216, 36, 36, 0);
+            }
+            #funciones #cancelar:hover {
+				color: antiquewhite;
+			  	background-color: rgb(216, 36, 36);
+			}
+			
+			/*css misc*/
+            input {
+				width: 12em;
+            	margin-left: 12px;
+            }
+            select {
+				width: 12em;
+				margin-left: 8px;
+			}
+	        .error-message {
+	            color: #ff4d4d;
+	        }
+	    </style>
+	    <script>
+			function goToLista() {window.location.href = '/riego/lista';}
+		</script>
+	</head>
+	<body>
+		<h1>Carga de aspersor</h1>
+		<form action="#" th:action="@{/riego/nuevodispositivoeditado}" th:object="${dispositivo}" method="post">
+			
+			<input type="hidden" th:field="*{id}" />
+	
+			<p>Nombre:<input type="text" th:field="*{nombre}"/></p>
+			<p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error-message">Nombre ERROR</p>
+			
+			<p>Fecha y hora desde: <input type="text" th:field="*{fechaHoraDesde}" /></p>
+			<p th:if="${#fields.hasErrors('fechaHoraDesde')}" th:errors="*{fechaHoraDesde}" class="error-message">fechaHoraDesde ERROR</p>
+			
+			<p>Fecha y hora hasta: <input type="text" th:field="*{fechaHoraHasta}" /></p>
+			<p th:if="${#fields.hasErrors('fechaHoraHasta')}" th:errors="*{fechaHoraHasta}" class="error-message">fechaHoraHasta ERROR</p>
+			
+			<p>
+				Espacio:
+				<select
+	              class="form-select"
+	              id="info"
+	              name="info"
+	              required
+	              th:field="${dispositivo.idEspacio}"
+	              th:required="true"
+	            >
+	              <option
+	                th:each="e : ${espacios}"
+	                th:value="${e.id}"
+	                th:text="${e.nombre}"
+	                required
+	              ></option>
+	            </select>
+            </p>
+			<div id="funciones">
+				<button id="guardar" type="submit">Guardar cambios</button>
+				<button onclick="goToLista();" id="cancelar" type="button">Cancelar</button>
+            </div>
+		</form>
+	</body>
+</html>

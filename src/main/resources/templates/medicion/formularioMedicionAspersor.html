@@ -1,0 +1,31 @@
+<html>
+	<body>
+	    <div class="container">
+	        <p>Agregando medicion aspersor</p>
+	        <form action="#" th:action="@{nuevamedicion}" th:object="${medicion}" method="post">
+				
+				<select
+	                  class="form-select"
+	                  id="info"
+	                  name="info"
+	                  required
+	                  th:field="${medicion.idDispositivo}"
+	                  th:required="true"
+	                >
+	                  <option
+	                    th:each="d : ${dispositivos}"
+	                    th:value="${d.id}"
+	                    th:text="${d.nombre}"
+	                    required
+	                  ></option>
+	            </select> 
+				
+	            <p>Fecha y hora de registro: <input type="text" th:field="*{fechaHoraRegistro}" placeholder="YYYY-MM-DDTHH:mm:ss"/></p>
+	            
+	            <p>Humedad: <input type="text" th:field="*{humedad}" /></p>
+	            
+	            <input type="submit" value="Enviar">
+	        </form>
+	    </div>
+	</body>
+</html>

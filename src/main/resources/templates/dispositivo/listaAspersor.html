@@ -1,0 +1,122 @@
+<html>
+	<head>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@100;400&family=Josefin+Sans&family=Montserrat:wght@500&display=swap');
+			
+			body {
+				background-color: #100d0a;
+				color: ghostwhite;
+				text-align: center;
+				font-family: 'Montserrat', sans-serif;
+			}
+			h1 {
+				margin: 0 0 16px;
+			}
+			
+			/*css tabla*/
+			#tab {
+				margin: 0 auto;
+				text-align: center;
+			}
+			#tab th {
+				padding: 8px;
+			}
+			#tab tr {
+				background-color: #2f261e;
+				text-align: center;
+				padding: 0 1em;
+			}
+            #tab tr:nth-child(even) {background-color: #1c1712;
+            }
+            #tab tr:hover {background-color: #3e3328; transition: .25s ease;}
+            #tab tr:not(:hover) {transition: .25s ease;}
+            #tab td {
+				text-align: center;
+				padding: 8px;
+			}
+			
+			/*css links*/
+			#actions {
+			  display: flex;
+			  flex-direction: row;
+			  padding: 0;
+			  justify-content: center;
+			  color: ghostwhite;
+			  gap: 0 8px;
+			}
+			a {
+				cursor: default;
+				text-decoration: none;				
+			}
+			a:link, h1{
+				color:rgb(159, 91, 47);
+			}
+			a:visited, a:hover{
+				color: firebrick;
+			}
+			a:active {
+				color: rgb(185, 28, 67);
+			}
+			
+			/*css boton agregar dispositivo*/
+			#add{
+				display: inline-block;
+				color: firebrick;
+				margin: 1em auto;
+				padding: 8px 16px;
+  				border-radius: 4px;
+  				border: none;
+			  	transition: 0.15s;
+			  	background-color: rgba(50, 114, 53, 0);
+			  	font-family: 'Montserrat', sans-serif;
+			  	font-size: 16px;
+			}
+			#add:hover {
+				color: antiquewhite;
+			  	background-color: rgb(50, 114, 53);
+			}
+		</style>
+	</head>
+	<body>
+    	<h1>- - - - Dispositivos de Riego - - - -</h1>
+	
+	    <table id="tab">
+	        <tr>
+	            <th>Id</th>
+	            <th>En alta</th>
+	            <th>Nombre</th>
+	            <th>Encendido</th>
+	            <th>FechaHora Desde</th>
+	            <th>FechaHora Hasta</th>
+	            <th>Espacio</th>
+	        </tr>
+	        
+	        <tr th:each="a : ${listaAspersor}">
+	            <td th:text="${a.id}"></td>
+	            <td th:text="${a.enAlta}"></td>
+	            <td th:text="${a.nombre}"></td>
+	            <td th:text="${a.encendido}"></td>
+	            <td th:text="${a.fechaHoraDesde}"></td>
+	            <td th:text="${a.fechaHoraHasta}"></td>
+	            <td th:if="${a.espacio != null}" th:text="${a.espacio.nombre}"></td>
+	            	            
+	           <td id="actions">
+			      <span>
+			        <a th:href="@{/riego/editarDispositivo/} + ${a.id}" th:text="'Editar'" title="Editar"></a>
+			      </span>
+			      <span>
+			        <a th:href="@{/evento/listaEventoDispositivo/}+ ${a.id}" th:text="'Detalles'" title="Detalles"></a>
+			      </span>
+			      <span>
+			        <a th:href="@{/riego/eliminar/}+ ${a.id}" th:text="'Borrar'" title="Borrar"></a>
+			      </span>
+			      <span>
+			        <a th:href="@{/riego/bajaAspersor/}+ ${a.id}" th:text="'Alta'" th:title="Alta"></a>
+			      </span>
+			   </td>
+	        </tr>
+	    </table>
+		<a href="/riego/cargaraspersor"><button id="add">Agregar dispositivo</button></a>
+		<a href="/medicion/crearmedicion"><button id="add">Agregar medicion</button></a>
+	</body>
+</html>
