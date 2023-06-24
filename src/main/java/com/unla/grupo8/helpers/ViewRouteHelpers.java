@@ -2,13 +2,45 @@ package com.unla.grupo8.helpers;
 
 public class ViewRouteHelpers {
 	
+	//HOME
 	public final static String INDEX = "home/index";
+	public final static String INDEX_AUDITOR = "home/indexAuditor";
 	
+	
+<<<<<<< HEAD
 	//HELPERS USUARIO
+=======
+	//HELPERS PARA DISPOSITIVOS
+
+	//aca estoy apuntando al html
+	public final static String LISTA_BASURA = "dispositivo/listaDispositivoBasura"; 
 	
+	public final static String DISPOSITIVOBASURA_FORM = "dispositivo/formularioDispositivoBasura";
+>>>>>>> 0d4fe9b236b7ef52aded076436abda4f87bc9aa1
+	
+	public final static String EDITAR_DISPOSITIVO_BASURA = "dispositivo/formularioEditarBasura";
+	//HELRPERS PARA EVENTOS
+	public final static String LISTA_EVENTOS = "evento/listaEventos";
+	//ROL AUDITOR
+
+	
+		
+	//DISPOSITIVO ASPERSOR AUDITOR
+	public final static String LISTA_DISPOSITIVO_BASURA_AUDITOR = "dispositivo/listaBasuraAuditor";
+	//HELPERS USUARIO 
 	public final static String USER_LOGIN = "user/login";
 	public final static String USER_LOGOUT = "user/logout";
+	
+	//HELPERS MEDICION
+	public final static String FORMULARIO_MEDICION_BASURA= "medicion/formularioMedicionBasura";
+	public final static String NUEVA_MEDICION_BASURA = "medicion/nuevaMedicionBasura";
 
+}
+
+
+
+
+<<<<<<< HEAD
 	// HELPERS DISPO ESTACIONAMIENTO
 	public final static String LISTA_PLAYAS = "dispositivo/estacionamiento/listaPlayas";
 	public final static String LUGARES_PLAYA = "dispositivo/estacionamiento/lugaresPlaya";
@@ -24,3 +56,5 @@ public class ViewRouteHelpers {
 	public final static String LISTA_EVENTOS_ESTACIONAMIENTO = "evento/listaEventos";  
 	   
 } 
+=======
+>>>>>>> 0d4fe9b236b7ef52aded076436abda4f87bc9aa1

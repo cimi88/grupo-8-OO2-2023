@@ -1,13 +1,18 @@
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/sistema_iot
+<<<<<<< HEAD
     username: root 
     password: root
+=======
+    username: root
+    password: 1234
+>>>>>>> 0d4fe9b236b7ef52aded076436abda4f87bc9aa1
   jpa:
     open-in-view: false
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       naming:
         strategy: org.hibernate.cfg.ImprovedNaming.Strategy
     properties:

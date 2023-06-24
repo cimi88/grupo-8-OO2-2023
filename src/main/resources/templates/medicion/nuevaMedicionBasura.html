@@ -1,0 +1,14 @@
+<html>
+<body>
+    <div class="container">
+        <h2>Medición agregada con éxito</h2>
+        <p>La medición se ha agregado correctamente.</p>
+        
+        <h3>Detalles de la medición:</h3>
+        <p>Fecha y hora de registro: <span th:text="${medicion.fechaHoraRegistro}"></span></p>
+        <p>Capacidad de litros: <span th:text="${medicion.litrosOcupados}"></span></p>
+        
+        <p><a href="/basura/lista">Volver a la página anterior</a></p>
+    </div>
+</body>
+</html>

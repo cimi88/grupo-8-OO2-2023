@@ -66,6 +66,15 @@ public class Espacio {
 	
 	
 
+	
+	public Espacio(int id, String nombre) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.dispositivos = new HashSet<>();
+	}
+
+
 	public int getId() {
 		return id;
 	}
@@ -112,3 +121,5 @@ public class Espacio {
 		return "Espacio [id=" + id + ", nombre=" + nombre + ", dispositivos=" + dispositivos + "]";
 	}
 }
+
+

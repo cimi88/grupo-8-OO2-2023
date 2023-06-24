@@ -1,7 +1,9 @@
 package com.unla.grupo8.entities;
 
 import java.time.LocalDateTime;
+
 import java.util.Objects;
+
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -10,6 +12,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0d4fe9b236b7ef52aded076436abda4f87bc9aa1
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
@@ -22,10 +28,18 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "medicion")
 @Inheritance(strategy = InheritanceType.JOINED)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0d4fe9b236b7ef52aded076436abda4f87bc9aa1
 public abstract class Medicion {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0d4fe9b236b7ef52aded076436abda4f87bc9aa1
 	protected int id;
 	
 	@ManyToOne()
@@ -66,7 +80,7 @@ public abstract class Medicion {
 
 	public void setFechaHoraRegistro(LocalDateTime fechaHoraRegistro) {
 		this.fechaHoraRegistro = fechaHoraRegistro;
-	}
+	}	
 
 	@Override
 	public int hashCode() {
@@ -90,4 +104,9 @@ public abstract class Medicion {
 		return "Medicion [id=" + id + ", dispositivo=" + dispositivo + ", fechaHoraRegistro=" + fechaHoraRegistro + "]";
 	}
 
+<<<<<<< HEAD
 } 
+=======
+}
+
+>>>>>>> 0d4fe9b236b7ef52aded076436abda4f87bc9aa1

@@ -17,30 +17,31 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="user_role", uniqueConstraints = @UniqueConstraint(columnNames= {"role", "user_id"}))
+@Table(name = "user_role", uniqueConstraints = @UniqueConstraint(columnNames = { "role", "user_id" }))
+
 public class UserRole {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="user_id", nullable=false)
+	@JoinColumn(name = "user_id", nullable = false)
 	private Usuario user;
-	
-	@Column(name="role", nullable=false, length=100)
+
+	@Column(name = "role", nullable = false, length = 100)
 	private String role;
-	
-	@Column(name="createdat")
+
+	@Column(name = "createdat")
 	@CreationTimestamp
 	private LocalDateTime createdAt;
-	
-	@Column(name="updateat")
+
+	@Column(name = "updateat")
 	@UpdateTimestamp
 	private LocalDateTime updateAt;
-	
-public UserRole() {}
-	
+
+	public UserRole() {}
+
 	public UserRole(int id, Usuario user, String role) {
 		this.id = id;
 		this.user = user;

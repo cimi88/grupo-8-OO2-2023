@@ -11,7 +11,11 @@ public class EspacioModelo {
 	private int id;
 	//nombre del espacio
 	private String nombre;
+<<<<<<< HEAD
 	 
+=======
+	
+>>>>>>> 0d4fe9b236b7ef52aded076436abda4f87bc9aa1
 	private Set<Dispositivo> dispositivos = new HashSet<>();
 
 	public EspacioModelo() {}
@@ -59,3 +63,4 @@ public class EspacioModelo {
 		return Objects.hash(id);
 	}
 }
+

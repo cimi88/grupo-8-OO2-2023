@@ -29,6 +29,7 @@ import java.util.Objects;
 @Table(name = "dispositivo")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Dispositivo {
+
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -64,8 +65,8 @@ public abstract class Dispositivo {
 	
 	public Dispositivo () {}
 
-	public Dispositivo(int id, String nombre, LocalDateTime createdAt, LocalDateTime updatedAt,
-			Espacio espacio, Set<Medicion> mediciones) {
+	public Dispositivo(int id, String nombre, LocalDateTime createdAt, LocalDateTime updatedAt, Espacio espacio,
+			Set<Medicion> mediciones) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -100,6 +101,7 @@ public abstract class Dispositivo {
 		this.mediciones = mediciones;
 	}
 	
+<<<<<<< HEAD
 	public Dispositivo(int id, String nombre, Espacio espacio) {
 		super();
 		this.id = id;
@@ -114,12 +116,35 @@ public abstract class Dispositivo {
 		this.nombre = nombre;
 		this.setEnAlta(enAlta);
 	}
+=======
+>>>>>>> 0d4fe9b236b7ef52aded076436abda4f87bc9aa1
 	
 	public Dispositivo(int id, String nombre) {
 		super();
 		this.id = id;
+<<<<<<< HEAD
 		this.nombre = nombre; 
 		this.setEnAlta(enAlta);
+=======
+		this.nombre = nombre;
+	}
+
+	public Dispositivo(int id, String nombre, boolean enAlta) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.enAlta = true;
+>>>>>>> 0d4fe9b236b7ef52aded076436abda4f87bc9aa1
+	}
+
+	
+	public Dispositivo(int id, String nombre, Espacio espacio) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.espacio = espacio;
+		this.enAlta = true;
+
 	}
 
 	public int getId() {
@@ -209,7 +234,12 @@ public abstract class Dispositivo {
 		return "Dispositivo [id=" + id + ", nombre=" + nombre + ", enAlta=" + enAlta + ", createdAt=" + createdAt
 				+ ", updatedAt=" + updatedAt + ", espacio=" + espacio + ", mediciones=" + mediciones + "]";
 	}
-	
-	
 
+<<<<<<< HEAD
 }
+=======
+}
+
+
+
+>>>>>>> 0d4fe9b236b7ef52aded076436abda4f87bc9aa1
