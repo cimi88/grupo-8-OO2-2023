@@ -14,7 +14,7 @@ public class MedicionEstacionamientoModelo extends MedicionModelo{
 		this.patente = patente;
 		this.presenciaVehiculo = presenciaVehiculo;
 	}  
- 
+  
 	
 	
 	public MedicionEstacionamientoModelo(String patente) {

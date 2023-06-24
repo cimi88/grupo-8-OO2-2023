@@ -46,6 +46,7 @@ public abstract class MedicionModelo {
 		this.idDispositivo = idDispositivo;
 	}
 
+
 	public int getId() {
 		return id;
 	}
@@ -54,16 +55,11 @@ public abstract class MedicionModelo {
 		this.id = id;
 	}
 
+
 	
 
 
-	public LocalDateTime getFechaHoraRegistro() {
-		return fechaHoraRegistro;
-	}
-
-	public void setFechaHoraRegistro(LocalDateTime fechaHoraRegistro) {
-		this.fechaHoraRegistro = fechaHoraRegistro;
-	}
+	
 	
 	
 
@@ -78,6 +74,7 @@ public abstract class MedicionModelo {
 	
 	 
 
+
 	public int getIdDispositivo() {
 		return idDispositivo;
 	}
@@ -86,13 +83,47 @@ public abstract class MedicionModelo {
 		this.idDispositivo = idDispositivo;
 	}
 
+
+
+	public LocalDateTime getFechaHoraRegistro() {
+		return fechaHoraRegistro;
+	}
+
+	public void setFechaHoraRegistro(LocalDateTime fechaHoraRegistro) {
+		this.fechaHoraRegistro = fechaHoraRegistro;
+	}
+
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
 
+ 
 	
 
 	 
+ 
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MedicionModelo other = (MedicionModelo) obj;
+		return id == other.id;
+	}
+
+	@Override
+	public String toString() {
+		return "MedicionModelo [id=" + id + ", idDispositivo=" + idDispositivo + ", fechaHoraRegistro="
+				+ fechaHoraRegistro + "]";
+	}
+ 
 
 }
+

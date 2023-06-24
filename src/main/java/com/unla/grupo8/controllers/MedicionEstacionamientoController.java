@@ -80,7 +80,7 @@ public class MedicionEstacionamientoController {
 		 
 		    DispositivoEstacionamiento dispositivo =  dispositivoEstacionamientoRepository.findById(medicion.getIdDispositivo());
 		    
-		    medicion.setFechaHoraRegistro(LocalDateTime.now());
+		     medicion.setFechaHoraRegistro(LocalDateTime.now());
 		    medicion.setPresenciaVehiculo(!dispositivo.getLugar().isLugarLibre()); 
 		    
 		    medicionEstacionamientoService.insertOrUpdate(medicion);

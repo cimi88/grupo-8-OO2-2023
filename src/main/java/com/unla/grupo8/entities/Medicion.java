@@ -44,7 +44,7 @@ public abstract class Medicion {
 		this.fechaHoraRegistro = fechaHoraRegistro;
 	}
 
-	public int getId() {
+	public int getId() { 
 		return id;
 	}
 
