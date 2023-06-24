@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menú Principal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .menu {
+            width: 200px;
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-right: 20px;
+            border-radius: 10px;
+        }
+
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu li {
+            margin-bottom: 10px;
+        }
+
+        .menu a {
+            display: block;
+            padding: 10px;
+            background-color: #ccc;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .menu .submenu {
+            display: none;
+            padding-left: 15px;
+        }
+
+        .menu .submenu li {
+            margin-bottom: 5px;
+        }
+
+        .menu .submenu a {
+            background-color: #eee;
+        }
+
+        .menu li.active .submenu {
+            display: block;
+        }
+
+        .menu li.active > a {
+            background-color: #aaa;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        /* Estilos del contenido de la página de dispositivos de alumbrado */
+        .content h1 {
+            text-align: left;
+        }
+
+        .content .button {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .content table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #1f1f1f;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        .content th,
+        .content td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+
+        .content th {
+            background-color: #444;
+        }
+
+        .content tr:nth-child(even) {
+            background-color: #313131;
+        }
+
+        .content a.button {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            margin-right: 5px;
+        }
+
+        .content a.button.add {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        .content a.button.delete {
+            background-color: #FF4136;
+            color: #fff;
+        }
+
+        .content a.button.edit {
+            background-color: #FFDC00;
+            color: #000;
+        }
+
+        .content a.button.details {
+            background-color: #FF851B;
+            color: #fff;
+        }
+
+        .content a.button.down {
+            background-color: #0074D9;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <ul>
+                <li><a href="/inicio">Inicio</a></li>
+                <li class="active">
+                    <a href="#">Dispositivos</a>
+                    <ul class="submenu">
+                        <li><a href="/alumbrado/listaAuditor">Alumbrado</a></li>
+                        <li><a href="/riego">Riego</a></li>
+                        <li><a href="/desechos">Desechos</a></li>
+                        <li><a href="/estacionamiento">Estacionamiento</a></li>
+                    </ul>
+                </li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>- - - - Dispositivos de Alumbrado - - - -</h1>
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <th>En alta</th>
+                    <th>Nombre</th>
+                    <th>Encendido</th>
+                    <th>Senda</th>
+                    <th>Numeracion</th>
+                    <th>Potencia en watts(W)</th>
+                    <th>Espacio</th>
+                    <th>Editar</th>
+                    <th>Detalles</th>
+                    <th>Eliminar</th>
+                    <th>Baja</th>
+                </tr>
+
+                <tr th:each="a : ${listaAlumbrado}">
+                    <td th:text="${a.id}"></td>
+                    <td th:text="${a.enAlta}"></td>
+                    <td th:text="${a.nombre}"></td>
+                    <td th:text="${a.encendido}"></td>
+                    <td th:text="${a.senda}"></td>
+                    <td th:text="${a.numeracion}"></td>
+                    <td th:text="${a.potencia}"></td>
+
+                    <td th:if="${a.espacio != null}" th:text="${a.espacio.nombre}"></td>
+
+					<td>
+                        <a th:href="@{/eventoAuditor/listaEventos/} + ${a.id}" class="button details"
+                            title="Detalles">Detalles</a>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        const menuItems = document.querySelectorAll('.menu li');
+        menuItems.forEach((item) => {
+            item.addEventListener('click', () => {
+                if (item.classList.contains('active')) {
+                    item.classList.remove('active');
+                } else {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

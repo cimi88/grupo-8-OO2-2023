@@ -6,13 +6,12 @@ spring:
     password: csantander93
 
   jpa:
-    open-in-view: false
     show-sql: true
     hibernate:
       ddl-auto: create
       naming:
         strategy: org.hibernate.cfg.ImprovedNaming.Strategy
     properties:
-      dialect: org.hibernate.dialect.MySQL8Dialect
+      dialect: org.hibernate.dialect.MySQL5Dialect
   thymeleaf:
     cache: false 

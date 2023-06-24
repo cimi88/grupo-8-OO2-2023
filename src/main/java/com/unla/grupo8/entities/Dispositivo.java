@@ -65,8 +65,27 @@ public abstract class Dispositivo {
 	
 	public Dispositivo () {}
 
+<<<<<<< HEAD
 	public Dispositivo(int id, String nombre, LocalDateTime createdAt, LocalDateTime updatedAt, Espacio espacio,
 			Set<Medicion> mediciones) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.setEnAlta(enAlta);
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.espacio = espacio;
+		this.mediciones = mediciones;
+	}
+	
+	
+
+	public Dispositivo(int id, String nombre, boolean enAlta, LocalDateTime createdAt, LocalDateTime updatedAt,
+			Espacio espacio, Set<Medicion> mediciones, Set<Evento> eventos) {
+=======
+	public Dispositivo(int id, String nombre, LocalDateTime createdAt, LocalDateTime updatedAt,
+			Espacio espacio, Set<Medicion> mediciones) {
+>>>>>>> rama_santander
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -101,20 +120,37 @@ public abstract class Dispositivo {
 		this.mediciones = mediciones;
 	}
 	
+<<<<<<< HEAD
 
+=======
+>>>>>>> rama_santander
 	public Dispositivo(int id, String nombre, Espacio espacio) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.setEnAlta(enAlta);
 		this.espacio = espacio;
+<<<<<<< HEAD
 	} 
+=======
+	}
+>>>>>>> rama_santander
 	
 	public Dispositivo(int id, String nombre, boolean enAlta) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.setEnAlta(enAlta);
+<<<<<<< HEAD
+=======
+	}
+	
+	public Dispositivo(int id, String nombre) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.setEnAlta(enAlta);
+>>>>>>> rama_santander
 	}
 
 	
