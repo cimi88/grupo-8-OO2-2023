@@ -2,7 +2,6 @@ package com.unla.grupo8.models;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
-<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.unla.grupo8.entities.Dispositivo;
 import com.unla.grupo8.entities.Medicion;
@@ -32,22 +31,13 @@ public abstract class MedicionModelo {
 	    this.eventoModelo = eventoModelo;
 		this.fechaHoraRegistro = fechaHoraRegistro;
 		this.idDispositivo = idDispositivo;
-=======
+	}
 
-public abstract class MedicionModelo {
-
-	protected int id;
-	protected int idDispositivo;
-	protected LocalDateTime fechaHoraRegistro;
-	
-	public MedicionModelo() {}
-
-	public MedicionModelo(int id, int idDispositivo, LocalDateTime fechaHoraRegistro) {
+		public MedicionModelo(int id, int idDispositivo, LocalDateTime fechaHoraRegistro) {
 		super();
 		this.id = id;
-		this.idDispositivo = idDispositivo;
 		this.fechaHoraRegistro = fechaHoraRegistro;
->>>>>>> rama_santander
+		this.idDispositivo = idDispositivo;
 	}
 
 	public int getId() {
@@ -58,7 +48,6 @@ public abstract class MedicionModelo {
 		this.id = id;
 	}
 
-<<<<<<< HEAD
 	public LocalDateTime getFechaHoraRegistro() {
 		return fechaHoraRegistro;
 	}
@@ -75,8 +64,6 @@ public abstract class MedicionModelo {
 		this.eventoModelo = eventoModelo;
 	}
 
-=======
->>>>>>> rama_santander
 	public int getIdDispositivo() {
 		return idDispositivo;
 	}
@@ -85,17 +72,6 @@ public abstract class MedicionModelo {
 		this.idDispositivo = idDispositivo;
 	}
 
-<<<<<<< HEAD
-=======
-	public LocalDateTime getFechaHoraRegistro() {
-		return fechaHoraRegistro;
-	}
-
-	public void setFechaHoraRegistro(LocalDateTime fechaHoraRegistro) {
-		this.fechaHoraRegistro = fechaHoraRegistro;
-	}
-
->>>>>>> rama_santander
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -112,20 +88,7 @@ public abstract class MedicionModelo {
 		MedicionModelo other = (MedicionModelo) obj;
 		return id == other.id;
 	}
-<<<<<<< HEAD
 	
 	
 	
 }
-=======
-
-	@Override
-	public String toString() {
-		return "MedicionModelo [id=" + id + ", idDispositivo=" + idDispositivo + ", fechaHoraRegistro="
-				+ fechaHoraRegistro + "]";
-	}
-	
-	
-	
-}
->>>>>>> rama_santander

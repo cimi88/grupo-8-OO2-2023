@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.unla.grupo8.helpers.ViewRouteHelper;
+import com.unla.grupo8.helpers.ViewRouteHelpers;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -25,7 +25,7 @@ public class UserControlador {
 			@RequestParam(name = "logout", required = false) String logout) {
 		model.addAttribute("error", error);
 		model.addAttribute("logout", logout);
-		return new ModelAndView(ViewRouteHelper.USER_LOGIN);
+		return new ModelAndView(ViewRouteHelpers.USER_LOGIN);
 	}
 	
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
@@ -34,11 +34,11 @@ public class UserControlador {
 		if(auth != null) {
 			new SecurityContextLogoutHandler().logout(request, response, auth);
 		}
-		return ViewRouteHelper.USER_OUT;
+		return ViewRouteHelpers.USER_OUT;
 	}
 	
 	@GetMapping("/loginsuccess")
 	public String loginCheck() {
-		return ViewRouteHelper.INDEX; // redirect:/index
+		return ViewRouteHelpers.INDEX; // redirect:/index
 	}
 } 

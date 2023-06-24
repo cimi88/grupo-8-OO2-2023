@@ -24,13 +24,13 @@ public class EventoBasuraController {
 	private IDispositivoBasuraService dispositivoBasuraService;
 	
 	@Autowired
-	@Qualifier("eventoService")
-	private IEventoService eventoService;
+	@Qualifier("eventoBasuraService")
+	private EventoBasuraService eventoBasuraService;
 	
 	@GetMapping("/lista")
 	public ModelAndView mostrarEventos() {
 		ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_EVENTOS);
-		mV.addObject("listaEventos", eventoService.getAll());
+		mV.addObject("listaEventos", eventoBasuraService.getAll());
 	    return mV;
 	}
 	

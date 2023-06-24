@@ -24,20 +24,14 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "medicion")
 @Inheritance(strategy = InheritanceType.JOINED)
-<<<<<<< HEAD
 
 
-=======
->>>>>>> rama_santander
 public abstract class Medicion {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-<<<<<<< HEAD
 
 
-=======
->>>>>>> rama_santander
 	protected int id;
 	
 	@ManyToOne()

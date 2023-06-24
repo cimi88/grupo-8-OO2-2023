@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.unla.grupo8.entities.DispositivoAspersor;
-import com.unla.grupo8.helpers.ViewRouteHelper;
+import com.unla.grupo8.helpers.ViewRouteHelpers;
 import com.unla.grupo8.models.DispositivoAspersorModelo;
 import com.unla.grupo8.repositories.IEspacioRepository;
 import com.unla.grupo8.services.IDispositivoAspersorService;
@@ -40,7 +40,7 @@ public class AspersorControllerAdmin {
 	
 	@GetMapping("/cargaraspersor")
 	public ModelAndView cargarAspersor(Model model) {
-		ModelAndView modelAndView = new ModelAndView(ViewRouteHelper.FORM_DISPOSITIVO_ASPERSOR);
+		ModelAndView modelAndView = new ModelAndView(ViewRouteHelpers.FORM_DISPOSITIVO_ASPERSOR);
 		model.addAttribute("espacios", espacioRepository.findAll());
 		model.addAttribute("dispositivo", new DispositivoAspersorModelo());
 		return modelAndView;
@@ -50,7 +50,7 @@ public class AspersorControllerAdmin {
 	public ModelAndView agregarDispositivo(@Validated @ModelAttribute("dispositivo") DispositivoAspersorModelo aspersorModelo, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();
 		if (bindingResult.hasErrors()) {
-			modelAndView.setViewName(ViewRouteHelper.FORM_DISPOSITIVO_ASPERSOR);
+			modelAndView.setViewName(ViewRouteHelpers.FORM_DISPOSITIVO_ASPERSOR);
 			modelAndView.addObject("espacios", espacioRepository.findAll());
 			return modelAndView;
 		}
@@ -65,7 +65,7 @@ public class AspersorControllerAdmin {
 		DispositivoAspersor dispositivo = new DispositivoAspersor();
 		ModelAndView mV = new ModelAndView();
 		if(b.hasErrors()) {
-			mV.setViewName(ViewRouteHelper.EDITAR_DISPOSITIVO_ASPERSOR);
+			mV.setViewName(ViewRouteHelpers.EDITAR_DISPOSITIVO_ASPERSOR);
 		}else {
 			DispositivoAspersor dispositivoViejo = dispositivoAspersorService.traerEntidad(dispoAluModel.getId());
 			dispositivo.setNombre(dispositivoViejo.getNombre());
@@ -77,7 +77,7 @@ public class AspersorControllerAdmin {
 	
 	@GetMapping("/lista")
 	public ModelAndView mostrarTablaDispositivos(){
-		ModelAndView mV = new ModelAndView(ViewRouteHelper.LISTA_ASPERSOR);
+		ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_ASPERSOR);
 		mV.addObject("listaAspersor", dispositivoAspersorService.getAll());
 		return mV;
 	}
@@ -93,7 +93,7 @@ public class AspersorControllerAdmin {
 		DispositivoAspersorModelo dispoAspModel = dispositivoAspersorService.traerPorId(id);
 		model.addAttribute("dispositivo", dispoAspModel);
 		model.addAttribute("espacios", espacioService.getAll());	
-		return new ModelAndView(ViewRouteHelper.EDITAR_DISPOSITIVO_ASPERSOR);
+		return new ModelAndView(ViewRouteHelpers.EDITAR_DISPOSITIVO_ASPERSOR);
 	}
 	
 	@GetMapping("/bajaAspersor/{id}")

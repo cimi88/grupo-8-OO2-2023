@@ -50,7 +50,6 @@ public class Evento {
 		this.fechaHoraRegistro = fechaHoraRegistro;
 	}
 	
-<<<<<<< HEAD
 	public Evento(Dispositivo dispositivo, String descripcionEvento, LocalDateTime fechaHoraRegistro) {
 		super(); 
 		this.dispositivo = dispositivo;
@@ -59,8 +58,6 @@ public class Evento {
 	}
 	
 
-=======
->>>>>>> rama_santander
 	public Evento(int id, String descripcionEvento, LocalDateTime fechaHoraRegistro) {
 		super();
 		this.id = id;

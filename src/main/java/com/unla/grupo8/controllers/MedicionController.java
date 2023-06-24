@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.unla.grupo8.converters.DispositivoAspersorConverter;
 import com.unla.grupo8.converters.EventoConverter;
 import com.unla.grupo8.converters.MedicionAspersorConverter;
-import com.unla.grupo8.helpers.ViewRouteHelper;
+import com.unla.grupo8.helpers.ViewRouteHelpers;
 import com.unla.grupo8.models.MedicionAspersorModelo;
 import com.unla.grupo8.repositories.IDispositivoAspersorRepository;
 import com.unla.grupo8.services.implementations.DispositivoAspersorService;
@@ -55,7 +55,7 @@ public class MedicionController {
 	@GetMapping("/crearmedicion")
 	public ModelAndView crearMedicion(Model model) {
 
-		ModelAndView modelAndView = new ModelAndView(ViewRouteHelper.FORMULARIO_MEDICION_ASPERSOR);
+		ModelAndView modelAndView = new ModelAndView(ViewRouteHelpers.FORMULARIO_MEDICION_ASPERSOR);
 		model.addAttribute("dispositivos", dispositivoAspersorService.getAll());
 		model.addAttribute("medicion", new MedicionAspersorModelo());
 
@@ -68,7 +68,7 @@ public class MedicionController {
 
 		ModelAndView mV = new ModelAndView();
 		if (b.hasErrors()) {
-			mV.setViewName(ViewRouteHelper.FORMULARIO_MEDICION_ASPERSOR);
+			mV.setViewName(ViewRouteHelpers.FORMULARIO_MEDICION_ASPERSOR);
 		} else {
 			medicionAspersorService.insertOrUpdate(medicion);
 			EventoModelo evento = new EventoModelo(medicion.getIdDispositivo(), medicion.getFechaHoraRegistro());
@@ -78,7 +78,7 @@ public class MedicionController {
 				evento.setDescripcionEvento("Apagar aspersores");
 			}
 			eventoService.insertOrUpdate(evento);
-			mV.setViewName(ViewRouteHelper.NUEVA_MEDICION);
+			mV.setViewName(ViewRouteHelpers.NUEVA_MEDICION);
 		}
 		return mV;
 	}

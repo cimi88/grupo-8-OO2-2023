@@ -15,13 +15,9 @@ public class EspacioConverter {
 	public EspacioModelo entityToModel(Espacio espacio) {
 		return new EspacioModelo(espacio.getId(), espacio.getNombre());
 	}
-<<<<<<< HEAD
 } 
 
 
 
 
 
-=======
-}
->>>>>>> rama_santander

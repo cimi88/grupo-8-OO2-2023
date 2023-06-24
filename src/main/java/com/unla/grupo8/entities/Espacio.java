@@ -60,18 +60,12 @@ public class Espacio {
 	public Espacio(int id, String nombre) {
 		super();
 		this.id = id;
-<<<<<<< HEAD
 		this.nombre = nombre; 
 	}
 	
 	
 	 
 
-=======
-		this.nombre = nombre;
-		this.dispositivos = new HashSet<>();
-	}
->>>>>>> rama_santander
 
 	public int getId() {
 		return id;

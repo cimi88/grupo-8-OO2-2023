@@ -10,7 +10,7 @@ public class MedicionEstacionamientoModelo extends MedicionModelo{
 	
 	
 	public MedicionEstacionamientoModelo(int id, LocalDateTime fechaHoraRegistro, String patente, boolean presenciaVehiculo, int idDispositivo) {
-		super(id, fechaHoraRegistro, idDispositivo);
+		super(id,idDispositivo, fechaHoraRegistro);
 		this.patente = patente;
 		this.presenciaVehiculo = presenciaVehiculo;
 	}  
