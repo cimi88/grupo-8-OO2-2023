@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.unla.grupo8.helpers.ViewRouteHelpers;
 import com.unla.grupo8.models.DispositivoBasuraModelo;
 import com.unla.grupo8.services.IDispositivoBasuraService;
+import com.unla.grupo8.services.implementations.EventoService;
 
 @Controller
 @PreAuthorize("hasRole('ROLE_AUDITOR')")
@@ -21,6 +22,9 @@ public class EventoBasuraAuditorController {
 	@Autowired
 	@Qualifier("dispositivoBasuraService")
 	private IDispositivoBasuraService dispositivoBasuraService;
+	@Autowired
+	@Qualifier("eventoService")
+	private EventoService eventoService;
 	
 	@GetMapping("/listaEventoDispositivoAuditor/{id}")
 	public ModelAndView mostrarEventosDispositivoaUDITOR(@PathVariable("id")int id) {
@@ -30,4 +34,13 @@ public class EventoBasuraAuditorController {
 		mV.addObject("listaEventos", dispBasModel.getEventos());
 	    return mV;
 	}	
+	
+//	@GetMapping("/listaEventoDispositivo/{id}")
+//	public ModelAndView mostrarEventosDispositivo(@PathVariable("id")int id) {
+//		
+//		ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_EVENTOS);
+//	
+//		mV.addObject("listaEventos", eventoService.traerEventosIdDispositivo(id)); 
+//	    return mV;
+//	}
 }
