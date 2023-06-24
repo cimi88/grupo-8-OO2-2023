@@ -13,7 +13,7 @@ import com.unla.grupo8.models.EventoModelo;
 import com.unla.grupo8.repositories.IDispositivoAlumbradoRepository;
 
 @Component("eventoConverter")
-public class EventoConverter {
+public class EventoAlumbradoConverter {
 	
 	@Autowired
 	@Qualifier("dispositivoAlumbradoRepository")

@@ -1,6 +1,9 @@
 package com.unla.grupo8.controllers;
 
 import com.unla.grupo8.models.EventoModelo;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -16,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.unla.grupo8.converters.DispositivoAlumbradoConverter;
-import com.unla.grupo8.converters.EventoConverter;
+import com.unla.grupo8.converters.EventoAlumbradoConverter;
 import com.unla.grupo8.converters.MedicionAlumbradoConverter;
 import com.unla.grupo8.entities.DispositivoAlumbrado;
 import com.unla.grupo8.entities.MedicionAlumbrado;
@@ -34,7 +37,7 @@ import jakarta.validation.Valid;
 @Controller
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 @RequestMapping("medicion")
-public class MedicionController {
+public class MedicionAlumbradoController {
 	
 	@Autowired
 	@Qualifier("medicionAlumbradoService")
@@ -53,7 +56,7 @@ public class MedicionController {
 	private IDispositivoAlumbradoRepository dispositivoAlumbradoRepository;
 	@Autowired
 	@Qualifier("eventoConverter")
-	private EventoConverter eventoConverter;
+	private EventoAlumbradoConverter eventoConverter;
 	@Autowired
 	@Qualifier("dispositivoAlumbradoConverter")
 	private DispositivoAlumbradoConverter dispositivoAlumbradoConverter;
@@ -78,11 +81,19 @@ public class MedicionController {
 		}else {
 			medicionAlumbradoService.insertOrUpdate(medicion);
 			EventoModelo evento = new EventoModelo(medicion.getIdDispositivo(),medicion.getFechaHoraRegistro());
-			
+			List<DispositivoAlumbrado> dispositivos = dispositivoAlumbradoService.getAll();
 			if(medicion.getLuminiscencia() <= 40) {
 				evento.setDescripcionEvento("APAGAR LUCES");
+				for(DispositivoAlumbrado da : dispositivos) {
+					da.setEncendido(false);
+					dispositivoAlumbradoService.insertOrUpdate(dispositivoAlumbradoConverter.entityToModel(da));
+				}
 			}else {
 				evento.setDescripcionEvento("ENCENDER LUCES");
+				for(DispositivoAlumbrado da : dispositivos) {
+					da.setEncendido(true);
+					dispositivoAlumbradoService.insertOrUpdate(dispositivoAlumbradoConverter.entityToModel(da));
+					}
 			}
 			eventoService.insertOrUpdate(evento);
 			mV.setViewName(ViewRouteHelpers.NUEVA_MEDICION);

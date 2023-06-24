@@ -18,7 +18,7 @@ import com.unla.grupo8.services.IEventoService;
 @Controller
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 @RequestMapping("evento")
-public class EventoController {
+public class EventoAlumbradoController {
 	
 	@Autowired
 	@Qualifier("dispositivoAlumbradoService")
