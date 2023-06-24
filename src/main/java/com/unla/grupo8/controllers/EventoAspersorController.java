@@ -14,19 +14,25 @@ import com.unla.grupo8.helpers.ViewRouteHelper;
 import com.unla.grupo8.models.DispositivoAspersorModelo;
 import com.unla.grupo8.services.IDispositivoAspersorService;
 import com.unla.grupo8.services.IEventoService;
+import com.unla.grupo8.services.implementations.EventoService;
 
 @Controller
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 @RequestMapping("evento")
-public class EventoController {
+public class EventoAspersorController {
 	
 	@Autowired
 	@Qualifier("dispositivoAspersorService")
 	private IDispositivoAspersorService dispositivoAspersorService;
 	
+
+	
 	@Autowired
 	@Qualifier("eventoService")
-	private IEventoService eventoService;
+	private EventoService eventoService;
+	
+	 
+	
 	
 	@GetMapping("/lista")
 	public ModelAndView mostrarEventos() {
@@ -35,12 +41,6 @@ public class EventoController {
 	    return mV;
 	}
 	
-	@GetMapping("/listaEventoDispositivo/{id}")
-	public ModelAndView mostrarEventosDispositivo(@PathVariable("id")int id) {
-		ModelAndView mV = new ModelAndView(ViewRouteHelper.LISTA_EVENTOS);
-		DispositivoAspersorModelo dispAluModel = dispositivoAspersorService.traerPorId(id);
-		mV.addObject("listaEventos", dispAluModel.getEventos());
-	    return mV;
-	}	
+	
 
-}
+} 

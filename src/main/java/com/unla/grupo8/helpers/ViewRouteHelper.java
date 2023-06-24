@@ -16,11 +16,12 @@ public class ViewRouteHelper {
 	public final static String FORMULARIO_MEDICION_ASPERSOR = "medicion/formularioMedicionAspersor";
 	public final static String NUEVA_MEDICION_ASPERSOR = "medicion/nuevaMedicion";
 	
-	//EVENTOS
+	//EVENTOS 
 	public final static String LISTA_EVENTOS = "evento/listaEventos";
-	
-	
-//ROL AUDITOR
+	public final static String LISTA_EVENTOS_ASPERSOR = "evento/listaEventosAspersor";
+	 
+	 
+//ROL  
 	
 	//HOME
 	public final static String INDEX_AUDITOR = "home/indexAuditor";

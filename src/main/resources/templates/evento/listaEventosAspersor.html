@@ -1,4 +1,5 @@
-<html>
+Ezequiel Ignacio Salgueiro
+Ezequiel Ignacio Salgueiro dice:<html>
 	<head>
 	    <title>Eventos de Aspersores</title>
 	    <style>
@@ -51,27 +52,31 @@
 	            right: 10px;
             }
 	    </style>
+	    <script>
+	        function goBack() {
+	            window.history.back();
+	        }
+	    </script>
 	</head>
 	<body>
-	    <h1>- - - - Eventos de Aspersores	 - - - -</h1>
+	    <button onclick="goBack()">Regresar</button>
+	
+	    <h1>EVENTOS DE DISPOSITIVO</h1>
 	
 	    <table>
-	        <tr>
-	            <th>Id</th>
-	            <th>Fecha y Hora</th>
-	            <th>Descripción del evento</th>
-	        </tr>
-	        
-	        <tr th:if="${listaEventos == null or listaEventos.isEmpty()}">
+	        <tr>  
+	            <th>DISPOSITIVO</th>
+	            <th>DESCRIPCION DE EVENTO</th> 
+	            <th>FECHA HORA REGISTRO</th>  
+	        </tr> 
+	        <tr th:if="${eventos == null or eventos.isEmpty()}">
 	            <td colspan="3">No existen eventos para este dispositivo</td>
 	        </tr>
-	        
-	        <tr th:each="e : ${listaEventos}">
-	            <td th:text="${e.id}"></td>
-	            <td th:text="${e.fechaHoraRegistro}"></td>
+	        <tr th:each="e : ${eventos}">
+	            <td th:text="${e.dispositivo.nombre}"></td>
 	            <td th:text="${e.descripcionEvento}"></td>
+	            <td th:text="${e.fechaHoraRegistro}"></td>
 	        </tr>
 	    </table>
-	   
 	</body>
-</html>
+</html> 

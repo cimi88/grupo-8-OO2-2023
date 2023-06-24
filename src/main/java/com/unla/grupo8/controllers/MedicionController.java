@@ -1,6 +1,8 @@
 package com.unla.grupo8.controllers;
 
+import com.unla.grupo8.models.DispositivoAspersorModelo;
 import com.unla.grupo8.models.EventoModelo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -51,7 +54,7 @@ public class MedicionController {
 	@Autowired
 	@Qualifier("dispositivoAspersorConverter")
 	private DispositivoAspersorConverter dispositivoAspersorConverter;
-
+	
 	@GetMapping("/crearmedicion")
 	public ModelAndView crearMedicion(Model model) {
 
@@ -78,8 +81,17 @@ public class MedicionController {
 				evento.setDescripcionEvento("Apagar aspersores");
 			}
 			eventoService.insertOrUpdate(evento);
-			mV.setViewName(ViewRouteHelper.NUEVA_MEDICION);
+			mV.setViewName(ViewRouteHelper.NUEVA_MEDICION_ASPERSOR);
 		}
 		return mV;
-	}
+	} 
+	
+	@GetMapping("/listaEventoDispositivo/{id}")
+	public ModelAndView mostrarEventosDispositivo(@PathVariable("id")int id) {
+		ModelAndView mV = new ModelAndView(ViewRouteHelper.LISTA_EVENTOS);
+		DispositivoAspersorModelo dispAluModel = dispositivoAspersorService.traerPorId(id);
+		mV.addObject("listaEventos", eventoService.traerEventosIdDispositivo(id));
+	    return mV;
+	}	
+	
 }
