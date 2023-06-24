@@ -96,7 +96,7 @@ public class MedicionAlumbradoController {
 					}
 			}
 			eventoService.insertOrUpdate(evento);
-			mV.setViewName(ViewRouteHelpers.NUEVA_MEDICION);
+			mV.setViewName(ViewRouteHelpers.NUEVA_MEDICION_ALUMBRADO);
 		}
 		return mV;
 	}
