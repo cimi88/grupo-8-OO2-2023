@@ -35,12 +35,11 @@ public class EventoBasuraAuditorController {
 	    return mV;
 	}	
 	
-//	@GetMapping("/listaEventoDispositivo/{id}")
-//	public ModelAndView mostrarEventosDispositivo(@PathVariable("id")int id) {
-//		
-//		ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_EVENTOS);
-//	
-//		mV.addObject("listaEventos", eventoService.traerEventosIdDispositivo(id)); 
-//	    return mV;
-//	}
+	@GetMapping("/listaEventos/{id}")  
+	public ModelAndView mostrarTablaEventos(@PathVariable("id")int id) {
+		
+	    ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_EVENTOS);
+	    mV.addObject("eventos", eventoService.traerEventosIdDispositivo(id));  
+	    return mV; 
+	}
 }

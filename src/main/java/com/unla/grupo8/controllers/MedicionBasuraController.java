@@ -15,7 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.unla.grupo8.converters.DispositivoBasuraConverter;
 import com.unla.grupo8.converters.EventoBasuraConverter;
 import com.unla.grupo8.converters.MedicionBasuraConverter;
+import com.unla.grupo8.entities.DispositivoBasura;
 import com.unla.grupo8.helpers.ViewRouteHelpers;
+import com.unla.grupo8.models.DispositivoBasuraModelo;
 import com.unla.grupo8.models.EventoBasuraModelo;
 import com.unla.grupo8.models.MedicionBasuraModelo;
 import com.unla.grupo8.repositories.IDispositivoBasuraRepository;
@@ -43,6 +45,7 @@ public class MedicionBasuraController {
 	@Autowired
 	@Qualifier("dispositivoBasuraRepository")
 	private IDispositivoBasuraRepository dispositivoBasuraRepository;
+	
 	@Autowired
 	@Qualifier("eventoConverter")
 	private EventoBasuraConverter eventoConverter;
@@ -72,11 +75,13 @@ public class MedicionBasuraController {
 			EventoBasuraModelo evento = new EventoBasuraModelo(); 
 			evento.setIdDispositivo(medicion.getIdDispositivo());
 			evento.setFechaHoraRegistro(medicion.getFechaHoraRegistro());
-			
+			DispositivoBasura dBasura = dispositivoBasuraRepository.findById(medicion.getIdDispositivo());
 			if(medicion.getLitrosOcupados() <= 85) {
 				evento.setDescripcionEvento("CAPACIDAD AUN INCOMPLETA");
 			}else {
 				evento.setDescripcionEvento("RECOGER BASURA");
+				dBasura.setLleno(true);
+				dispositivoBasuraRepository.save(dBasura);
 			}  
 			eventoService.insertOrUpdate(evento);
 			mV.setViewName(ViewRouteHelpers.NUEVA_MEDICION_BASURA);

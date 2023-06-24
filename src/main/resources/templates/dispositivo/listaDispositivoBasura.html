@@ -85,7 +85,6 @@
 		<br>
 		<br>
 		<br>
-		<br>
 		<a href="/medicionBasura/crearmedicion" class="button add">Agregar medicion</a> 
 	</div>
     <table>
@@ -113,15 +112,15 @@
              <td th:if="${b.espacio != null}" th:text="${b.espacio.nombre}"></td>
            
             <td>
-                <a th:href="@{/basura/editarDispositivo/} + ${b.id}" th:text="'Editar'" title="Editar"></a>
+                <a th:href="@{/basura/editarDispositivo/} + ${b.id}" th:text="'Editar'" title="Editar" class="button edit"></a>
             </td>
             
             <td>
-                <a th:href="@{/evento/listaEventoDispositivo/}+ ${b.id}" th:text="'Detalles'" title="Detalles"></a>
+                <a th:href="@{/evento/listaEventoDispositivo/}+ ${b.id}" th:text="'Detalles'" title="Detalles" class="button details"></a>
             </td>
             
             <td>
-                <a th:href="@{/basura/eliminar/}+ ${b.id}" th:text="'Borrar'" title="Borrar"></a>
+                <a th:href="@{/basura/eliminar/}+ ${b.id}" th:text="'Borrar'" class="button delete" title="Borrar"></a>
             </td>
             
             <td>
