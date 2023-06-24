@@ -17,7 +17,7 @@ import com.unla.grupo8.services.IEventoService;
 @Controller
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 @RequestMapping("evento")
-public class EventoController {
+public class EventoBasuraController {
 	
 	@Autowired
 	@Qualifier("dispositivoBasuraService")

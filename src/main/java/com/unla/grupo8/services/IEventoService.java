@@ -3,7 +3,7 @@ package com.unla.grupo8.services;
 
 
 import com.unla.grupo8.entities.Evento;
-import com.unla.grupo8.models.EventoModelo;
+import com.unla.grupo8.models.EventoBasuraModelo;
 
 import java.util.List;
 
@@ -11,6 +11,6 @@ import java.util.List;
 public interface IEventoService {
 
 	public List<Evento> getAll();
-	public EventoModelo insertOrUpdate(EventoModelo eventoModelo);
-	public EventoModelo traerPorId(int id); 
+	public EventoBasuraModelo insertOrUpdate(EventoBasuraModelo eventoModelo);
+	public EventoBasuraModelo traerPorId(int id); 
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.unla.grupo8.converters.EventoConverter;
 import com.unla.grupo8.entities.Evento;
-import com.unla.grupo8.models.EventoModelo;
+import com.unla.grupo8.models.EventoBasuraModelo;
 import com.unla.grupo8.repositories.IEventoRepository;
 import com.unla.grupo8.services.IEventoService;
 
@@ -30,13 +30,13 @@ public class EventoService implements IEventoService{
 	}
 
 	@Override
-	public EventoModelo traerPorId(int id) {
+	public EventoBasuraModelo traerPorId(int id) {
 		// TODO Auto-generated method stub
 		return eventoConverter.entityToModel(eventoRepository.findById(id));
 	}
 
 	@Override
-	public EventoModelo insertOrUpdate(EventoModelo eventoModelo) {
+	public EventoBasuraModelo insertOrUpdate(EventoBasuraModelo eventoModelo) {
 		Evento evento = eventoRepository.save(eventoConverter.modelToEntity(eventoModelo));
 
 		return eventoConverter.entityToModel(evento);

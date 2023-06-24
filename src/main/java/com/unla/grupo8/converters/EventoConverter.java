@@ -7,23 +7,23 @@ import org.springframework.stereotype.Component;
 
 
 import com.unla.grupo8.entities.Evento;
-import com.unla.grupo8.models.EventoModelo;
+import com.unla.grupo8.models.EventoBasuraModelo;
 
 @Component("eventoConverter")
 public class EventoConverter {
 	
-	public Evento modelToEntity(EventoModelo eventoModelo) {
+	public Evento modelToEntity(EventoBasuraModelo eventoModelo) {
 		return new Evento(eventoModelo.getId() ,eventoModelo.getDescripcionEvento(), eventoModelo.getFechaHoraRegistro());
 	}
 	
-	public EventoModelo entityToModel(Evento evento) {
-		return new EventoModelo(evento.getId(), evento.getDescripcionEvento(), evento.getFechaHoraRegistro());
+	public EventoBasuraModelo entityToModel(Evento evento) {
+		return new EventoBasuraModelo(evento.getId(), evento.getDescripcionEvento(), evento.getFechaHoraRegistro());
 	}
 	
 //	este metodo pasa de entidad a modelo toda una lista de entidades Evento
-public Set<EventoModelo> entityToModelSet(Set<Evento> eventos){
+public Set<EventoBasuraModelo> entityToModelSet(Set<Evento> eventos){
 		
-		Set<EventoModelo>  lista = new HashSet<>();
+		Set<EventoBasuraModelo>  lista = new HashSet<>();
 		
 		for(Evento e: eventos) {
 			
@@ -34,11 +34,11 @@ public Set<EventoModelo> entityToModelSet(Set<Evento> eventos){
 	}
 	
 //	Este metodo convierte toda una lista de EventoModelo en Evento(ENTITY)
-	public Set<Evento> modelToEntitySet(Set<EventoModelo> eventosM){
+	public Set<Evento> modelToEntitySet(Set<EventoBasuraModelo> eventosM){
 		
 		Set<Evento>  lista = new HashSet<>();
 		
-		for(EventoModelo eM : eventosM) {
+		for(EventoBasuraModelo eM : eventosM) {
 			
 			lista.add(modelToEntity(eM));	
 		}

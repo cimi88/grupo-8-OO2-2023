@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eventos de Alumbrado</title>
+    <style>
+        body {
+            background-color: #222;
+            color: #fff;
+        }
+        
+        h1 {
+            color: #fff;
+            text-align: center;
+        }
+        
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            color: #fff;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #333;
+        }
+        
+        tr:hover {
+            background-color: #444;
+        }
+        
+        td[colspan="3"] {
+            text-align: center;
+        }
+        
+    </style>
+    
+    <script>
+			function goToLista() {window.location.href = '/evento/listaEventoDispositivoAuditor';}
+	</script>
+</head>
+<body>
+    <h1>- - - - Eventos de Basura - - - -</h1>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Fecha y Hora</th>
+            <th>Descripción del evento</th>
+        </tr>
+        
+        <tr th:if="${listaEventos == null or listaEventos.isEmpty()}">
+            <td colspan="3">No existen eventos para este dispositivo</td>
+        </tr>
+        
+        <tr th:each="e : ${listaEventos}">
+            <td th:text="${e.id}"></td>
+            <td th:text="${e.fechaHoraRegistro}"></td>
+            <td th:text="${e.descripcionEvento}"></td>
+        </tr>
+    </table>
+    
+</body>
+</html>

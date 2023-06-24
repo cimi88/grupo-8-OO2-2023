@@ -25,6 +25,10 @@ public class ViewRouteHelpers {
 	//HELPERS USUARIO 
 	public final static String USER_LOGIN = "user/login";
 	public final static String USER_LOGOUT = "user/logout";
+	
+	//HELPERS MEDICION
+	public final static String FORMULARIO_MEDICION_BASURA= "medicion/formularioMedicionBasura";
+	public final static String NUEVA_MEDICION = "medicion/nuevaMedicion";
 
 }
 

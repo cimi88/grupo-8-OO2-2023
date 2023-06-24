@@ -4,33 +4,39 @@ import java.time.LocalDateTime;
 
 
 
-public class EventoModelo {
+public class EventoBasuraModelo {
 
      private int id;
 	
-	private DispositivoModelo dispositivo;
+     private int idDispositivo;
 	
 	private String descripcionEvento;
 	
 	private LocalDateTime fechaHoraRegistro;
 	
-	public EventoModelo() {}
+	public EventoBasuraModelo() {}
 
-	public EventoModelo(int id, DispositivoModelo dispositivo, String descripcionEvento,
+	public EventoBasuraModelo(int id, int idDispositivo, String descripcionEvento,
 			LocalDateTime fechaHoraRegistro) {
 		super();
 		this.id = id;
-		this.dispositivo = dispositivo;
+		this.idDispositivo = idDispositivo;
 		this.descripcionEvento = descripcionEvento;
 		this.fechaHoraRegistro = fechaHoraRegistro;
 	}
 
 	
 
-	public EventoModelo(int id, String descripcionEvento, LocalDateTime fechaHoraRegistro) {
+	public EventoBasuraModelo(int id, String descripcionEvento, LocalDateTime fechaHoraRegistro) {
 		super();
 		this.id = id;
 		this.descripcionEvento = descripcionEvento;
+		this.fechaHoraRegistro = fechaHoraRegistro;
+	}
+
+	public EventoBasuraModelo(int idDispositivo, LocalDateTime fechaHoraRegistro) {
+		super();
+		this.idDispositivo = idDispositivo;
 		this.fechaHoraRegistro = fechaHoraRegistro;
 	}
 
@@ -42,12 +48,14 @@ public class EventoModelo {
 		this.id = id;
 	}
 
-	public DispositivoModelo getDispositivo() {
-		return dispositivo;
+
+
+	public int getIdDispositivo() {
+		return idDispositivo;
 	}
 
-	public void setDispositivo(DispositivoModelo dispositivo) {
-		this.dispositivo = dispositivo;
+	public void setIdDispositivo(int idDispositivo) {
+		this.idDispositivo = idDispositivo;
 	}
 
 	public String getDescripcionEvento() {
