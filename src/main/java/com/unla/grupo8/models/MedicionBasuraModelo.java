@@ -18,6 +18,7 @@ public class MedicionBasuraModelo extends MedicionModelo{
 		// TODO Auto-generated constructor stub
 		this.litrosOcupados = litrosOcupados;
 	}
+	
 
 	public float getLitrosOcupados() {
 		return litrosOcupados;

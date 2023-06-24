@@ -13,6 +13,7 @@ import com.unla.grupo8.helpers.ViewRouteHelpers;
 import com.unla.grupo8.models.DispositivoBasuraModelo;
 import com.unla.grupo8.services.IDispositivoBasuraService;
 import com.unla.grupo8.services.IEventoBasuraService;
+import com.unla.grupo8.services.implementations.EventoBasuraService;
 
 @Controller
 @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -25,7 +26,7 @@ public class EventoBasuraController {
 	
 	@Autowired
 	@Qualifier("eventoService")
-	private IEventoBasuraService eventoService;
+	private EventoBasuraService eventoService;
 	
 	@GetMapping("/lista")
 	public ModelAndView mostrarEventos() {
@@ -38,8 +39,8 @@ public class EventoBasuraController {
 	public ModelAndView mostrarEventosDispositivo(@PathVariable("id")int id) {
 		
 		ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_EVENTOS_BASURA);
-		DispositivoBasuraModelo dispBasModel = dispositivoBasuraService.traerPorId(id);
-		mV.addObject("listaEventos", dispBasModel.getEventos());
+		
+		mV.addObject("listaEventos", eventoService.traerEventosIdDispositivo(id));
 		return mV;
 	}	
 }
