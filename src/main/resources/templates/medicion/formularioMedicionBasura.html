@@ -1,0 +1,31 @@
+<html>
+<body>
+    <div class="container">
+        <p>Agregando medicion Basura!</p>
+        <form action="#" th:action="@{nuevamedicion}" th:object="${medicion}" method="post">
+			
+			<select
+                  class="form-select"
+                  id="info"
+                  name="info"
+                  required
+                  th:field="${medicion.idDispositivo}"
+                  th:required="true"
+                >
+                  <option
+                    th:each="d : ${dispositivos}"
+                    th:value="${d.id}"
+                    th:text="${d.nombre}"
+                    required
+                  ></option>
+            </select> 
+			
+            <p>FECHA Y HORA DE REGISTRO: <input type="text" th:field="*{fechaHoraRegistro}" placeholder="DD/MM/YYYYTHH:mm:ss"/></p>
+            
+            <p>CAPACIDAD DE LITROS: <input type="text" th:field="*{litrosOcupados}" /></p>
+            
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<html>
+<body>
+
+  <td>
+                <a th:href="@{/estacionamiento/creardispositivo}" th:text="'AGREGAR DISPOSITIVO'" title="AGREGAR DISPOSITIVO"></a> 
+  </td>
+  
+    <td>
+                <a th:href="@{/medicion/crearmedicion}" th:text="'AGREGAR MEDICION'" title="AGREGAR MEDICION"></a> 
+    </td> 
+  <table>
+    <tr>
+        <th>ID</th>
+        <th>NOMBRE</th> 
+         <th>EN ALTA</th> 
+        <th>LUGAR</th> 
+        <th>LUGAR LIBRE</th> 
+        <th>ESPACIO</th> 
+         <th>PLAYA ESTACIONAMIENTO</th> 
+          <th>PLAYA LLENA</th> 
+    </tr>
+     
+    <tr th:each="d : ${dispositivos}">
+        <td th:text="${d.id}"></td>
+        <td th:text="${d.nombre}"></td>
+         <td th:text="${d.enAlta}"></td>
+        <td th:text="${d.lugar.nombreLugar}"></td>
+         <td th:text="${d.lugar.lugarLibre}"></td>
+        <td th:text="${d.espacio.nombre}"></td>
+        <td th:text="${d.lugar.playaEstacionamiento.nombre}"></td>
+        <td th:text="${d.lugar.playaEstacionamiento.playaLlena}"></td>
+
+        <td>
+                <a th:href="@{/estacionamiento/eliminar/} + ${d.id}" th:text="'eliminar'" title="eliminar"></a>
+        </td>
+        
+        <td>
+                <a th:href="@{/estacionamiento/baja/} + ${d.id}" th:text="${d.enAlta ? 'baja' : 'alta'}" title="${d.enAlta ? 'baja' : 'alta'}"></a>
+        </td>
+
+        
+        <td> 
+                <a th:href="@{/estacionamiento/editarDispositivo/} + ${d.id}" th:text="'editar'" title="editar"></a>
+        </td>
+           
+         <td>  
+                <a th:href="@{medicion/listaEventos/} + ${d.id}" th:text="'detalles'" title="detalles"></a>
+        </td> 
+        
+          
+     
+        </tr>
+    </table>
+</body>
+</html>
+ 

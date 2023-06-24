@@ -1,0 +1,172 @@
+<<<<<<< HEAD
+<html>
+<head>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</head>
+<body>
+    <button onclick="goBack()">Regresar</button>
+
+    <h1>EVENTOS DE DISPOSITIVO</h1>
+
+    <table>
+        <tr> 
+            <th>DISPOSITIVO</th>
+            <th>DESCRIPCION DE EVENTO</th> 
+            <th>FECHA HORA REGISTRO</th>  
+        </tr> 
+        <tr th:each="e : ${eventos}">
+            <td th:text="${e.dispositivo.nombre}"></td>
+            <td th:text="${e.descripcionEvento}"></td>
+            <td th:text="${e.fechaHoraRegistro}"></td>
+        </tr>
+    </table>
+</body>
+</html> 
+=======
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eventos de Alumbrado</title>
+    <style>
+        body {
+            background-color: #222;
+            color: #fff;
+        }
+        
+        h1 {
+            color: #fff;
+            text-align: center;
+        }
+        
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            color: #fff;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #333;
+        }
+        
+        tr:hover {
+            background-color: #444;
+        }
+        
+        td[colspan="3"] {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>- - - - Eventos de Basura - - - -</h1>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Fecha y Hora</th>
+            <th>Descripción del evento</th>
+        </tr>
+        
+        <tr th:if="${listaEventos == null or listaEventos.isEmpty()}">
+            <td colspan="3">No existen eventos para este dispositivo</td>
+        </tr>
+        
+        <tr th:each="e : ${listaEventos}">
+            <td th:text="${e.id}"></td>
+            <td th:text="${e.fechaHoraRegistro}"></td>
+            <td th:text="${e.descripcionEvento}"></td>
+        </tr>
+    </table>
+</body>
+=======
+<html>
+	<head>
+	    <title>Eventos de Aspersores</title>
+	    <style>
+	        body {
+	            background-color: #222;
+	            color: #fff;
+	        }
+	        
+	        h1 {
+	            color: #fff;
+	            text-align: center;
+	        }
+	        
+	        table {
+	            margin: 0 auto;
+	            border-collapse: collapse;
+	            width: 80%;
+	        }
+	        
+	        th, td {
+	            padding: 8px;
+	            text-align: left;
+	            border-bottom: 1px solid #ddd;
+	            color: #fff;
+	        }
+	        
+	        tr:nth-child(even) {
+	            background-color: #333;
+	        }
+	        
+	        tr:hover {
+	            background-color: #444;
+	        }
+	        
+	        td[colspan="3"] {
+	            text-align: center;
+	        }
+	        
+	        .button {
+	            display: inline-block;
+	            padding: 8px 12px;
+	            border-radius: 20px;
+	            background-color: #4CAF50;
+	            color: #fff;
+	            text-decoration: none;
+	            font-weight: bold;
+	            text-align: center;
+	            position: absolute;
+	            top: 10px;
+	            right: 10px;
+            }
+	    </style>
+	</head>
+	<body>
+	    <h1>- - - - Eventos de Aspersores	 - - - -</h1>
+	
+	    <table>
+	        <tr>
+	            <th>Id</th>
+	            <th>Fecha y Hora</th>
+	            <th>Descripción del evento</th>
+	        </tr>
+	        
+	        <tr th:if="${listaEventos == null or listaEventos.isEmpty()}">
+	            <td colspan="3">No existen eventos para este dispositivo</td>
+	        </tr>
+	        
+	        <tr th:each="e : ${listaEventos}">
+	            <td th:text="${e.id}"></td>
+	            <td th:text="${e.fechaHoraRegistro}"></td>
+	            <td th:text="${e.descripcionEvento}"></td>
+	        </tr>
+	    </table>
+	    <a href="/medicion/crearmedicion" class="button">Registrar Medición</a>
+	</body>
+>>>>>>> cfe32ad8aa0fa464265a36a3bc5259a659a0f665
+</html>
+>>>>>>> 0d4fe9b236b7ef52aded076436abda4f87bc9aa1

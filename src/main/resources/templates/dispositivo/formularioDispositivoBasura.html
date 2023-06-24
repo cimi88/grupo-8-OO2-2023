@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario de dispositivo basura</title>
+    <style>
+	        @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@100;400&family=Josefin+Sans&family=Montserrat:wght@500&display=swap');
+			
+			body {
+				background-color: #100d0a;
+				color: ghostwhite;
+				text-align: center;
+				font-family: 'Montserrat', sans-serif;
+				}
+			h1 {
+            	margin: 0;
+				padding: 16px;
+		        }
+		        
+		    /*css form*/
+            form {
+            	background-color: rgb(40,30,20);
+                border-radius: 8px;
+                padding: 1em;
+                display: inline-block;
+  				width: max-content;
+  				margin: 0 auto;
+            }
+            p {
+                text-align: right;
+                margin-bottom: 10px;
+            }
+            label {
+            	display: inline-block;
+                text-align: right;
+                padding: 0 1em 0 0;
+                border-radius: 4px;
+            }
+            
+            /*css botones*/
+            #funciones {
+            	display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            #funciones button {
+                border: none;
+                transition: 0.15s;
+                padding: 8px 24px;
+  				border-radius: 4px;
+                color: antiquewhite;
+                font-size: 16px;
+                font-family: 'Montserrat', sans-serif;
+            }
+            
+            #funciones #inicio{
+                background-color: rgba(36, 71, 214, 0);
+            }
+            #funciones #inicio:hover {
+				color: antiquewhite;
+			  	background-color: rgb(36, 71, 214);
+			}
+            
+            #funciones #cargar{
+                background-color: rgba(50, 114, 53, 0);
+            }
+            #funciones #cargar:hover {
+				color: antiquewhite;
+			  	background-color: rgb(50, 114, 53);
+			}
+            
+            #funciones #cancelar{
+                background-color: rgba(216, 36, 36, 0);
+            }
+            #funciones #cancelar:hover {
+				color: antiquewhite;
+			  	background-color: rgb(216, 36, 36);
+			}
+			
+			/*css misc*/
+            input {
+				width: 12em;
+            	margin-left: 12px;
+            }
+            select {
+				width: 12em;
+				margin-left: 8px;
+			}
+	        .error-message {
+	            color: #ff4d4d;
+	        }
+	    </style>
+	    <script>
+			function goToIndex() {window.location.href = '/inicio';}
+			function goToLista() {window.location.href = '/basura/lista';}
+		</script>
+</head>
+<body>
+    <h1>Carga de basura</h1>
+    <form action="#" th:action="@{nuevodispositivo}" th:object="${dispositivo}" method="post" enctype="multipart/form-data">
+       
+        <p>NOMBRE: <input type="text" th:field="*{nombre}" /></p>
+        <p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error-message">Nombre ERROR</p>
+        
+        <p>LLENO: <input type="text" th:field="*{lleno}" /></p>
+        <p th:if="${#fields.hasErrors('lleno')}" th:errors="*{lleno}" class="error-message">Lleno ERROR</p>
+
+ 		<p>CAPACIDAD DE LITROS: <input type="text" th:field="*{capacidadLitros}" /></p>
+        <p th:if="${#fields.hasErrors('capacidadLitros')}" th:errors="*{capacidadLitros}" class="error-message">capacidad Litros ERROR</p>
+        
+        <p>
+				Espacio:
+				<select
+	              class="form-select"
+	              id="info"
+	              name="info"
+	              required
+	              th:field="${dispositivo.idEspacio}"
+	              th:required="true"
+	            >
+	              <option
+	                th:each="e : ${espacios}"
+	                th:value="${e.id}"
+	                th:text="${e.nombre}"
+	                required
+	              ></option>
+	            </select>
+            </p>
+            <div id="funciones">
+            	<button onclick="goToIndex();" id="inicio" type="button">Inicio</button>
+				<button id="cargar" type="submit">Enviar</button>
+            	<button onclick="goToLista();" id="cancelar" type="button">Cancelar</button>
+            </div>
+    </form>
+</body>
+</html>
