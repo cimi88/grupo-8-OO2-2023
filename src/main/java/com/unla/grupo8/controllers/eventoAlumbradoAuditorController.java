@@ -12,11 +12,16 @@ import org.springframework.web.servlet.ModelAndView;
 import com.unla.grupo8.helpers.ViewRouteHelpers;
 import com.unla.grupo8.models.DispositivoAlumbradoModelo;
 import com.unla.grupo8.services.IDispositivoAlumbradoService;
+import com.unla.grupo8.services.implementations.EventoAlumbradoService;
 
 @Controller
 @PreAuthorize("hasRole('ROLE_AUDITOR')")
-@RequestMapping("evento")
+@RequestMapping("eventoAuditor")
 public class eventoAlumbradoAuditorController {
+	
+	@Autowired
+	@Qualifier("eventoService")
+	private EventoAlumbradoService eventoService;
 	
 	@Autowired 
 	@Qualifier("dispositivoAlumbradoService")
@@ -30,5 +35,12 @@ public class eventoAlumbradoAuditorController {
 		mV.addObject("listaEventos", disAluModel.getEventos());
 	    return mV;
 	}
-
+	
+	@GetMapping("/listaEventos/{id}")  
+	public ModelAndView mostrarTablaEventos(@PathVariable("id")int id) {
+		
+	    ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_EVENTOS_ALUMBRADO);
+	    mV.addObject("eventos", eventoService.traerEventosIdDispositivo(id));  
+	    return mV; 
+	}
 }

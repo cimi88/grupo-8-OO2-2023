@@ -82,7 +82,7 @@ public class MedicionAlumbradoController {
 			medicionAlumbradoService.insertOrUpdate(medicion);
 			EventoModelo evento = new EventoModelo(medicion.getIdDispositivo(),medicion.getFechaHoraRegistro());
 			List<DispositivoAlumbrado> dispositivos = dispositivoAlumbradoService.getAll();
-			if(medicion.getLuminiscencia() <= 40) {
+			if(medicion.getLuminiscencia() >= 60) {
 				evento.setDescripcionEvento("APAGAR LUCES");
 				for(DispositivoAlumbrado da : dispositivos) {
 					da.setEncendido(false);
@@ -101,7 +101,6 @@ public class MedicionAlumbradoController {
 		return mV;
 	}
 	
-	@PreAuthorize("hasRole('ROLE_AUDITOR')")
 	@GetMapping("/listaEventos/{id}")  
 	public ModelAndView mostrarTablaEventos(@PathVariable("id")int id) {
 		
