@@ -9,3 +9,4 @@ public class TestBCryptPasswordEncoder {
 		System.out.println(pe.encode("admin"));
 	}
 }
+ 

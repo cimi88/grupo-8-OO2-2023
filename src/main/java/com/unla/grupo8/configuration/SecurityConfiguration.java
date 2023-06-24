@@ -12,6 +12,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import com.unla.grupo8.services.implementations.UserService;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+import com.unla.grupo8.services.UserService;
+=======
+import com.unla.grupo8.services.implementations.UserService;
+>>>>>>> rama_salgueiro
+>>>>>>> cfe32ad8aa0fa464265a36a3bc5259a659a0f665
 
 @SuppressWarnings("deprecation")
 @Configuration
@@ -30,6 +38,10 @@ public class SecurityConfiguration{
 	}
 
 
+<<<<<<< HEAD
+=======
+	@SuppressWarnings("removal")
+>>>>>>> rama_salgueiro
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests()
 				.requestMatchers("/css/*", "/image/*", "/js/*", "/vendor/bootstrap/css/*",
@@ -43,4 +55,18 @@ public class SecurityConfiguration{
 				.logout().logoutUrl("/logout").logoutSuccessUrl("/logout").permitAll();
 		return http.build();
 	}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+	/* No usado en este ejemplo
+	@Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return (web) -> web.ignoring().requestMatchers("/images/**", "/js/**", "/webjars/**");
+    }*/
+>>>>>>> cfe32ad8aa0fa464265a36a3bc5259a659a0f665
 }
+=======
+}
+ 
+>>>>>>> rama_salgueiro

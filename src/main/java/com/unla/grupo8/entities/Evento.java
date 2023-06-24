@@ -47,9 +47,13 @@ public class Evento {
 		this.descripcionEvento = descripcionEvento;
 		this.fechaHoraRegistro = fechaHoraRegistro;
 	}
+<<<<<<< HEAD
 
 	
 
+=======
+	
+>>>>>>> cfe32ad8aa0fa464265a36a3bc5259a659a0f665
 	public Evento(int id, String descripcionEvento, LocalDateTime fechaHoraRegistro) {
 		super();
 		this.id = id;
@@ -57,7 +61,10 @@ public class Evento {
 		this.fechaHoraRegistro = LocalDateTime.now();
 	}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> cfe32ad8aa0fa464265a36a3bc5259a659a0f665
 	public int getId() {
 		return id;
 	}
@@ -98,4 +105,8 @@ public class Evento {
 	
 	
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> cfe32ad8aa0fa464265a36a3bc5259a659a0f665

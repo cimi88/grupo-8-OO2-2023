@@ -58,4 +58,8 @@ public class EspacioModelo {
 	public int hashCode() {
 		return Objects.hash(id);
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> cfe32ad8aa0fa464265a36a3bc5259a659a0f665
