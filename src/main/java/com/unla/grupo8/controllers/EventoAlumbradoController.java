@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.unla.grupo8.helpers.ViewRouteHelpers;
 import com.unla.grupo8.models.DispositivoAlumbradoModelo;
 import com.unla.grupo8.services.IDispositivoAlumbradoService;
-import com.unla.grupo8.services.IEventoService;
+import com.unla.grupo8.services.IEventoAlumbradoService;
 
 @Controller
 @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -26,7 +25,7 @@ public class EventoAlumbradoController {
 	
 	@Autowired
 	@Qualifier("eventoService")
-	private IEventoService eventoService;
+	private IEventoAlumbradoService eventoService;
 	
 	@GetMapping("/lista")
 	public ModelAndView mostrarEventos() {

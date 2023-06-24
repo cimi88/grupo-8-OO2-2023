@@ -5,7 +5,7 @@ import com.unla.grupo8.models.EventoModelo;
 
 import java.util.List;
 
-public interface IEventoService {
+public interface IEventoAlumbradoService {
 
 	public List<Evento> getAll();
 	public EventoModelo insertOrUpdate(EventoModelo eventoModelo);
