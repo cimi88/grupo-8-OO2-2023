@@ -29,7 +29,7 @@ import com.unla.grupo8.models.MedicionAlumbradoModelo;
 import com.unla.grupo8.repositories.IDispositivoAlumbradoRepository;
 import com.unla.grupo8.services.implementations.DispositivoAlumbradoService;
 import com.unla.grupo8.services.implementations.EspacioService;
-import com.unla.grupo8.services.implementations.EventoService;
+import com.unla.grupo8.services.implementations.EventoAlumbradoService;
 import com.unla.grupo8.services.implementations.MedicionAlumbradoService;
 
 import jakarta.validation.Valid;
@@ -47,7 +47,7 @@ public class MedicionAlumbradoController {
 	private DispositivoAlumbradoService dispositivoAlumbradoService;
 	@Autowired
 	@Qualifier("eventoService")
-	private EventoService eventoService;
+	private EventoAlumbradoService eventoService;
 	@Autowired
 	@Qualifier("medicionAlumbradoConverter")
 	private MedicionAlumbradoConverter medicionAlumbradoConverter;
@@ -100,5 +100,15 @@ public class MedicionAlumbradoController {
 		}
 		return mV;
 	}
+	
+	@PreAuthorize("hasRole('ROLE_AUDITOR')")
+	@GetMapping("/listaEventos/{id}")  
+	public ModelAndView mostrarTablaEventos(@PathVariable("id")int id) {
+		
+	    ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_EVENTOS_ALUMBRADO);
+	    mV.addObject("eventos", eventoService.traerEventosIdDispositivo(id));  
+	    return mV; 
+	
 
+}
 }

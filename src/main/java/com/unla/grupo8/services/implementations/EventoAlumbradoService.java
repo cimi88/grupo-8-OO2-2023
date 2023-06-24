@@ -1,6 +1,7 @@
 package com.unla.grupo8.services.implementations;
 
 import java.util.List;
+import java.util.ArrayList; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,15 +11,15 @@ import com.unla.grupo8.converters.EventoAlumbradoConverter;
 import com.unla.grupo8.entities.DispositivoAlumbrado;
 import com.unla.grupo8.entities.Evento;
 import com.unla.grupo8.models.EventoModelo;
-import com.unla.grupo8.repositories.IEventoRepository;
+import com.unla.grupo8.repositories.IEventoAlumbradoRepository;
 import com.unla.grupo8.services.IEventoAlumbradoService;
 
 @Service("eventoService")
-public class EventoService implements IEventoAlumbradoService{
+public class EventoAlumbradoService implements IEventoAlumbradoService{
 
 	@Autowired 
 	@Qualifier("eventoRepository")
-	private IEventoRepository eventoRepository;
+	private IEventoAlumbradoRepository eventoRepository;
 
 	@Autowired
 	@Qualifier("eventoConverter")
@@ -41,6 +42,16 @@ public class EventoService implements IEventoAlumbradoService{
 		Evento evento = eventoRepository.save(eventoConverter.modelToEntity(eventoModelo));
 
 		return eventoConverter.entityToModel(evento);
+	}
+	
+	public List<Evento> traerEventosIdDispositivo(int idDispositivo) {
+		 List<Evento> eventos = new ArrayList<Evento>();
+		 for(Evento e : getAll()) {
+			 if(e.getDispositivo().getId() == idDispositivo) {
+				 eventos.add(e);
+			 }
+		 } 
+		return eventos; 
 	}
 
 }

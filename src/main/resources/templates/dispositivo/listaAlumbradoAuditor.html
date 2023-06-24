@@ -154,7 +154,7 @@
                 <li class="active">
                     <a href="#">Dispositivos</a>
                     <ul class="submenu">
-                        <li><a href="/alumbrado/lista">Alumbrado</a></li>
+                        <li><a href="/alumbrado/listaAuditor">Alumbrado</a></li>
                         <li><a href="/riego">Riego</a></li>
                         <li><a href="/desechos">Desechos</a></li>
                         <li><a href="/estacionamiento">Estacionamiento</a></li>
@@ -165,8 +165,6 @@
         </div>
         <div class="content">
             <h1>- - - - Dispositivos de Alumbrado - - - -</h1>
-            <a href="/alumbrado/creardispositivo" class="button add">AGREGAR DISPOSITIVO</a>
-            <a href="/medicion/crearmedicion" class="button add">AGREGAR MEDICIÓN</a>
             <table>
                 <tr>
                     <th>Id</th>
@@ -194,24 +192,9 @@
 
                     <td th:if="${a.espacio != null}" th:text="${a.espacio.nombre}"></td>
 
-                    <td>
-                        <a th:href="@{/alumbrado/editardispositivo/} + ${a.id}" class="button edit"
-                            title="Editar">Editar</a>
-                    </td>
-
-                    <td>
+					<td>
                         <a th:href="@{/medicion/listaEventos/} + ${a.id}" class="button details"
                             title="Detalles">Detalles</a>
-                    </td>
-
-                    <td>
-                        <a th:href="@{/alumbrado/eliminar/}+ ${a.id}" class="button delete"
-                            title="Eliminar">Eliminar</a>
-                    </td>
-
-                    <td>
-                        <a th:href="@{/alumbrado/bajaAlumbrado/}+ ${a.id}" class="button down"
-                            title="Dar de Baja">Baja</a>
                     </td>
 
                 </tr>

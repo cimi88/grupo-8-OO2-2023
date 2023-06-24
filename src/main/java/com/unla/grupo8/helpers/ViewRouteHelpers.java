@@ -1,17 +1,18 @@
 package com.unla.grupo8.helpers;
 
 public class ViewRouteHelpers {
-
+	
 	public final static String INDEX = "home/index";
 
 	//HELPERS PARA DISPOSITIVOS
 	public final static String FORMULARIO_DISPOSITIVO_ALUMBRADO = "dispositivo/formularioDispositivoAlumbrado";
 	public final static String LISTA_ALUMBRADO = "dispositivo/listaAlumbrado";
+	public final static String LISTA_ALUMBRADO_AUDITOR = "dispositivo/listaAlumbradoAuditor";
 	public final static String EDITAR_DISPOSITIVO_ALUMBRADO = "dispositivo/formularioEditarAlumbrado";
 
 	//HELPERS PARA EVENTOS
 	public final static String LISTA_EVENTOS = "evento/listaEventos";
-
+	public final static String LISTA_EVENTOS_ALUMBRADO = "evento/listaEventosALumbrado";
 	//HELPERS MEDICION
 	public final static String FORMULARIO_MEDICION_ALUMBRADO = "medicion/formularioMedicionAlumbrado";
 	public final static String NUEVA_MEDICION_ALUMBRADO = "medicion/nuevaMedicionAlumbrado";

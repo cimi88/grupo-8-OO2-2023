@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.unla.grupo8.entities.Evento;
 
 @Repository("eventoRepository")
-public interface IEventoRepository extends JpaRepository<Evento, Serializable>{
+public interface IEventoAlumbradoRepository extends JpaRepository<Evento, Serializable>{
 	public abstract Evento findById(int id);
 
 }
