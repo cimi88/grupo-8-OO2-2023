@@ -20,5 +20,7 @@ public class ViewRouteHelpers {
 //	HELPERS MEDICION
 	public final static String LISTA_MEDICION_ESTACIONAMIENTO = "medicion/estacionamiento/medicionEstacionamiento"; 
 	public final static String CREAR_MEDICION_ESTACIONAMIENTO = "medicion/estacionamiento/crearMedicionEstacionamiento"; 
+	
+	public final static String LISTA_EVENTOS_ESTACIONAMIENTO = "evento/listaEventos";  
 	   
 } 

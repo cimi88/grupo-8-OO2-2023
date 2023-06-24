@@ -97,6 +97,14 @@ public class MedicionEstacionamientoController {
          eventoService.insertOrUpdate(evento); 
 		return mostrarTablaMediciones();
 	}
+	
+	@GetMapping("/listaEventos/{id}") 
+	public ModelAndView mostrarTablaMediciones(@PathVariable("id")int id) {
+		
+	    ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_EVENTOS_ESTACIONAMIENTO);
+	    mV.addObject("eventos", eventoService.traerEventosIdDispositivo(id));  
+	    return mV; 
+	} 
 
 	
 	
