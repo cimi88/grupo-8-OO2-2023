@@ -30,7 +30,7 @@ public class Evento {
 	private Dispositivo dispositivo;
 	
 	private String descripcionEvento;
-	
+	 
 	private LocalDateTime fechaHoraRegistro;
 	
 	public Evento() {}
@@ -49,7 +49,6 @@ public class Evento {
 		this.descripcionEvento = descripcionEvento;
 		this.fechaHoraRegistro = fechaHoraRegistro;
 	}
-<<<<<<< HEAD
 	
 	public Evento(Dispositivo dispositivo, String descripcionEvento, LocalDateTime fechaHoraRegistro) {
 		super(); 
@@ -58,9 +57,7 @@ public class Evento {
 		this.fechaHoraRegistro = fechaHoraRegistro;
 	}
 	
-=======
 
->>>>>>> 0d4fe9b236b7ef52aded076436abda4f87bc9aa1
 	public Evento(int id, String descripcionEvento, LocalDateTime fechaHoraRegistro) {
 		super();
 		this.id = id;
@@ -105,13 +102,13 @@ public class Evento {
 		return "Evento [id=" + id + ", dispositivo=" + dispositivo + ", descripcionEvento=" + descripcionEvento
 				+ ", fechaHoraRegistro=" + fechaHoraRegistro + "]";
 	}
-<<<<<<< HEAD
+
 	
 	 
 
 }
-=======
 
-}
 
->>>>>>> 0d4fe9b236b7ef52aded076436abda4f87bc9aa1
+
+
+

@@ -101,7 +101,7 @@ public abstract class Dispositivo {
 		this.mediciones = mediciones;
 	}
 	
-<<<<<<< HEAD
+
 	public Dispositivo(int id, String nombre, Espacio espacio) {
 		super();
 		this.id = id;
@@ -116,36 +116,20 @@ public abstract class Dispositivo {
 		this.nombre = nombre;
 		this.setEnAlta(enAlta);
 	}
-=======
->>>>>>> 0d4fe9b236b7ef52aded076436abda4f87bc9aa1
+
 	
 	public Dispositivo(int id, String nombre) {
 		super();
 		this.id = id;
-<<<<<<< HEAD
 		this.nombre = nombre; 
 		this.setEnAlta(enAlta);
-=======
 		this.nombre = nombre;
 	}
 
-	public Dispositivo(int id, String nombre, boolean enAlta) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.enAlta = true;
->>>>>>> 0d4fe9b236b7ef52aded076436abda4f87bc9aa1
-	}
+	 
 
 	
-	public Dispositivo(int id, String nombre, Espacio espacio) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.espacio = espacio;
-		this.enAlta = true;
-
-	}
+	
 
 	public int getId() {
 		return id;
@@ -235,11 +219,11 @@ public abstract class Dispositivo {
 				+ ", updatedAt=" + updatedAt + ", espacio=" + espacio + ", mediciones=" + mediciones + "]";
 	}
 
-<<<<<<< HEAD
-}
-=======
+
 }
 
 
 
->>>>>>> 0d4fe9b236b7ef52aded076436abda4f87bc9aa1
+
+
+

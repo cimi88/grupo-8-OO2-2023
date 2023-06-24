@@ -19,7 +19,7 @@ public class DispositivoAspersorModelo extends DispositivoModelo{
 	public DispositivoAspersorModelo(LocalDateTime fechaHoraDesde, LocalDateTime fechaHoraHasta) {
 		this.encendido = false;
 		this.fechaHoraDesde = fechaHoraDesde;
-		this.fechaHoraHasta = fechaHoraHasta;
+		this.fechaHoraHasta = fechaHoraHasta; 
 	}
 	
 	public DispositivoAspersorModelo(boolean encendido, LocalDateTime fechaHoraDesde, LocalDateTime fechaHoraHasta) {

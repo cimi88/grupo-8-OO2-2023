@@ -19,7 +19,7 @@ public class MedicionAspersor extends Medicion {
 
 	private float humedad;
 
-	public MedicionAspersor() {
+	public MedicionAspersor() { 
 	}
 
 	public MedicionAspersor(int id, Dispositivo dispositivo, LocalDateTime fechaHoraRegistro, float humedad) {
