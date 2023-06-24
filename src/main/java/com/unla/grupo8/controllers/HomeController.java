@@ -13,14 +13,11 @@ public class HomeController {
 	@GetMapping("inicio")
 	public String iniciandoPrueba () {
 		return ViewRouteHelpers.INDEX;
-
 	}
-
-	@GetMapping("inicioAuditor")
-	public String iniciandoAuditor () {
+	
+	@GetMapping("inicioAudi")
+	public String iniciandoPruebaAuditor () {
 		return ViewRouteHelpers.INDEX_AUDITOR;
-
 	}
-
 }
 

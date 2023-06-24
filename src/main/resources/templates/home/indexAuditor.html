@@ -1,34 +1,50 @@
-
 <html>
-<head>
-    <title>Menú Principal</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
+	<head>
+	    <title>Menú Principal</title>
+	    <style>
+        * {
             margin: 0;
             padding: 0;
+        }
+
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url('image/unla.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            background-color: rgb(10, 10, 10);
         }
 
         .container {
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
+            max-width: 32em;
+            margin: 3em;
+            padding: 2em;
+            background-color: rgb(20, 20, 20);
+            border-radius: 8px;
+        }
+
+        .title {
+            display: flex;
+            color: white;
+            margin-bottom: 1em;
+        }
+
+        h1 {
+            margin: 0;
+            padding: 0;
         }
 
         .menu {
-            width: 200px;
+            width: 16em;
             background-color: #f0f0f0;
             padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-         
+            border-radius: 8px;
+            margin-bottom: 2em;
         }
 
         .menu ul {
@@ -38,6 +54,10 @@
         }
 
         .menu li {
+            text-align: center;
+        }
+
+        .menu li:not(:last-child) {
             margin-bottom: 10px;
         }
 
@@ -48,9 +68,10 @@
             color: #000;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 5px;
+            border-radius: 8px;
         }
 
+        /* Agregar estilos para el menú desplegable */
         .menu .submenu {
             display: none;
             padding-left: 15px;
@@ -71,30 +92,18 @@
         .menu li.active > a {
             background-color: #aaa;
         }
-
-        .content {
-            padding: 20px;
-        }
-
-        h1 {
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            font-size: 24px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
     </style>
-</head>
-<body>
+	</head>
+	<body>
     <div class="container">
-        <h1>Bienvenido al menú principal</h1>
+    	<div class="title"><h1>Bienvenido al menú principal</h1></div>
         <div class="menu">
             <ul>
-                <li><a href="/inicioAuditor">Inicio</a></li>
-                <li class="active">
+                <li class="active"><a href="/inicioAudi">Inicio</a></li>
+                <li>
                     <a href="#">Dispositivos</a>
                     <ul class="submenu">
-                        <li><a href="/alumbrado/lista">Alumbrado</a></li>
+                        <li><a href="/alumbrado">Alumbrado</a></li>
                         <li><a href="/riego">Riego</a></li>
                         <li><a href="/basura/listaAuditor">Desechos</a></li>
                         <li><a href="/estacionamiento">Estacionamiento</a></li>
@@ -103,16 +112,20 @@
                 <li><a href="/logout">Logout</a></li>
             </ul>
         </div>
-        <div class="content">
-        </div>
     </div>
     <script>
+        // Agregar lógica JavaScript para mostrar/ocultar el menú desplegable
         const menuItems = document.querySelectorAll('.menu li');
         menuItems.forEach((item) => {
             item.addEventListener('click', () => {
                 if (item.classList.contains('active')) {
                     item.classList.remove('active');
                 } else {
+                    // Remover la clase 'active' de todos los elementos del menú
+                    menuItems.forEach((menuItem) => {
+                        menuItem.classList.remove('active');
+                    });
+                    // Agregar la clase 'active' solo al elemento principal del menú
                     item.classList.add('active');
                 }
             });

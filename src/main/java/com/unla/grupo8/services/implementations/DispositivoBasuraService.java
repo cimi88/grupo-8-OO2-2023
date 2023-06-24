@@ -70,4 +70,9 @@ public class DispositivoBasuraService implements IDispositivoBasuraService {
 
 		return aux;
 	}
+	
+
+	public DispositivoBasura traerEntidad(int id) {
+		return dispositivoBasuraRepository.findById(id);
+	}
 }

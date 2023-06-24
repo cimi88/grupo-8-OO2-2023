@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@100;400&family=Josefin+Sans&family=Montserrat:wght@500&display=swap');
+			
+			body {
+				background-color: #100d0a;
+				color: ghostwhite;
+				text-align: center;
+				font-family: 'Montserrat', sans-serif;
+			}
+			h1 {
+				margin: 0 0 16px;
+			}
+			
+			/*css tabla*/
+			#tab {
+				margin: 0 auto;
+				text-align: center;
+			}
+			#tab th {
+				padding: 8px;
+			}
+			#tab tr {
+				background-color: #2f261e;
+				text-align: center;
+				padding: 0 1em;
+			}
+            #tab tr:nth-child(even) {background-color: #1c1712;
+            }
+            #tab tr:hover {background-color: #3e3328; transition: .25s ease;}
+            #tab tr:not(:hover) {transition: .25s ease;}
+            #tab td {
+				text-align: center;
+				padding: 8px;
+			}
+		</style>
+	</head>
+	<body>
+    	<h1>- - - - Dispositivos de Riego - - - -</h1>
+	
+	    <table id="tab">
+	        <tr>
+	            <th>Id</th>
+	            <th>En alta</th>
+	            <th>Nombre</th>
+	            <th>Lleno</th>
+	            <th>Capacidad de litros</th>
+	            <th>Espacio</th>
+	        </tr>
+	        
+	        <tr th:each="b : ${listaBasura}">
+	            <td th:text="${b.id}"></td>
+	            <td th:text="${b.enAlta}"></td>
+	            <td th:text="${b.nombre}"></td>
+	            <td th:text="${b.lleno}"></td>
+            	<td th:text="${b.capacidadLitros}"></td>
+	            <td th:if="${b.espacio != null}" th:text="${b.espacio.nombre}"></td>
+	        
+	        	<td>
+                	<a th:href="@{/evento/listaEventoDispositivo/}+ ${b.id}" th:text="'Detalles'" title="Detalles"></a>
+            	</td>
+	        </tr>
+	        
+	        
+	    </table>
+	</body>
+</html>

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.unla.grupo8.entities.DispositivoBasura;
 import com.unla.grupo8.helpers.ViewRouteHelpers;
 import com.unla.grupo8.models.DispositivoBasuraModelo;
 import com.unla.grupo8.repositories.IEspacioRepository;
@@ -24,7 +24,6 @@ import com.unla.grupo8.services.IDispositivoBasuraService;
 import com.unla.grupo8.services.implementations.EspacioService;
 
 import jakarta.validation.Valid;
-import org.springframework.web.servlet.view.RedirectView;
 @Controller
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 @RequestMapping("basura") 
@@ -32,7 +31,7 @@ public class BasuraController {
 	@Autowired
 	@Qualifier("dispositivoBasuraService")
 	private IDispositivoBasuraService dispositivoBasuraService;
-	
+
 	@Autowired
 	@Qualifier("espacioRepository")
 	private IEspacioRepository espacioRepository;
@@ -67,15 +66,7 @@ public class BasuraController {
 		return mV;
 	}
 	
-	@PreAuthorize("hasRole('ROLE_AUDITOR')")
-	@GetMapping("/listaAuditor")
-	public ModelAndView mostrarTablaDispositivosAuditor() {
-		
-	    ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_BASURA_AUDITOR);
-	    mV.addObject("listaBasura", dispositivoBasuraService.getAll());
-	    return mV;
-	}
-	
+
 	@GetMapping("/lista")
 	public ModelAndView mostrarTablaDispositivos() {
 		
@@ -93,34 +84,50 @@ public class BasuraController {
 		return mostrarTablaDispositivos();	
 	} 
 
-	@GetMapping("/editarDispositivo/{id}")
-	public ModelAndView  editarDispositivo(@PathVariable("id")int id, Model model) {	
-		
-		DispositivoBasuraModelo dispoBasModel = dispositivoBasuraService.traerPorId(id);
-		model.addAttribute("dispositivo", dispoBasModel);
-		model.addAttribute("espacios", espacioService.getAll());	
-		ModelAndView modelAndView = new ModelAndView(ViewRouteHelpers.EDITAR_DISPOSITIVO_BASURA);
-		
-		
-		return modelAndView;	
-	}
-	
-	//modificar para setear traigo el dispositivo y editamos
-		@PostMapping("/editarDispositivo/{id}")
-		public ModelAndView nuevoDispositivo(@PathVariable("id")int id, @Valid @ModelAttribute("dispositivo") DispositivoBasuraModelo dispoBasModel, 
-				BindingResult b) {
+	// Formulario para editar un dispositivo de LucesAutomaticas
+		@GetMapping("/editarDispositivo/{id}")
+		public String editarDispositivo(@PathVariable("id")int id, Model model) {
 			
+			DispositivoBasuraModelo dispositivoBasuraModel = dispositivoBasuraService.traerPorId(id);
+			model.addAttribute("dispositivo", dispositivoBasuraModel);		
+			model.addAttribute("espacios", espacioService.getAll());
+			return ViewRouteHelpers.EDITAR_DISPOSITIVO_BASURA;
+		}
+	
+		//modificar para setear traigo el dispositivo y editamos
+		@PostMapping("/nuevodispositivoeditado")
+		public ModelAndView dispositivoEditado(@Valid @ModelAttribute("dispositivo") DispositivoBasuraModelo dispoBasModel, 
+				BindingResult b) {
+			DispositivoBasura dispositivo = new DispositivoBasura();
 			ModelAndView mV = new ModelAndView();
 			if(b.hasErrors()) {
 				mV.setViewName(ViewRouteHelpers.EDITAR_DISPOSITIVO_BASURA);
 			}else {
-				
-				dispositivoBasuraService.insertOrUpdate(dispoBasModel);
-				
-				mV = mostrarTablaDispositivos();
+				DispositivoBasura dispositivoViejo = dispositivoBasuraService.traerEntidad(dispoBasModel.getId());
+				dispositivo.setNombre(dispositivoViejo.getNombre());
+				dispositivo.setCapacidadLitros(dispositivoViejo.getCapacidadLitros());
+				dispositivo.setLleno(dispositivoViejo.isLleno());
+				dispositivo.setEspacio(dispositivoViejo.getEspacio());
 			}
-			return mV;
+			dispositivoBasuraService.insertOrUpdate(dispoBasModel);
+			return mostrarTablaDispositivos();
 		}
+//	//modificar para setear traigo el dispositivo y editamos
+//		@PostMapping("/editarDispositivo/{id}")
+//		public ModelAndView nuevoDispositivo(@PathVariable("id")int id, @Valid @ModelAttribute("dispositivo") DispositivoBasuraModelo dispoBasModel, 
+//				BindingResult b) {
+//			
+//			ModelAndView mV = new ModelAndView();
+//			if(b.hasErrors()) {
+//				mV.setViewName(ViewRouteHelpers.EDITAR_DISPOSITIVO_BASURA);
+//			}else {
+//				
+//				dispositivoBasuraService.insertOrUpdate(dispoBasModel);
+//				
+//				mV = mostrarTablaDispositivos();
+//			}
+//			return mV;
+//		}
 	
 	
 	@GetMapping("/bajaBasura/{id}")
@@ -128,4 +135,6 @@ public class BasuraController {
 		dispositivoBasuraService.baja(id);
 		return mostrarTablaDispositivos();
 	}
+	
+	
 }
