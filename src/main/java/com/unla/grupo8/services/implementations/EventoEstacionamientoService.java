@@ -14,10 +14,10 @@ import com.unla.grupo8.entities.Evento;
 import com.unla.grupo8.entities.MedicionEstacionamiento;
 import com.unla.grupo8.models.EventoModelo;
 import com.unla.grupo8.repositories.IEventoRepository;
-import com.unla.grupo8.services.IEventoService;
+import com.unla.grupo8.services.IEventoEstacionamientoService;
 
 @Service("eventoService") 
-public class EventoService implements IEventoService{
+public class EventoEstacionamientoService implements IEventoEstacionamientoService{
 	
 	@Autowired 
 	@Qualifier("eventoRepository")

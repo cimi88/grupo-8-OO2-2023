@@ -8,7 +8,7 @@ import com.unla.grupo8.models.EventoModelo;
 import java.util.List;
 
 @Service("eventoService")
-public interface IEventoService {
+public interface IEventoEstacionamientoService {
 
 	public List<Evento> getAll();
 	

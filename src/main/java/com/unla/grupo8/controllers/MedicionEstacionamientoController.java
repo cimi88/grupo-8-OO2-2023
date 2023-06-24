@@ -28,7 +28,7 @@ import com.unla.grupo8.models.MedicionEstacionamientoModelo;
 import com.unla.grupo8.models.MedicionModelo;
 import com.unla.grupo8.repositories.IDispositivoEstacionamientoRepository;
 import com.unla.grupo8.services.implementations.DispositivoEstacionamientoService;
-import com.unla.grupo8.services.implementations.EventoService;
+import com.unla.grupo8.services.implementations.EventoEstacionamientoService;
 import com.unla.grupo8.services.implementations.MedicionEstacionamientoService;
 
 @Controller
@@ -45,7 +45,7 @@ public class MedicionEstacionamientoController {
 	
 	@Autowired 
 	@Qualifier("eventoService") 
-	private EventoService eventoService;
+	private EventoEstacionamientoService eventoService;
 	
 	@Autowired
 	@Qualifier("medicionEstacionamientoConverter")  
