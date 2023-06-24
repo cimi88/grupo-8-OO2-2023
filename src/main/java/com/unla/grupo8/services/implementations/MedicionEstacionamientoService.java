@@ -1,12 +1,15 @@
 package com.unla.grupo8.services.implementations;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.unla.grupo8.converters.MedicionEstacionamientoConverter;
+import com.unla.grupo8.entities.DispositivoEstacionamiento;
 import com.unla.grupo8.entities.MedicionEstacionamiento;
 import com.unla.grupo8.models.MedicionEstacionamientoModelo;
 import com.unla.grupo8.repositories.IMedicionEstacionamientoRepository;
@@ -20,13 +23,15 @@ public class MedicionEstacionamientoService implements IMedicionEstacionamientoS
 	private IMedicionEstacionamientoRepository medicionEstacionamientoRepository;
 	
 	@Autowired
-	@Qualifier("medicionEstacionamientoConverter")
+	@Qualifier("medicionEstacionamientoConverter") 
 	private MedicionEstacionamientoConverter medicionEstacionamientoConverter;
- 
+	
+	private ModelMapper modelMapper = new ModelMapper();
+
 	@Override
 	public MedicionEstacionamientoModelo traerPorId(int id) {
 		// TODO Auto-generated method stub
-		return medicionEstacionamientoConverter.entityToModel(medicionEstacionamientoRepository.findById(id));
+	   return modelMapper.map(medicionEstacionamientoRepository.findById(id), MedicionEstacionamientoModelo.class);
 	}
 
 	@Override
@@ -38,8 +43,9 @@ public class MedicionEstacionamientoService implements IMedicionEstacionamientoS
 	@Override
 	public MedicionEstacionamientoModelo insertOrUpdate(MedicionEstacionamientoModelo medicionEstacionamientoModelo) {
 		// TODO Auto-generated method stub
-		return medicionEstacionamientoConverter.entityToModel(medicionEstacionamientoRepository.save(medicionEstacionamientoConverter.modelToEntity(medicionEstacionamientoModelo)));
-	} 
+	
+	    return medicionEstacionamientoConverter.entityToModel(medicionEstacionamientoRepository.save(medicionEstacionamientoConverter.modelToEntity(medicionEstacionamientoModelo)));
+	}    
 	
 	
 

@@ -10,11 +10,11 @@ import com.unla.grupo8.models.PlayaEstacionamientoModelo;
 public class PlayaEstacionamientoConverter {
 	
 	public PlayaEstacionamiento modelToEntity(PlayaEstacionamientoModelo playa) {
-		return new PlayaEstacionamiento(playa.getId(), playa.getNombre(), playa.isPlayaLlena());
+		return new PlayaEstacionamiento(playa.getId(), playa.getNombre(), playa.isPlayaLlena(), playa.getEspacio());
 	}
-	
+	 
 	public PlayaEstacionamientoModelo entityToModel(PlayaEstacionamiento playa) {
-		return new PlayaEstacionamientoModelo(playa.getId(), playa.getNombre(), playa.isPlayaLlena());
+		return new PlayaEstacionamientoModelo(playa.getId(), playa.getNombre(), playa.isPlayaLlena(), playa.getEspacio());
 	}
  
 	

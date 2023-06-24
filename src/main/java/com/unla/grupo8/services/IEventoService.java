@@ -13,4 +13,6 @@ public interface IEventoService {
 	public List<Evento> getAll();
 	
 	public EventoModelo traerPorId(int id); 
+	
+	public EventoModelo insertOrUpdate(EventoModelo eventoModelo); 
 }

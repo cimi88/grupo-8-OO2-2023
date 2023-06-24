@@ -59,28 +59,13 @@
 </head>
 <body>
     <div class="container">
-        <p>Editar dispositivo estacionamiento</p>
-        <form action="#" th:action="@{nuevodispositivo}" th:object="${dispositivo}" method="post">
+        <p>Editar dispositivo estacionamiento</p>  
+        <form action="#" th:action="@{editado}" th:object="${dispositivo}" method="post"> 
             <p>NOMBRE: <input type="text" th:field="*{nombre}" /></p>
             <p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error-message">Nombre ERROR</p>
             
-            
-            <select
-                  class="form-select"
-                  id="info"
-                  name="info"
-                  required
-                  th:field="${dispositivo.idEspacio}"
-                  th:required="true"
-                >
-                  <option
-                    th:each="e : ${espacios}"
-                    th:value="${e.id}"
-                    th:text="${e.nombre}"
-                    required
-                  ></option>
-            </select> 
-            
+ 
+               
              <select
                   class="form-select"
                   id="info"
@@ -91,7 +76,7 @@
                 >
                   <option
                     th:each="l : ${lugares}"
-                    th:value="${l.id}"
+                    th:value="${l.id}" 
                     th:text="${l.nombreLugar}"
                     required
                   ></option>

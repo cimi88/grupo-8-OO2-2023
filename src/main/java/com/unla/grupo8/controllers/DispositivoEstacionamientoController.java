@@ -2,6 +2,7 @@ package com.unla.grupo8.controllers;
 
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,10 @@ import com.unla.grupo8.repositories.ILugarRepository;
 import com.unla.grupo8.repositories.IPlayaEstacionamientoRepository;
 import com.unla.grupo8.services.implementations.DispositivoEstacionamientoService;
 import com.unla.grupo8.services.implementations.LugarService;
+
+import jakarta.validation.Valid;
+
+import com.unla.grupo8.entities.DispositivoEstacionamiento;
 import com.unla.grupo8.entities.Lugar;
 
 
@@ -42,6 +47,8 @@ public class DispositivoEstacionamientoController {
 	@Autowired
 	@Qualifier("espacioRepository")
 	private IEspacioRepository espacioRepository;
+	
+	
 	
 	
 	
@@ -72,10 +79,10 @@ public class DispositivoEstacionamientoController {
 
 		if (bindingResult.hasErrors()) {
 			modelAndView.setViewName(ViewRouteHelpers.FORM_DISPO_ESTACIONAMIENTO);
-			modelAndView.addObject("espacios", espacioRepository.findAll());
+//			modelAndView.addObject("espacios", espacioRepository.findAll());
 			modelAndView.addObject("lugares", lugarService.traerLugaresSinDispositivo());
 			return modelAndView;
-		}
+		} 
 
 		dispositivoEstacionamientoService.insertOrUpdate(dispositivo);
 		return mostrarTablaDispositivosEstacionamiento();
@@ -96,20 +103,30 @@ public class DispositivoEstacionamientoController {
 		return mostrarTablaDispositivosEstacionamiento();
 	}
 	
-	@GetMapping("/editar/{id}")
-	public ModelAndView  editarDispositivo(@PathVariable("id")int id, Model model) {	
-		
-		DispositivoEstacionamientoModelo dispositivoEstacionamientoModelo = dispositivoEstacionamientoService.traerPorId(id);
-		ModelAndView modelAndView = new ModelAndView(ViewRouteHelpers.FORM_DISPO_ESTACIONAMIENTO_EDITAR);
-		
+	@GetMapping("/editarDispositivo/{id}") 
+	public ModelAndView editarDispositivo(@PathVariable("id")int id, Model model) {	
+		ModelAndView mv = new ModelAndView(ViewRouteHelpers.FORM_DISPO_ESTACIONAMIENTO_EDITAR);
+		mv.addObject("dispositivo",  dispositivoEstacionamientoService.traerPorId(id));
+		mv.addObject("lugares", lugarService.traerLugaresSinDispositivo());
+//		DispositivoEstacionamientoModelo dispositivoEstacionamientoModelo = dispositivoEstacionamientoService.traerPorId(id);
 //		model.addAttribute("dispositivo", dispositivoEstacionamientoModelo);
-//		model.addAttribute("espacios", espacioRepository.findAll());	
-//		model.addAttribute("lugares", lugarService.traerLugaresSinDispositivo());
-//		ModelAndView modelAndView = new ModelAndView(ViewRouteHelpers.FORM_DISPO_ESTACIONAMIENTO_EDITAR);
-		
-		
-		return modelAndView;	
-	}
+//		model.addAttribute("lugares", lugarService.traerLugaresSinDispositivo());	
+		return mv;
+	} 
+	
+//	@PostMapping("/editado") 
+//	public ModelAndView dispositivoEditado(@Valid @ModelAttribute("dispositivo")DispositivoEstacionamientoModelo dispositivoEstacionamientoModelo , 
+//			BindingResult b) {
+//		DispositivoEstacionamiento dispositivo = modelMapper.map(dispositivoEstacionamientoModelo, DispositivoEstacionamiento.class);
+//		DispositivoEstacionamiento dispositivoViejo = modelMapper.map(dispositivoEstacionamientoService.traerPorId(dispositivoEstacionamientoModelo.getId()), DispositivoEstacionamiento.class);
+//		
+//		dispositivo.setEspacio(dispositivoViejo.getEspacio());
+//		dispositivo.setNombre(dispositivoViejo.getNombre());
+//	  
+//		
+//		dispositivoEstacionamientoService.insertOrUpdate(dispositivoEstacionamientoModelo);
+//		return mostrarTablaDispositivosEstacionamiento();
+//	}
 	
 	
 	

@@ -13,13 +13,16 @@ private int id;
 	
 	private boolean playaLlena;
 	
+	private String espacio;	
+	
     private Set<LugarModelo> lugares;
 
-	public PlayaEstacionamientoModelo(int id, String nombreString, boolean playaLlena) {
+	public PlayaEstacionamientoModelo(int id, String nombreString, boolean playaLlena, String espacio) {
 		super();
 		this.id = id;
 		this.nombre = nombreString;
 		this.playaLlena = playaLlena;
+		this.espacio = espacio;
 	}
 
 	public PlayaEstacionamientoModelo(String nombreString, boolean playaLlena) {
@@ -50,6 +53,18 @@ private int id;
 
 	public void setPlayaLlena(boolean playaLlena) {
 		this.playaLlena = playaLlena;
+	}
+	
+	
+
+	
+
+	public String getEspacio() {
+		return espacio;
+	}
+
+	public void setEspacio(String espacio) {
+		this.espacio = espacio;
 	}
 
 	public Set<LugarModelo> getLugares() {

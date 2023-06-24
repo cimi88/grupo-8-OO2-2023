@@ -25,8 +25,9 @@ public class DispositivoEstacionamiento extends Dispositivo {
 		this.lugar = lugar;
 	}
 	
-	public DispositivoEstacionamiento(int id, String nombre, Espacio espacio) {
-		super(id, nombre, espacio);
+	public DispositivoEstacionamiento(int id, String nombre) {
+		super(id, nombre);
+		this.setEspacio(getEspacio());
 	} 
 	 
 

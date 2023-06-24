@@ -14,25 +14,26 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table(name = "medicion") 
+@Table(name = "medicion")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Medicion {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	protected int id;
 	
 	@ManyToOne()
 	@JoinColumn( name = "dispositivo_id")
 	@JsonBackReference
-	private Dispositivo dispositivo;
-	 
-	private LocalDateTime fechaHoraRegistro;
+	protected Dispositivo dispositivo;
+	
+	protected LocalDateTime fechaHoraRegistro;
 	
 	public Medicion() {}
 
@@ -40,16 +41,6 @@ public abstract class Medicion {
 		super();
 		this.id = id;
 		this.dispositivo = dispositivo;
-		this.fechaHoraRegistro = fechaHoraRegistro;
-	}
-	
-	
-	 
-	
-
-	public Medicion(int id, LocalDateTime fechaHoraRegistro) {
-		super();
-		this.id = id;
 		this.fechaHoraRegistro = fechaHoraRegistro;
 	}
 
@@ -60,7 +51,7 @@ public abstract class Medicion {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	
 	public Dispositivo getDispositivo() {
 		return dispositivo;
 	}
@@ -99,4 +90,4 @@ public abstract class Medicion {
 		return "Medicion [id=" + id + ", dispositivo=" + dispositivo + ", fechaHoraRegistro=" + fechaHoraRegistro + "]";
 	}
 
-}
+} 

@@ -62,9 +62,26 @@
         <p>Agregando dispositivo estacionamiento</p>
         <form action="#" th:action="@{nuevamedicion}" th:object="${medicion}" method="post">
 			
-            <p>FECHA HORA REGISTRO: <input type="text" th:field="*{fechaHoraRegistro}" /></p>
+           
             <p>PATENTE: <input type="text" th:field="*{patente}" /></p>
-            <p>PRESENCIA VEHICULO: <input type="text" th:field="*{presenciaVehiculo}" /></p>
+           
+            
+             <select
+                  class="form-select"
+                  id="info"
+                  name="info"
+                  required
+                  th:field="${medicion.idDispositivo}"
+                  th:required="true"
+                >
+                  <option
+                    th:each="d : ${dispositivos}"
+                    th:value="${d.id}"
+                    th:text="${d.nombre}" 
+                    required 
+                  ></option> 
+            </select> 
+            
             
              
              

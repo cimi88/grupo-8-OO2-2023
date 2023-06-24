@@ -32,37 +32,36 @@ public abstract class Dispositivo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	protected int id;
 	
-	private String nombre;
+	protected String nombre;
 
-	private boolean enAlta = true;
+	protected boolean enAlta = true;
 	
 	@Column(name="creado")
-	@CreationTimestamp 
-	private LocalDateTime createdAt;
+	@CreationTimestamp
+	protected LocalDateTime createdAt;
 	
 	@Column(name="actualizado")
 	@UpdateTimestamp
-	private LocalDateTime updatedAt;
+	protected LocalDateTime updatedAt;
 	
 	//la relacion en esta tabla es bidireccional
 	//y diremos que muchos dispositivos van a perteneces a un espacio
 	//la entidad propietaria la tendra espacio
 	@ManyToOne()
 	@JoinColumn( name = "espacio_id" )
-	private Espacio espacio;
+	protected Espacio espacio;
 	
 	//Relacion Bidireccional con medicion
 	@OneToMany(mappedBy = "dispositivo", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonManagedReference
-	private Set<Medicion> mediciones = new HashSet<>();
+	protected Set<Medicion> mediciones = new HashSet<>();
 	
 	@JsonManagedReference
 	@OneToMany(mappedBy = "dispositivo", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<Evento> eventos = new HashSet<>();
+	protected Set<Evento> eventos = new HashSet<>();
 	
-
 	public Dispositivo () {}
 
 	public Dispositivo(int id, String nombre, LocalDateTime createdAt, LocalDateTime updatedAt,
@@ -76,32 +75,50 @@ public abstract class Dispositivo {
 		this.espacio = espacio;
 		this.mediciones = mediciones;
 	}
- 
-	 
-	public Dispositivo(int id, String nombre) {
+	
+	
+
+	public Dispositivo(int id, String nombre, boolean enAlta, LocalDateTime createdAt, LocalDateTime updatedAt,
+			Espacio espacio, Set<Medicion> mediciones, Set<Evento> eventos) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.enAlta = enAlta;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.espacio = espacio;
+		this.mediciones = mediciones;
+		this.eventos = eventos;
+	}
+
+	public Dispositivo(int id, String nombre, Espacio espacio, Set<Medicion> mediciones) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.setEnAlta(enAlta);
+		this.espacio = espacio;
+		this.mediciones = mediciones;
+	}
+	
+	public Dispositivo(int id, String nombre, Espacio espacio) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.setEnAlta(enAlta);
+		this.espacio = espacio;
+	} 
+	
+	public Dispositivo(int id, String nombre, boolean enAlta) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.setEnAlta(enAlta);
 	}
 	
-	
-	
-	public Dispositivo(int id, String nombre, Espacio espacio, Set<Evento> eventos) {
+	public Dispositivo(int id, String nombre) {
 		super();
 		this.id = id;
-		this.nombre = nombre;
-		this.espacio = espacio;
-		this.eventos = eventos;
-	}
-	
-	
-
-	public Dispositivo(int id, String nombre, Espacio espacio) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.espacio = espacio;
+		this.nombre = nombre; 
 		this.setEnAlta(enAlta);
 	}
 
@@ -130,7 +147,7 @@ public abstract class Dispositivo {
 	}
 
 	public LocalDateTime getCreatedAt() {
-		return createdAt; 
+		return createdAt;
 	}
 
 	public void setCreatedAt(LocalDateTime createdAt) {
@@ -159,6 +176,15 @@ public abstract class Dispositivo {
 
 	public void setMediciones(Set<Medicion> mediciones) {
 		this.mediciones = mediciones;
+	}
+	
+
+	public Set<Evento> getEventos() {
+		return eventos;
+	}
+
+	public void setEventos(Set<Evento> eventos) {
+		this.eventos = eventos;
 	}
 
 	@Override

@@ -30,17 +30,20 @@ public class PlayaEstacionamiento {
 	
 	private boolean playaLlena; 
 	
+	private String espacio;
+	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "playa_estacionamiento_id")
     private Set<Lugar> lugares;
 
 	public PlayaEstacionamiento() {}
 	
-	public PlayaEstacionamiento(int id, String nombreString, boolean playaLlena) {
+	public PlayaEstacionamiento(int id, String nombreString, boolean playaLlena, String espacio) {
 		super();
 		this.id = id;
 		this.nombre = nombreString;
 		this.playaLlena = playaLlena;
+		this.espacio = espacio;
 	}
 
 	public PlayaEstacionamiento(String nombreString, boolean playaLlena) {
@@ -79,6 +82,16 @@ public class PlayaEstacionamiento {
 
 	public void setLugares(Set<Lugar> lugares) {
 		this.lugares = lugares;
+	}
+	
+	
+
+	public String getEspacio() {
+		return espacio;
+	}
+
+	public void setEspacio(String espacio) {
+		this.espacio = espacio;
 	}
 
 	@Override

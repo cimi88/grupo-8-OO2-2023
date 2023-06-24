@@ -2,8 +2,12 @@
 <body>
 
   <td>
-                <a th:href="@{/estacionamiento/creardispositivo}" th:text="'AGREGAR DISPOSITIVO'" title="AGREGAR DISPOSITIVO"></a>
+                <a th:href="@{/estacionamiento/creardispositivo}" th:text="'AGREGAR DISPOSITIVO'" title="AGREGAR DISPOSITIVO"></a> 
   </td>
+  
+    <td>
+                <a th:href="@{/medicion/crearmedicion}" th:text="'AGREGAR MEDICION'" title="AGREGAR MEDICION"></a> 
+    </td> 
   <table>
     <tr>
         <th>ID</th>
@@ -36,9 +40,9 @@
 
         
         <td> 
-                <a th:href="@{/estacionamiento/editar/} + ${d.id}" th:text="'editar'" title="editar"></a>
+                <a th:href="@{/estacionamiento/editarDispositivo/} + ${d.id}" th:text="'editar'" title="editar"></a>
         </td>
-          
+           
          <td>  
                 <a th:href="@{/medicion/estacionamiento/} + ${d.id}" th:text="'detalles'" title="detalles"></a>
         </td>

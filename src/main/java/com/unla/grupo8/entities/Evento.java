@@ -4,12 +4,14 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 
@@ -48,13 +50,18 @@ public class Evento {
 		this.fechaHoraRegistro = fechaHoraRegistro;
 	}
 	
+	public Evento(Dispositivo dispositivo, String descripcionEvento, LocalDateTime fechaHoraRegistro) {
+		super(); 
+		this.dispositivo = dispositivo;
+		this.descripcionEvento = descripcionEvento;
+		this.fechaHoraRegistro = fechaHoraRegistro;
+	}
 	
-
 	public Evento(int id, String descripcionEvento, LocalDateTime fechaHoraRegistro) {
 		super();
 		this.id = id;
 		this.descripcionEvento = descripcionEvento;
-		this.fechaHoraRegistro = fechaHoraRegistro;
+		this.fechaHoraRegistro = LocalDateTime.now();
 	}
 
 	public int getId() {
@@ -95,6 +102,6 @@ public class Evento {
 				+ ", fechaHoraRegistro=" + fechaHoraRegistro + "]";
 	}
 	
-	
+	 
 
 }

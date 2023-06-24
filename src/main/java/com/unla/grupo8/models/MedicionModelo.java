@@ -19,27 +19,31 @@ public abstract class MedicionModelo {
 	private int id;
 	 
 	
-	private DispositivoModelo dispositivoModelo;
-	
 	private LocalDateTime fechaHoraRegistro;
+	
+	private EventoModelo eventoModelo;
+	
+	private int idDispositivo;
 	
 	public MedicionModelo() {} 
 
-	public MedicionModelo(int id,DispositivoModelo dispositivoModelo, LocalDateTime fechaHoraRegistro) {
+	public MedicionModelo(int id, LocalDateTime fechaHoraRegistro, EventoModelo eventoModelo, int idDispositivo) {
 		super();
 		this.id = id;
-		this.dispositivoModelo = dispositivoModelo;
+	    this.eventoModelo = eventoModelo;
 		this.fechaHoraRegistro = fechaHoraRegistro;
+		this.idDispositivo = idDispositivo;
 	}
 	
-	
 	 
+	  
 	
 
-	public MedicionModelo(int id, LocalDateTime fechaHoraRegistro) {
+	public MedicionModelo(int id, LocalDateTime fechaHoraRegistro, int idDispositivo) {
 		super();
 		this.id = id;
 		this.fechaHoraRegistro = fechaHoraRegistro;
+		this.idDispositivo = idDispositivo;
 	}
 
 	public int getId() {
@@ -52,13 +56,6 @@ public abstract class MedicionModelo {
 
 	
 
-	public DispositivoModelo getDispositivoModelo() {
-		return dispositivoModelo;
-	}
-
-	public void setDispositivoModelo(DispositivoModelo dispositivoModelo) {
-		this.dispositivoModelo = dispositivoModelo;
-	}
 
 	public LocalDateTime getFechaHoraRegistro() {
 		return fechaHoraRegistro;
@@ -66,6 +63,27 @@ public abstract class MedicionModelo {
 
 	public void setFechaHoraRegistro(LocalDateTime fechaHoraRegistro) {
 		this.fechaHoraRegistro = fechaHoraRegistro;
+	}
+	
+	
+
+	public EventoModelo getEventoModelo() {
+		return eventoModelo;
+	}
+
+	public void setEventoModelo(EventoModelo eventoModelo) {
+		this.eventoModelo = eventoModelo;
+	}
+
+	
+	 
+
+	public int getIdDispositivo() {
+		return idDispositivo;
+	}
+
+	public void setIdDispositivo(int idDispositivo) {
+		this.idDispositivo = idDispositivo;
 	}
 
 	@Override

@@ -6,10 +6,16 @@ public class DispositivoEstacionamientoModelo extends DispositivoModelo{
 	 
 	public DispositivoEstacionamientoModelo() {}
 
-	public DispositivoEstacionamientoModelo(int id,String nombre, int idEspacio, int idLugar) {
-		super(id, nombre, idEspacio);
-		this.idLugar = idLugar;
+	public DispositivoEstacionamientoModelo(int id,String nombre, int idLugar, int idEspacio) {
+		super(id, nombre, idEspacio); 
+		this.idLugar = idLugar; 
 	}
+	
+	
+	
+	
+	
+	
 
 	public int getIdLugar() {
 		return idLugar;

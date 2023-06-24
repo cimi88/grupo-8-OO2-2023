@@ -15,18 +15,14 @@ public class MedicionEstacionamiento extends Medicion{
 	private String patente;
 	private boolean presenciaVehiculo;
 	
+	public MedicionEstacionamiento() {}
+	
 	public MedicionEstacionamiento(int id, Dispositivo dispositivo, LocalDateTime fechaHoraRegistro, String patente, boolean presenciaVehiculo) {
 		super(id, dispositivo, fechaHoraRegistro);
 		this.patente = patente;
 		this.presenciaVehiculo = presenciaVehiculo;
 	}
-	
-
-	public MedicionEstacionamiento(int id, LocalDateTime fechaHoraRegistro, String patente, boolean presenciaVehiculo) {
-		super(id, fechaHoraRegistro);
-		this.patente = patente;
-		this.presenciaVehiculo = presenciaVehiculo;
-	}
+	 
 	 
 	
 

@@ -8,17 +8,20 @@ public class MedicionEstacionamientoModelo extends MedicionModelo{
 	
 	public MedicionEstacionamientoModelo() {}
 	
-	public MedicionEstacionamientoModelo(int id,DispositivoModelo dispositivoModelo, LocalDateTime fechaHoraRegistro, String patente, boolean presenciaVehiculo) {
-		super(id, dispositivoModelo,fechaHoraRegistro);
-		this.patente = patente;
-		this.presenciaVehiculo = presenciaVehiculo;
-	}
 	
-	public MedicionEstacionamientoModelo(int id, LocalDateTime fechaHoraRegistro, String patente, boolean presenciaVehiculo) {
-		super(id, fechaHoraRegistro);
+	public MedicionEstacionamientoModelo(int id, LocalDateTime fechaHoraRegistro, String patente, boolean presenciaVehiculo, int idDispositivo) {
+		super(id, fechaHoraRegistro, idDispositivo);
 		this.patente = patente;
 		this.presenciaVehiculo = presenciaVehiculo;
+	}  
+ 
+	
+	
+	public MedicionEstacionamientoModelo(String patente) {
+		super();
+		this.patente = patente;
 	}
+ 
 
 	public String getPatente() {
 		return patente;
@@ -37,7 +40,7 @@ public class MedicionEstacionamientoModelo extends MedicionModelo{
 	}
 	
 	
-	
+	 
 	
 
 }

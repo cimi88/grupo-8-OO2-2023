@@ -1,15 +1,14 @@
 <html>
 <body>
        <th>MEDICIONES DE DISPOSITIVO</th>
-  <td>
-                <a th:text="'NUEVA MEDICION'" title="NUEVA MEDICION"></a>
-  </td>
+ 
   <table>
     <tr> 
         <th>ID</th>
         <th>FECHA HORA REGISTRO</th> 
          <th>PATENTE</th>  
         <th>PRESENCIA VEHICULO</th> 
+         <th>Dispositivo</th> 
     </tr> 
    
      
@@ -18,6 +17,7 @@
         <td th:text="${m.fechaHoraRegistro}"></td>
          <td th:text="${m.patente}"></td>
         <td th:text="${m.presenciaVehiculo}"></td>
+         <td th:text="${m.dispositivo.nombre}"></td>
    
 
          

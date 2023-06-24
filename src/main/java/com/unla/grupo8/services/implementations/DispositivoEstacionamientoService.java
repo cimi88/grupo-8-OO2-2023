@@ -10,6 +10,7 @@ import com.unla.grupo8.converters.DispositivoEstacionamientoConverter;
 import com.unla.grupo8.entities.DispositivoEstacionamiento;
 import com.unla.grupo8.models.DispositivoEstacionamientoModelo;
 import com.unla.grupo8.repositories.IDispositivoEstacionamientoRepository;
+import com.unla.grupo8.repositories.IEspacioRepository;
 import com.unla.grupo8.services.IDispositivoEstacionamientoService;
 
 import jakarta.transaction.Transactional;
@@ -24,6 +25,10 @@ public class DispositivoEstacionamientoService implements IDispositivoEstacionam
 	@Autowired 
 	@Qualifier("dispositivoEstacionamientoRepository")
 	private IDispositivoEstacionamientoRepository dispositivoEstacionamientoRepository;
+	
+	@Autowired
+	@Qualifier("espacioRepository")
+	private IEspacioRepository espacioRepository;
 
 	@Override
 	public List<DispositivoEstacionamiento> getAll() {
@@ -40,22 +45,24 @@ public class DispositivoEstacionamientoService implements IDispositivoEstacionam
 	@Override
 	@Transactional 
 	public DispositivoEstacionamientoModelo insertOrUpdate(DispositivoEstacionamientoModelo dispositivo) {
-		DispositivoEstacionamiento dispositivoEstacionamiento = dispositivoEstacionamientoRepository.save(dispositivoEstacionamientoConverter.modelToEntity(dispositivo));
-		return dispositivoEstacionamientoConverter.entityToModel(dispositivoEstacionamiento);
-	}
+		DispositivoEstacionamiento dispositivoEstacionamiento = dispositivoEstacionamientoConverter.modelToEntity(dispositivo);
+		dispositivoEstacionamiento.setEspacio(espacioRepository.findByNombre(dispositivoEstacionamiento.getLugar().getPlayaEstacionamiento().getEspacio()));
+		dispositivoEstacionamientoRepository.save(dispositivoEstacionamiento);
+		return dispositivoEstacionamientoConverter.entityToModel(dispositivoEstacionamiento); 
+	} 
 
 	@Override
 	public boolean remove(int id) {
 		
-		try { 
+		try {  
 			dispositivoEstacionamientoRepository.deleteById(id);
 			return true;
 		} catch (Exception e) {
 			return false;
-		}
+		} 
 	} 
 
-	@Override
+	@Override 
 	public boolean baja(int id) {
 		 
 		boolean aux = true;
