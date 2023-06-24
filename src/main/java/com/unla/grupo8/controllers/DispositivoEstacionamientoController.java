@@ -114,22 +114,25 @@ public class DispositivoEstacionamientoController {
 		return mv;
 	} 
 	
-//	@PostMapping("/editado") 
-//	public ModelAndView dispositivoEditado(@Valid @ModelAttribute("dispositivo")DispositivoEstacionamientoModelo dispositivoEstacionamientoModelo , 
-//			BindingResult b) {
-//		DispositivoEstacionamiento dispositivo = modelMapper.map(dispositivoEstacionamientoModelo, DispositivoEstacionamiento.class);
-//		DispositivoEstacionamiento dispositivoViejo = modelMapper.map(dispositivoEstacionamientoService.traerPorId(dispositivoEstacionamientoModelo.getId()), DispositivoEstacionamiento.class);
-//		
-//		dispositivo.setEspacio(dispositivoViejo.getEspacio());
-//		dispositivo.setNombre(dispositivoViejo.getNombre());
-//	  
-//		
-//		dispositivoEstacionamientoService.insertOrUpdate(dispositivoEstacionamientoModelo);
-//		return mostrarTablaDispositivosEstacionamiento();
-//	}
 	
-	
-	
+	@PostMapping("/editado") 
+	public ModelAndView dispositivoEditado(@Valid @ModelAttribute("dispositivo") DispositivoEstacionamientoModelo dispositivoEstacionamientoModelo, 
+			BindingResult b) {
+		DispositivoEstacionamiento dispositivo = new DispositivoEstacionamiento();
+		ModelAndView mV = new ModelAndView();
+		if(b.hasErrors()) {
+			mV.setViewName(ViewRouteHelpers.FORM_DISPO_ESTACIONAMIENTO_EDITAR);
+		}else {
+
+			DispositivoEstacionamiento dispositivoViejo = dispositivoEstacionamientoService.traerEntidad(dispositivoEstacionamientoModelo.getId());
+			dispositivo.setNombre(dispositivoViejo.getNombre());
+			dispositivo.setLugar(dispositivoViejo.getLugar());
+			
+		}
+		dispositivoEstacionamientoService.insertOrUpdate(dispositivoEstacionamientoModelo);
+		return mostrarTablaDispositivosEstacionamiento();
+	}
+	 
 	
 	
 	

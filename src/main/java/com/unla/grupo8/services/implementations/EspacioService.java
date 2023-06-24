@@ -19,7 +19,7 @@ public class EspacioService implements IEspacioService{
 	@Autowired 
 	@Qualifier("espacioRepository")
 	private IEspacioRepository espacioRepository;
-	
+	 
 	@Autowired
 	@Qualifier("espacioConverter")
 	private EspacioConverter espacioConverter;

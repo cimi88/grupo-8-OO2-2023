@@ -21,4 +21,6 @@ public interface IDispositivoEstacionamientoService {
    
    public boolean baja(int id);  
    
+   public DispositivoEstacionamiento traerEntidad(int id);
+   
 }

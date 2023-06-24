@@ -13,4 +13,4 @@ spring:
     properties:
       dialect: org.hibernate.dialect.MySQL8Dialect
   thymeleaf:
-    cache: false 
+    cache: false  

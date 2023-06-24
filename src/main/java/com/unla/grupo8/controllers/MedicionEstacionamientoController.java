@@ -90,7 +90,7 @@ public class MedicionEstacionamientoController {
 		    	mensaje = "Lugar ocupado";
 		    }else {
 		    	mensaje = "Lugar vacio"; 
-		    }
+		    } 
 		     
 		    EventoModelo evento = new EventoModelo(medicion.getIdDispositivo(), mensaje, LocalDateTime.now());
        

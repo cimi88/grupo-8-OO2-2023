@@ -49,7 +49,7 @@ public class DispositivoEstacionamientoService implements IDispositivoEstacionam
 		dispositivoEstacionamiento.setEspacio(espacioRepository.findByNombre(dispositivoEstacionamiento.getLugar().getPlayaEstacionamiento().getEspacio()));
 		dispositivoEstacionamientoRepository.save(dispositivoEstacionamiento);
 		return dispositivoEstacionamientoConverter.entityToModel(dispositivoEstacionamiento); 
-	} 
+	}  
 
 	@Override
 	public boolean remove(int id) {
@@ -78,6 +78,12 @@ public class DispositivoEstacionamientoService implements IDispositivoEstacionam
         }
 
 		return aux;
+	}
+
+	@Override
+	public DispositivoEstacionamiento traerEntidad(int id) {
+		// TODO Auto-generated method stub
+		return dispositivoEstacionamientoRepository.findById(id); 
 	}
 
 
