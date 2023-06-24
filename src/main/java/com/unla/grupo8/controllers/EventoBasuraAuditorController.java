@@ -25,7 +25,7 @@ public class EventoBasuraAuditorController {
 	@GetMapping("/listaEventoDispositivoAuditor/{id}")
 	public ModelAndView mostrarEventosDispositivoaUDITOR(@PathVariable("id")int id) {
 		
-		ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_EVENTOS);
+		ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_EVENTOS_BASURA);
 		DispositivoBasuraModelo dispBasModel = dispositivoBasuraService.traerPorId(id);
 		mV.addObject("listaEventos", dispBasModel.getEventos());
 	    return mV;

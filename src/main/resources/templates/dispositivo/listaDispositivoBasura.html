@@ -79,10 +79,11 @@
     </style>
 </head>
 <body>
+	
 	<div class="container">
     	<h1>- - - - Dispositivos de Basura - - - -</h1>
 		<a href="/basura/creardispositivo" class="button add">Agregar Dispositivo</a>
-		<a href="/medicionBasura/crearmedicion"><button id="add">Agregar medicion</button></a> 
+		<a href="/medicionBasura/crearmedicion" class="button add">Agregar medicion</a> 
 	</div>
     <table>
         <tr>
@@ -109,15 +110,15 @@
              <td th:if="${b.espacio != null}" th:text="${b.espacio.nombre}"></td>
            
             <td>
-                <a th:href="@{/basura/editarDispositivo/} + ${b.id}" th:text="'Editar'" title="Editar"></a>
+                <a th:href="@{/basura/editarDispositivo/} + ${b.id}" class="button edit" th:text="'Editar'" title="Editar"></a>
             </td>
             
             <td>
-                <a th:href="@{/evento/listaEventoDispositivo/}+ ${b.id}" th:text="'Detalles'" title="Detalles"></a>
+                <a th:href="@{/medicionBasura/listaEventos/}+ ${b.id}" class="button details" th:text="'Detalles'" title="Detalles"></a>
             </td>
             
             <td>
-                <a th:href="@{/basura/eliminar/}+ ${b.id}" th:text="'Borrar'" title="Borrar"></a>
+                <a th:href="@{/basura/eliminar/}+ ${b.id}" class="button delete" th:text="'Borrar'" title="Borrar"></a>
             </td>
             
             <td>

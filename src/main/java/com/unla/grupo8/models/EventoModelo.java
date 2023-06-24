@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 
 
-public class EventoBasuraModelo {
+public class EventoModelo {
 
      private int id;
 	
@@ -14,9 +14,9 @@ public class EventoBasuraModelo {
 	
 	private LocalDateTime fechaHoraRegistro;
 	
-	public EventoBasuraModelo() {}
+	public EventoModelo() {}
 
-	public EventoBasuraModelo(int id, int idDispositivo, String descripcionEvento,
+	public EventoModelo(int id, int idDispositivo, String descripcionEvento,
 			LocalDateTime fechaHoraRegistro) {
 		super();
 		this.id = id;
@@ -27,14 +27,14 @@ public class EventoBasuraModelo {
 
 	
 
-	public EventoBasuraModelo(int id, String descripcionEvento, LocalDateTime fechaHoraRegistro) {
+	public EventoModelo(int id, String descripcionEvento, LocalDateTime fechaHoraRegistro) {
 		super();
 		this.id = id;
 		this.descripcionEvento = descripcionEvento;
 		this.fechaHoraRegistro = fechaHoraRegistro;
 	}
 
-	public EventoBasuraModelo(int idDispositivo, LocalDateTime fechaHoraRegistro) {
+	public EventoModelo(int idDispositivo, LocalDateTime fechaHoraRegistro) {
 		super();
 		this.idDispositivo = idDispositivo;
 		this.fechaHoraRegistro = fechaHoraRegistro;

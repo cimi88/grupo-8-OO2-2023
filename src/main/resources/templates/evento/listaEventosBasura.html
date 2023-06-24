@@ -48,15 +48,15 @@
             <th>Fecha y Hora</th>
             <th>Descripción del evento</th>
         </tr>
-        
-        <tr th:if="${listaEventos == null or listaEventos.isEmpty()}">
+         <tr th:if="${eventos == null or eventos.isEmpty()}">
             <td colspan="3">No existen eventos para este dispositivo</td>
         </tr>
         
-        <tr th:each="e : ${listaEventos}">
-            <td th:text="${e.id}"></td>
-            <td th:text="${e.fechaHoraRegistro}"></td>
+        
+        <tr th:each="e : ${eventos}">
+            <td th:text="${e.dispositivo.nombre}"></td>
             <td th:text="${e.descripcionEvento}"></td>
+            <td th:text="${e.fechaHoraRegistro}"></td>
         </tr>
     </table>
 </body>

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,11 +17,11 @@ import com.unla.grupo8.converters.DispositivoBasuraConverter;
 import com.unla.grupo8.converters.EventoBasuraConverter;
 import com.unla.grupo8.converters.MedicionBasuraConverter;
 import com.unla.grupo8.helpers.ViewRouteHelpers;
-import com.unla.grupo8.models.EventoBasuraModelo;
+import com.unla.grupo8.models.EventoModelo;
 import com.unla.grupo8.models.MedicionBasuraModelo;
 import com.unla.grupo8.repositories.IDispositivoBasuraRepository;
 import com.unla.grupo8.services.implementations.DispositivoBasuraService;
-import com.unla.grupo8.services.implementations.EventoService;
+import com.unla.grupo8.services.implementations.EventoBasuraService;
 import com.unla.grupo8.services.implementations.MedicionBasuraService;
 
 import jakarta.validation.Valid;
@@ -36,7 +37,7 @@ public class MedicionBasuraController {
 	private DispositivoBasuraService dispositivoBasuraService;
 	@Autowired
 	@Qualifier("eventoService")
-	private EventoService eventoService;
+	private EventoBasuraService eventoService;
 	@Autowired
 	@Qualifier("medicionBasuraConverter")
 	private MedicionBasuraConverter medicionBasuraConverter;
@@ -69,7 +70,7 @@ public class MedicionBasuraController {
 			mV.setViewName(ViewRouteHelpers.FORMULARIO_MEDICION_BASURA);
 		}else {
 			medicionBasuraService.insertOrUpdate(medicion);
-			EventoBasuraModelo evento = new EventoBasuraModelo(medicion.getId(), medicion.getFechaHoraRegistro());
+			EventoModelo evento = new EventoModelo(medicion.getId(), medicion.getFechaHoraRegistro());
 			
 			if(medicion.getLitrosOcupados() <= 85) {
 				evento.setDescripcionEvento("CAPACIDAD AUN INCOMPLETA");
@@ -81,4 +82,12 @@ public class MedicionBasuraController {
 		}
 		return mV;
 	}
+	
+	@GetMapping("/listaEventos/{id}")  
+	public ModelAndView mostrarTablaEventos(@PathVariable("id")int id) {
+		
+	    ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_EVENTOS_BASURA);
+	    mV.addObject("eventos", eventoService.traerEventosIdDispositivo(id));  
+	    return mV; 
+	} 
 }

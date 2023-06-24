@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.unla.grupo8.helpers.ViewRouteHelpers;
 import com.unla.grupo8.models.DispositivoBasuraModelo;
 import com.unla.grupo8.services.IDispositivoBasuraService;
-import com.unla.grupo8.services.IEventoService;
+import com.unla.grupo8.services.IEventoBasuraService;
 
 @Controller
 @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -25,11 +25,11 @@ public class EventoBasuraController {
 	
 	@Autowired
 	@Qualifier("eventoService")
-	private IEventoService eventoService;
+	private IEventoBasuraService eventoService;
 	
 	@GetMapping("/lista")
 	public ModelAndView mostrarEventos() {
-		ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_EVENTOS);
+		ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_EVENTOS_BASURA);
 		mV.addObject("listaEventos", eventoService.getAll());
 	    return mV;
 	}
@@ -37,9 +37,9 @@ public class EventoBasuraController {
 	@GetMapping("/listaEventoDispositivo/{id}")
 	public ModelAndView mostrarEventosDispositivo(@PathVariable("id")int id) {
 		
-		ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_EVENTOS);
+		ModelAndView mV = new ModelAndView(ViewRouteHelpers.LISTA_EVENTOS_BASURA);
 		DispositivoBasuraModelo dispBasModel = dispositivoBasuraService.traerPorId(id);
 		mV.addObject("listaEventos", dispBasModel.getEventos());
-	    return mV;
+		return mV;
 	}	
 }

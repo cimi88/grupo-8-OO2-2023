@@ -16,7 +16,7 @@ public class ViewRouteHelpers {
 	
 	public final static String EDITAR_DISPOSITIVO_BASURA = "dispositivo/formularioEditarBasura";
 	//HELRPERS PARA EVENTOS
-	public final static String LISTA_EVENTOS = "evento/listaEventos";
+	public final static String LISTA_EVENTOS_BASURA = "evento/listaEventosBasura";
 	//ROL AUDITOR
 
 	
