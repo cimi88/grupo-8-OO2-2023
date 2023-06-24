@@ -1,11 +1,9 @@
 package com.unla.grupo8.entities;
 
 import java.time.LocalDateTime;
-<<<<<<< HEAD
 
-=======
 import java.util.Objects;
->>>>>>> cfe32ad8aa0fa464265a36a3bc5259a659a0f665
+
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -13,11 +11,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-<<<<<<< HEAD
+
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-=======
->>>>>>> cfe32ad8aa0fa464265a36a3bc5259a659a0f665
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -26,15 +22,13 @@ import lombok.EqualsAndHashCode;
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "medicion")
-<<<<<<< HEAD
 @Inheritance(strategy = InheritanceType.JOINED)
-=======
->>>>>>> cfe32ad8aa0fa464265a36a3bc5259a659a0f665
+
 public abstract class Medicion {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-<<<<<<< HEAD
+
 	protected int id;
 	
 	@ManyToOne()
@@ -43,16 +37,6 @@ public abstract class Medicion {
 	protected Dispositivo dispositivo;
 	
 	protected LocalDateTime fechaHoraRegistro;
-=======
-	private int id;
-	
-	@ManyToOne()
-	@JoinColumn(name = "dispositivo_id")
-	@JsonBackReference
-	private Dispositivo dispositivo;
-	
-	private LocalDateTime fechaHoraRegistro;
->>>>>>> cfe32ad8aa0fa464265a36a3bc5259a659a0f665
 	
 	public Medicion() {}
 
@@ -85,12 +69,8 @@ public abstract class Medicion {
 
 	public void setFechaHoraRegistro(LocalDateTime fechaHoraRegistro) {
 		this.fechaHoraRegistro = fechaHoraRegistro;
-	}
+	}	
 
-<<<<<<< HEAD
-	
-}
-=======
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -114,4 +94,4 @@ public abstract class Medicion {
 	}
 
 }
->>>>>>> cfe32ad8aa0fa464265a36a3bc5259a659a0f665
+

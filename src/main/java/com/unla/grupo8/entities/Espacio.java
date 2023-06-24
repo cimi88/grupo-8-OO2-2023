@@ -56,10 +56,7 @@ public class Espacio {
 		this.nombre = nombre;
 		this.dispositivos = dispositivos;
 	}
-<<<<<<< HEAD
 
-=======
->>>>>>> cfe32ad8aa0fa464265a36a3bc5259a659a0f665
 	
 	public Espacio(int id, String nombre) {
 		super();
@@ -67,10 +64,8 @@ public class Espacio {
 		this.nombre = nombre;
 		this.dispositivos = new HashSet<>();
 	}
-<<<<<<< HEAD
-=======
 
->>>>>>> cfe32ad8aa0fa464265a36a3bc5259a659a0f665
+
 	public int getId() {
 		return id;
 	}
@@ -116,8 +111,6 @@ public class Espacio {
 	public String toString() {
 		return "Espacio [id=" + id + ", nombre=" + nombre + ", dispositivos=" + dispositivos + "]";
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> cfe32ad8aa0fa464265a36a3bc5259a659a0f665
+
+

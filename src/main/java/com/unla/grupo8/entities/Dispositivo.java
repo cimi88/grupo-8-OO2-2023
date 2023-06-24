@@ -29,7 +29,7 @@ import java.util.Objects;
 @Table(name = "dispositivo")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Dispositivo {
-<<<<<<< HEAD
+
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,56 +65,12 @@ public abstract class Dispositivo {
 	
 	public Dispositivo () {}
 
-	public Dispositivo(int id, String nombre, LocalDateTime createdAt, LocalDateTime updatedAt,
-			Espacio espacio, Set<Medicion> mediciones) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.setEnAlta(enAlta);
-=======
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-
-	private String nombre;
-
-	private boolean enAlta;
-
-	@Column(name = "creado")
-	@CreationTimestamp
-	private LocalDateTime createdAt;
-
-	@Column(name = "actualizado")
-	@UpdateTimestamp
-	private LocalDateTime updatedAt;
-
-	// la relacion en esta tabla es bidireccional
-	// y diremos que muchos dispositivos van a perteneces a un espacio
-	// la entidad propietaria la tendra espacio
-	@ManyToOne()
-	@JoinColumn(name = "espacio_id")
-	private Espacio espacio;
-
-	// Relacion Bidireccional con medicion
-	@OneToMany(mappedBy = "dispositivo", cascade = CascadeType.ALL, orphanRemoval = true)
-	@JsonManagedReference
-	private Set<Medicion> mediciones = new HashSet<>();
-
-	@JsonManagedReference
-	@OneToMany(mappedBy = "dispositivo", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<Evento> eventos = new HashSet<>();
-
-	public Dispositivo() {
-	}
-
 	public Dispositivo(int id, String nombre, LocalDateTime createdAt, LocalDateTime updatedAt, Espacio espacio,
 			Set<Medicion> mediciones) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.enAlta = true;
->>>>>>> cfe32ad8aa0fa464265a36a3bc5259a659a0f665
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 		this.espacio = espacio;
@@ -125,36 +81,16 @@ public abstract class Dispositivo {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-<<<<<<< HEAD
 		this.setEnAlta(enAlta);
 		this.espacio = espacio;
 		this.mediciones = mediciones;
 	}
 	
-	public Dispositivo(int id, String nombre, Espacio espacio) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.setEnAlta(enAlta);
-		this.espacio = espacio;
-	}
-	
-	public Dispositivo(int id, String nombre, boolean enAlta) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.enAlta = enAlta;
-	}
 	
 	public Dispositivo(int id, String nombre) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.setEnAlta(enAlta);
-=======
-		this.enAlta = true;
-		this.espacio = espacio;
-		this.mediciones = mediciones;
 	}
 
 	public Dispositivo(int id, String nombre, boolean enAlta) {
@@ -164,12 +100,6 @@ public abstract class Dispositivo {
 		this.enAlta = true;
 	}
 
-	public Dispositivo(int id, String nombre) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.enAlta = true;
-	}
 	
 	public Dispositivo(int id, String nombre, Espacio espacio) {
 		super();
@@ -177,7 +107,7 @@ public abstract class Dispositivo {
 		this.nombre = nombre;
 		this.espacio = espacio;
 		this.enAlta = true;
->>>>>>> cfe32ad8aa0fa464265a36a3bc5259a659a0f665
+
 	}
 
 	public int getId() {
@@ -258,12 +188,8 @@ public abstract class Dispositivo {
 		return "Dispositivo [id=" + id + ", nombre=" + nombre + ", enAlta=" + enAlta + ", createdAt=" + createdAt
 				+ ", updatedAt=" + updatedAt + ", espacio=" + espacio + ", mediciones=" + mediciones + "]";
 	}
-<<<<<<< HEAD
-	
-	
 
 }
-=======
-}
- 
->>>>>>> cfe32ad8aa0fa464265a36a3bc5259a659a0f665
+
+
+

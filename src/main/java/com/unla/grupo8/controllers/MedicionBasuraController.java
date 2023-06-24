@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
+import com.unla.grupo8.models.EventoModelo;
 import com.unla.grupo8.converters.DispositivoBasuraConverter;
 import com.unla.grupo8.converters.EventoBasuraConverter;
 import com.unla.grupo8.converters.MedicionBasuraConverter;
 import com.unla.grupo8.helpers.ViewRouteHelpers;
-import com.unla.grupo8.models.EventoBasuraModelo;
+
 import com.unla.grupo8.models.MedicionBasuraModelo;
 import com.unla.grupo8.repositories.IDispositivoBasuraRepository;
 import com.unla.grupo8.services.implementations.DispositivoBasuraService;
@@ -69,7 +69,7 @@ public class MedicionBasuraController {
 			mV.setViewName(ViewRouteHelpers.FORMULARIO_MEDICION_BASURA);
 		}else {
 			medicionBasuraService.insertOrUpdate(medicion);
-			EventoBasuraModelo evento = new EventoBasuraModelo(medicion.getId(), medicion.getFechaHoraRegistro());
+			EventoModelo evento = new EventoModelo(medicion.getId(), medicion.getFechaHoraRegistro());
 			
 			if(medicion.getLitrosOcupados() <= 85) {
 				evento.setDescripcionEvento("CAPACIDAD AUN INCOMPLETA");

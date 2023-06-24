@@ -135,8 +135,5 @@ public class Usuario {
 	public Usuario() {
 	}
 	
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> rama_salgueiro
+
